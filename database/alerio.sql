@@ -24,6 +24,17 @@ create table prodotto
     in_vendita boolean not null
 );
 
+create table immagini
+(
+	codice int auto_increment primary key,
+    img blob not null,
+    posizione int not null check(posizione >= 1),
+    prodotto int references prodotti(codice)
+    on update cascade
+    on delete cascade,
+    unique(posizione,prodotto)
+);
+
 create table wish_list
 (
 	email_cliente varchar(40),

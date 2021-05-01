@@ -23,7 +23,7 @@
 		<h3>Prezzo: ${prodotto.prezzo}</h3>
 		<p>${prodotto.informazioni}</p>
 		<form name = "aggiungi al carrello" action = "aggiungiCarrello" method = "Post">
-		<input type = "hidden" value = <%= bean.getCodice() %> name = "codice">
+		<input type = "hidden" value = "${prodotto.codice}" name = "codice">
 		<Button type = "submit">Aggiungi al carrello</Button>
 		</form><br/>
 	</body>

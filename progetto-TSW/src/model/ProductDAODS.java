@@ -42,7 +42,6 @@ public class ProductDAODS implements ProductDAO
 
 			preparedStatement.executeUpdate();
 
-			connection.commit();
 		} 
 		finally 
 		{
@@ -122,7 +121,6 @@ public class ProductDAODS implements ProductDAO
 			preparedStatement.setInt(1, code);
 
 			result = preparedStatement.executeUpdate();
-			connection.commit();
 
 		} finally 
 		{

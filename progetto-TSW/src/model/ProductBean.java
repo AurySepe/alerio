@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import java.util.List;
 
 public class ProductBean 
 {
@@ -111,6 +112,15 @@ public class ProductBean
 	}
 
 
+	public List<ImageBean> getImmagini() {
+		return immagini;
+	}
+
+	public void setImmagini(List<ImageBean> immagini) {
+		this.immagini = immagini;
+	}
+
+
 	private double prezzo;
 	
 	private int codice;
@@ -130,5 +140,7 @@ public class ProductBean
 	private char taglia;
 	
 	private boolean inVendita;
+	
+	private List<ImageBean> immagini;
 
 }

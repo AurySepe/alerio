@@ -1,3 +1,4 @@
+<%@page import="model.ImageBean"%>
 <%@page import="model.ProductBean"%>
 <%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -21,23 +22,27 @@
 	<body>
 		<table>
 			<tr>
-				<td><a href = "catalogo?ordine=nome">NOME</a></td>
-				<td><a href = "catalogo?ordine=prezzo_attuale">PREZZO</a></td>
-				<td><a href = "catalogo?ordine=taglia">TAGLIA</a></td>
-				<td>AZIONI</td>
+				<th><a href = "catalogo?ordine=nome">NOME</a></th>
+				<th><a href = "catalogo?ordine=prezzo_attuale">PREZZO</a></th>
+				<th><a href = "catalogo?ordine=taglia">TAGLIA</a></th>
+				<th>Immagine</th>
+				<th>AZIONI</th>
 			</tr>
-		<%for(ProductBean bean : catalogo) {%>
+		<%for(ProductBean bean : catalogo) {
+			request.setAttribute("bean", bean);
+		%>
 			<tr>
-				<td><%= bean.getNome()%></td>
-				<td><%= bean.getPrezzo()%></td>
-				<td><%= bean.getTaglia()%></td>
+				<td><a href = "mostraProdotto?codice=${bean.codice}">${bean.nome}</a></td>
+				<td>${bean.prezzo}</td>
+				<td> ${bean.taglia}</td>
+				<td><img alt="immagine prodotto" src="immagine?codice=${bean.immagini[0].codice}" width = 100 height = 100></td>
 				<td>
 					<form name = "aggiungi al carrello" action = "aggiungiCarrello" method = "Post">
-						<input type = "hidden" value = <%= bean.getCodice() %> name = "codice">
+						<input type = "hidden" value = "${bean.codice}" name = "codice">
 						<Button type = "submit">Aggiungi al carrello</Button>
 					</form><br/>
 					<form name = "vedi descrizione" action = "mostraProdotto" method = "Post">
-						<input type = "hidden" value = <%= bean.getCodice() %> name = "codice">
+						<input type = "hidden" value = "${bean.codice}" name = "codice">
 						<Button type = "submit">Descrizione</Button>
 					</form><br/>
 				</td>
