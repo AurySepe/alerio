@@ -8,6 +8,7 @@
 		<title>Errore</title>
 	</head>
 	<body>
+	<%@ include file = "fragments/barraNavigazionale.jsp" %>
 		<h1>Si è verificato un errore</h1>
 		<p>${error}</p>
 	</body>

@@ -17,6 +17,7 @@
 		<title> ${prodotto.nome}</title>
 	</head>
 	<body>
+	<%@ include file = "fragments/barraNavigazionale.jsp" %>
 		<h1>${prodotto.nome}</h1>
 		<h3>Colore: ${prodotto.colore}</h3>
 		<h3>Collezione: ${prodotto.collezione}</h3>

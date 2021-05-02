@@ -20,6 +20,7 @@
 		<title>Catalogo</title>
 	</head>
 	<body>
+	<%@ include file = "fragments/barraNavigazionale.jsp" %>
 		<table>
 			<tr>
 				<th><a href = "catalogo?ordine=nome">NOME</a></th>
