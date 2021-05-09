@@ -14,5 +14,5 @@ public interface ImageDAO
 	
 	public Collection<ImageBean> doRetrieveAll(String order) throws SQLException;
 	
-	public List<ImageBean> doRetrieveAllFromProduct(int prodotto) throws SQLException;
+	public List<ImageBean> doRetrieveAllFromTemplateVariant(TemplateColorVariantBean templateVariant) throws SQLException;
 }

@@ -10,18 +10,40 @@ create table cliente
     registrato boolean not null
     );
 
-create table prodotto
+create table modello_prodotto
 (
 	codice int  primary key auto_increment,
     nome varchar(50) not null,
-    prezzo_attuale double,
     data_di_aggiunta date not null,
     collezione varchar(40)  not null,
     categoria varchar(40)  not null,
+    informazioni varchar(100)  not null
+);
+
+create table varianti_modello_per_colore
+(
+	codice int  primary key auto_increment,
+    modello_prodotto int not null,
     colore varchar(30)  not null,
-    informazioni varchar(100)  not null,
-    taglia char  not null check(taglia in ('S', 'M', 'L')), 
-    in_vendita boolean not null
+    in_vendita boolean not null,
+    prezzo_attuale double,
+    foreign key (modello_prodotto) references modello_prodotto(codice)
+    on update cascade
+    on delete cascade,
+    unique(colore,modello_prodotto)
+);
+
+create table prodotto
+(
+	codice int  primary key auto_increment,
+    varianti_modello_per_colore int not null,
+	taglia char  not null check(taglia in ('S', 'M', 'L')),
+    quantita int,
+    foreign key (varianti_modello_per_colore) references varianti_modello_per_colore(codice)
+    on update cascade
+    on delete cascade,
+    unique(taglia,varianti_modello_per_colore)
+
 );
 
 create table immagini
@@ -29,21 +51,22 @@ create table immagini
 	codice int auto_increment primary key,
     img blob not null,
     posizione int not null check(posizione >= 1),
-    prodotto int references prodotti(codice)
+    varianti_modello_per_colore int not null,
+    foreign key (varianti_modello_per_colore) references varianti_modello_per_colore(codice)
     on update cascade
     on delete cascade,
-    unique(posizione,prodotto)
+    unique(posizione,varianti_modello_per_colore)
 );
 
 create table wish_list
 (
-	email_cliente varchar(40),
-    codice_prodotto int,
-    primary key(email_cliente,  codice_prodotto),
-    foreign key (email_cliente) references cliente(email)
+	cliente varchar(40),
+    varianti_modello_per_colore int,
+    primary key(cliente,  varianti_modello_per_colore),
+    foreign key (cliente) references cliente(email)
 		on update cascade
         on delete cascade,
-	foreign key (codice_prodotto) references prodotto(codice)
+	foreign key (varianti_modello_per_colore) references varianti_modello_per_colore(codice)
 		on update cascade
         on delete cascade
 );

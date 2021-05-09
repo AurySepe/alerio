@@ -1,6 +1,5 @@
 package model;
 
-import java.io.InputStream;
 import java.sql.Blob;
 
 
@@ -10,7 +9,7 @@ public class ImageBean
 	public ImageBean()
 	{
 		codice = -1;
-		prodotto = -1;
+		codiceVariante = -1;
 	}
 	
 	
@@ -22,12 +21,12 @@ public class ImageBean
 		this.codice = codice;
 	}
 
-	public int getProdotto() {
-		return prodotto;
+	public int getCodiceVariante() {
+		return codiceVariante;
 	}
 
-	public void setProdotto(int prodotto) {
-		this.prodotto = prodotto;
+	public void setCodiceVariante(int codiceVariante) {
+		this.codiceVariante = codiceVariante;
 	}
 	
 	public int getPosizione() {
@@ -47,11 +46,24 @@ public class ImageBean
 		this.img = blob;
 	}
 
+	public TemplateColorVariantBean getVarianteModello() 
+	{
+		return varianteModello;
+	}
+
+
+	public void setVarianteModello(TemplateColorVariantBean varianteModello) 
+	{
+		this.varianteModello = varianteModello;
+	}
+
 	private int codice;
 	
-	private int prodotto;
+	private int codiceVariante;
 	
 	private int posizione;
 	
 	private Blob img;
+	
+	private TemplateColorVariantBean varianteModello;
 }

@@ -20,7 +20,7 @@ public class ImageDAODS implements ImageDAO
 	
 	public void doSave(ImageBean image) throws SQLException 
 	{
-		String query = "insert into " + TABLE_NAME + "(img,posizione,prodotto) " + 
+		String query = "insert into " + TABLE_NAME + "(img,posizione,varianti_modello_per_colore) " + 
 					   "values(?,?,?)";
 		Connection cn = null;
 		PreparedStatement prep = null;
@@ -30,7 +30,7 @@ public class ImageDAODS implements ImageDAO
 			prep = cn.prepareStatement(query);
 			prep.setBlob(1, image.getImg());
 			prep.setInt(2, image.getPosizione());
-			prep.setInt(3, image.getProdotto());
+			prep.setInt(3, image.getCodiceVariante());
 			prep.executeUpdate();
 			
 		}
@@ -90,7 +90,7 @@ public class ImageDAODS implements ImageDAO
 				result.setCodice(res.getInt("codice"));
 				result.setImg(res.getBlob("img"));
 				result.setPosizione(res.getInt("posizione"));
-				result.setProdotto(res.getInt("prodotto"));
+				result.setCodiceVariante(res.getInt("varianti_modello_per_colore"));
 			}
 			
 		}
@@ -126,7 +126,7 @@ public class ImageDAODS implements ImageDAO
 				b.setCodice(res.getInt("codice"));
 				b.setImg(res.getBlob("img"));
 				b.setPosizione(res.getInt("posizione"));
-				b.setProdotto(res.getInt("prodotto"));
+				b.setCodiceVariante(res.getInt("varianti_modello_per_colore"));
 				result.add(b);
 			}
 			
@@ -143,9 +143,9 @@ public class ImageDAODS implements ImageDAO
 	
 	
 	
-	public List<ImageBean> doRetrieveAllFromProduct(int prodotto) throws SQLException 
+	public List<ImageBean> doRetrieveAllFromTemplateVariant(TemplateColorVariantBean templateVariant) throws SQLException 
 	{
-		String query =  "select * from " + TABLE_NAME + " where prodotto = ?"
+		String query =  "select * from " + TABLE_NAME + " where varianti_modello_per_colore = ?"
 						+ " order by posizione";
 		Connection cn = null;
 		PreparedStatement prep = null;
@@ -154,7 +154,7 @@ public class ImageDAODS implements ImageDAO
 		{
 			cn = ds.getConnection();
 			prep = cn.prepareStatement(query);
-			prep.setInt(1, prodotto);
+			prep.setInt(1, templateVariant.getCodice());
 			ResultSet res = prep.executeQuery();
 			while(res.next())
 			{
@@ -162,7 +162,8 @@ public class ImageDAODS implements ImageDAO
 				b.setCodice(res.getInt("codice"));
 				b.setImg(res.getBlob("img"));
 				b.setPosizione(res.getInt("posizione"));
-				b.setProdotto(res.getInt("prodotto"));
+				b.setCodiceVariante(res.getInt("varianti_modello_per_colore"));
+				b.setVarianteModello(templateVariant);
 				result.add(b);
 			}
 		}

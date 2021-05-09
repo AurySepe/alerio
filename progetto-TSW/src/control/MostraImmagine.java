@@ -24,7 +24,7 @@ public class MostraImmagine extends HttpServlet
 	throws ServletException,IOException
 	{
 		String code = request.getParameter("codice");
-		response.setContentType("image/jpeg");
+		response.setContentType("image/*");
 		try
 		{
 			int codice = Integer.parseInt(code);

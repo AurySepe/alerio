@@ -14,11 +14,19 @@ import model.Carrello;
 import model.ProductBean;
 import model.ProductDAO;
 import model.ProductDAODS;
+import model.TemplateColorVariantBean;
+import model.TemplateColorVariantDAO;
+import model.TemplateColorVariantDAODS;
+import model.ProductTemplateBean;
+import model.ProductTemplateDAO;
+import model.ProductTemplateDAODS;
 
 
 public class AggiungiCarrelloProdottiServlet extends HttpServlet 
 {
 	private static ProductDAO productModel = new ProductDAODS();
+	private static TemplateColorVariantDAO productTemplateVariantModel = new TemplateColorVariantDAODS();
+	private static ProductTemplateDAO productTemplateModel = new ProductTemplateDAODS();
 	
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
@@ -48,6 +56,8 @@ public class AggiungiCarrelloProdottiServlet extends HttpServlet
 			}
 			ProductBean bean = new ProductBean();
 			bean = productModel.doRetrieveByKey(codice);
+			bean.setVarianteProdotto(productTemplateVariantModel.doRetrieveProductVariant(bean));
+			bean.getVarianteProdotto().setModelloProdotto(productTemplateModel.doRetrieveVariantTemplate(bean.getVarianteProdotto()));
 			if(bean.getCodice() != -1)
 			{
 				if(numero == null)

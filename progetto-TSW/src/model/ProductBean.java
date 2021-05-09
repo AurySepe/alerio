@@ -1,25 +1,7 @@
 package model;
 
-import java.sql.Date;
-import java.util.List;
-
 public class ProductBean 
 {
-	
-	public ProductBean()
-	{
-		codice = -1;
-	}
-	
-	public double getPrezzo() 
-	{
-		return prezzo;
-	}
-
-	public void setPrezzo(double prezzo) 
-	{
-		this.prezzo = prezzo;
-	}
 
 	public int getCodice() 
 	{
@@ -31,116 +13,53 @@ public class ProductBean
 		this.codice = codice;
 	}
 
-	public String getNome() 
+	public int getCodiceVarianteModello() 
 	{
-		return nome;
+		return codiceVarianteModello;
 	}
 
-	public void setNome(String nome) 
+	public void setCodiceVarianteModello(int codiceVarianteModello) 
 	{
-		this.nome = nome;
+		this.codiceVarianteModello = codiceVarianteModello;
 	}
 
-	public String getInformazioni() 
-	{
-		return informazioni;
-	}
-
-	public void setInformazioni(String informazioni) 
-	{
-		this.informazioni = informazioni;
-	}
-
-	public String getCollezione() 
-	{
-		return collezione;
-	}
-
-	public void setCollezione(String collezione) 
-	{
-		this.collezione = collezione;
-	}
-
-	public String getColore() 
-	{
-		return colore;
-	}
-
-	public void setColore(String colore) 
-	{
-		this.colore = colore;
-	}
-
-	public String getCategoria() 
-	{
-		return categoria;
-	}
-
-	public void setCategoria(String categoria) 
-	{
-		this.categoria = categoria;
-	}
-
-	public Date getDataAggiunta() 
-	{
-		return dataAggiunta;
-	}
-
-	public void setDataAggiunta(Date dataAggiunta) 
-	{
-		this.dataAggiunta = dataAggiunta;
-	}
-
-	public char getTaglia() 
+	public String getTaglia() 
 	{
 		return taglia;
 	}
 
-	public void setTaglia(char taglia) 
+	public void setTaglia(String taglia) 
 	{
 		this.taglia = taglia;
 	}
 
-	public boolean isInVendita() 
+	public int getQuantita() 
 	{
-		return inVendita;
+		return quantita;
 	}
 
-	public void setInVendita(boolean inVendita) 
+	public void setQuantita(int quantita) 
 	{
-		this.inVendita = inVendita;
+		this.quantita = quantita;
 	}
 
-
-	public List<ImageBean> getImmagini() {
-		return immagini;
+	public TemplateColorVariantBean getVarianteProdotto() 
+	{
+		return varianteProdotto;
 	}
 
-	public void setImmagini(List<ImageBean> immagini) {
-		this.immagini = immagini;
+	public void setVarianteProdotto(TemplateColorVariantBean varianteProdotto) 
+	{
+		this.varianteProdotto = varianteProdotto;
 	}
 
-
-	private double prezzo;
-	
 	private int codice;
 	
-	private String nome;
+	private int codiceVarianteModello;
 	
-	private String informazioni;
+	private String taglia;
 	
-	private String collezione;
+	private int quantita;
 	
-	private String colore;
-	
-	private String categoria;
-	
-	private Date dataAggiunta;
-	
-	private char taglia;
-	
-	private boolean inVendita;
-	
-	private List<ImageBean> immagini;
-
+	private TemplateColorVariantBean varianteProdotto;
 }

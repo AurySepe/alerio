@@ -10,31 +10,56 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ProductBean;
+import model.ImageDAO;
+import model.ImageDAODS;
 import model.ProductDAO;
 import model.ProductDAODS;
+import model.TemplateColorVariantBean;
+import model.TemplateColorVariantDAO;
+import model.TemplateColorVariantDAODS;
+import model.ProductTemplateBean;
+import model.ProductTemplateDAO;
+import model.ProductTemplateDAODS;
 
 @WebServlet("/mostraProdotto")
 public class MostraProdotto extends HttpServlet 
 {
-private static ProductDAO productModel = new ProductDAODS();
+	private static ProductTemplateDAO productTemplateModel = new ProductTemplateDAODS();
+	private static TemplateColorVariantDAO productTemplateVariantModel = new TemplateColorVariantDAODS(); 
+	private static ProductDAO productModel = new ProductDAODS();
+	private static ImageDAO imageModel = new ImageDAODS();
 	
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
-		String code = request.getParameter("codice");
-		if(code == null)
+		String templateCode = request.getParameter("codiceModello");
+		if(templateCode == null)
 		{
 			chiamaErrore(request, response, "Prodotto mancante");
 			return;
 		}
-		int codice = Integer.parseInt(code);
-		ProductBean bean;
+		ProductTemplateBean modelloProdotto;
 		try
 		{
-			bean = productModel.doRetrieveByKey(codice);
-			if(bean.getCodice() != -1)
-				request.setAttribute("prodotto", bean);
+			int codiceModello = Integer.parseInt(templateCode);
+			String code = request.getParameter("codice");
+			TemplateColorVariantBean templateVariant;
+			modelloProdotto = productTemplateModel.doRetrieveByKey(codiceModello);
+			modelloProdotto.setVariantiModello(productTemplateVariantModel.doRetriveVariantsForTemplate(modelloProdotto));
+			if(code == null)
+			{
+				templateVariant = modelloProdotto.getVariantiModello().get(0);
+			}
+			else
+			{
+				int codice = Integer.parseInt(code);
+				templateVariant = productTemplateVariantModel.doRetrieveByKey(codice);
+				templateVariant.setModelloProdotto(modelloProdotto);
+			}
+			templateVariant.setProdotti(productModel.doRetriveForVariant(templateVariant));
+			templateVariant.setImmaginiVariante(imageModel.doRetrieveAllFromTemplateVariant(templateVariant));
+			if(templateVariant.getCodice() != -1)
+				request.setAttribute("prodotto", templateVariant);
 			RequestDispatcher dispacher = getServletContext().getRequestDispatcher(response.encodeURL("/prodotto.jsp"));
 			dispacher.forward(request, response);
 		}

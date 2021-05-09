@@ -2,20 +2,20 @@ package model;
 
 public class ItemCarrello 
 {
-	public ItemCarrello(ProductBean bean,int quantita)
+	public ItemCarrello(ProductBean prodotto,int quantita)
 	{
-		this.bean = bean;
+		this.prodotto = prodotto;
 		quantitaProdotto = quantita;
 	}
 	
 	
 	
-	public ProductBean getBean() {
-		return bean;
+	public ProductBean getProdotto() {
+		return prodotto;
 	}
 
-	public void setBean(ProductBean bean) {
-		this.bean = bean;
+	public void setProdotto(ProductBean prodotto) {
+		this.prodotto = prodotto;
 	}
 
 	public int getQuantitaProdotto() {
@@ -28,7 +28,7 @@ public class ItemCarrello
 	
 
 
-	private ProductBean bean;
+	private ProductBean prodotto;
 	
 	private int quantitaProdotto;
 }

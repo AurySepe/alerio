@@ -20,28 +20,35 @@
 	<%@ include file = "fragments/barraNavigazionale.jsp" %>
 	<table>
 			<tr>
-				<td>NOME</a></td>
-				<td>PREZZO</td>
-				<td>QUANTITA</td>
-				<td>PREZZO TOTALE</td>
-				<td></td>
+				<th>NOME</th>
+				<th>PREZZO</th>
+				<th>TAGLIA</th>
+				<th>COLORE</th>
+				<th>QUANTITA</th>
+				<th>PREZZO TOTALE</th>
+				<th></th>
+				
 			</tr>
 		<%for(ItemCarrello item : cart.getElementi()) {
 			request.setAttribute("item", item);
 		%>
 			<tr>
-				<td><a href = "mostraProdotto?codice=${item.bean.codice}">${item.bean.nome}</a></td>
-				<td>${item.bean.prezzo}</td>
+				<td><a href = "mostraProdotto?codiceModello=${item.prodotto.varianteProdotto.modelloProdotto.codice}
+				&codice=${item.prodotto.varianteProdotto.codice}">
+				${item.prodotto.varianteProdotto.modelloProdotto.nome}</a></td>
+				<td>${item.prodotto.varianteProdotto.prezzoAttuale}</td>
+				<td>${item.prodotto.taglia}</td>
+				<td>${item.prodotto.varianteProdotto.colore}</td>
 				<td>${item.quantitaProdotto}</td>
-				<td>${item.bean.prezzo * item.quantitaProdotto}</td>
+				<td>${item.prodotto.varianteProdotto.prezzoAttuale * item.quantitaProdotto}</td>
 				<td>
 					<form name = "aggiungi al carrello" action = "aggiungiCarrello" method = "Post">
-						<input type = "hidden" value = "${item.bean.codice}" name = "codice">
+						<input type = "hidden" value = "${item.prodotto.codice}" name = "codice">
 						<input type = "number" min = "0"   name = "quantita">
 						<Button type = "submit">modifica quantità</Button>
 					</form><br/>
 					<form name = "rimuovi dal carrello" action = "aggiungiCarrello" method = "Post">
-						<input type = "hidden" value = "${item.bean.codice}" name = "codice">
+						<input type = "hidden" value = "${item.prodotto.codice}" name = "codice">
 						<input type = "hidden" value = "-1"  name = "quantita">
 						<Button type = "submit">elimina</Button>
 					</form><br/>

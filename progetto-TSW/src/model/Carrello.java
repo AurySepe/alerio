@@ -14,7 +14,7 @@ public class Carrello
 	{
 		for(ItemCarrello i : elementi)
 		{
-			int codice = i.getBean().getCodice();
+			int codice = i.getProdotto().getCodice();
 			if(bean.getCodice() == codice)
 			{
 				i.setQuantitaProdotto(i.getQuantitaProdotto() + 1);
@@ -28,7 +28,7 @@ public class Carrello
 	{
 		for(ItemCarrello i : elementi)
 		{
-			int codice = i.getBean().getCodice();
+			int codice = i.getProdotto().getCodice();
 			if(bean.getCodice() == codice)
 			{
 				elementi.remove(i);
@@ -41,7 +41,7 @@ public class Carrello
 	{
 		for(ItemCarrello i : elementi)
 		{
-			int codice = i.getBean().getCodice();
+			int codice = i.getProdotto().getCodice();
 			if(bean.getCodice() == codice)
 			{
 				if(quantita <= 0)
@@ -61,7 +61,7 @@ public class Carrello
 	{
 		for(ItemCarrello i : elementi)
 		{
-			int codice = i.getBean().getCodice();
+			int codice = i.getProdotto().getCodice();
 			if(bean.getCodice() == codice)
 			{
 				return i.getQuantitaProdotto();
@@ -85,7 +85,7 @@ public class Carrello
 		double result = 0;
 		for(ItemCarrello i : elementi)
 		{
-			result += i.getQuantitaProdotto()*i.getBean().getPrezzo();
+			result += i.getQuantitaProdotto()*i.getProdotto().getVarianteProdotto().getPrezzoAttuale();
 		}
 		return result;
 	}

@@ -14,31 +14,38 @@ import javax.servlet.http.HttpServletResponse;
 import model.ImageBean;
 import model.ImageDAO;
 import model.ImageDAODS;
-import model.ProductBean;
-import model.ProductDAO;
-import model.ProductDAODS;
+import model.TemplateColorVariantBean;
+import model.TemplateColorVariantDAO;
+import model.TemplateColorVariantDAODS;
+import model.ProductTemplateBean;
+import model.ProductTemplateDAO;
+import model.ProductTemplateDAODS;
 
 public class CatalogoServlet extends HttpServlet 
 {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static ProductDAO productModel = new ProductDAODS();
+	private static ProductTemplateDAO productTemplateModel = new ProductTemplateDAODS();
 	private static ImageDAO imageModel = new ImageDAODS();
+	private static TemplateColorVariantDAO productTemplateVariantModel = new TemplateColorVariantDAODS();
 	
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
 		response.setContentType("text/html");
 		String order = request.getParameter("ordine");
-		Collection<ProductBean> catalogo = null;
+		Collection<ProductTemplateBean> catalogo = null;
 		try
 		{
-			catalogo = productModel.doRetrieveAll(order);
-			for(ProductBean b : catalogo)
+			catalogo = productTemplateModel.doRetrieveAll(order);
+			for(ProductTemplateBean b : catalogo)
 			{
-				List<ImageBean> list = imageModel.doRetrieveAllFromProduct(b.getCodice());
-				b.setImmagini(list);
+				b.setVariantiModello(productTemplateVariantModel.doRetriveVariantsForTemplate(b));
+				for(TemplateColorVariantBean d : b.getVariantiModello())
+				{
+					d.setImmaginiVariante(imageModel.doRetrieveAllFromTemplateVariant(d));
+				}
 			}
 			request.setAttribute("catalogo", catalogo);
 		}
