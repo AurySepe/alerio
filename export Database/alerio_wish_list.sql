@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `wish_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wish_list` (
-  `email_cliente` varchar(40) NOT NULL,
-  `codice_prodotto` int NOT NULL,
-  PRIMARY KEY (`email_cliente`,`codice_prodotto`),
-  KEY `codice_prodotto` (`codice_prodotto`),
-  CONSTRAINT `wish_list_ibfk_1` FOREIGN KEY (`email_cliente`) REFERENCES `cliente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `wish_list_ibfk_2` FOREIGN KEY (`codice_prodotto`) REFERENCES `prodotto` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE
+  `cliente` varchar(40) NOT NULL,
+  `varianti_modello_per_colore` int NOT NULL,
+  PRIMARY KEY (`cliente`,`varianti_modello_per_colore`),
+  KEY `varianti_modello_per_colore` (`varianti_modello_per_colore`),
+  CONSTRAINT `wish_list_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `wish_list_ibfk_2` FOREIGN KEY (`varianti_modello_per_colore`) REFERENCES `varianti_modello_per_colore` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-02 11:45:22
+-- Dump completed on 2021-05-11 22:58:31

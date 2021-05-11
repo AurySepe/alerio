@@ -18,39 +18,29 @@ USE `alerio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `ordine`
+-- Table structure for table `codice_sconto`
 --
 
-DROP TABLE IF EXISTS `ordine`;
+DROP TABLE IF EXISTS `codice_sconto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ordine` (
-  `codice` int NOT NULL AUTO_INCREMENT,
-  `email_cliente` varchar(40) DEFAULT NULL,
-  `data_di_acquisto` date NOT NULL,
-  `iva` double NOT NULL,
-  `costo_totale` double NOT NULL,
-  `tipo_utente` char(1) NOT NULL,
-  `numero_carta` varchar(16) NOT NULL,
-  `codice_consegna` int DEFAULT NULL,
-  PRIMARY KEY (`codice`),
-  KEY `email_cliente` (`email_cliente`),
-  KEY `numero_carta` (`numero_carta`),
-  KEY `codice_consegna` (`codice_consegna`),
-  CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`email_cliente`) REFERENCES `cliente` (`email`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `ordine_ibfk_2` FOREIGN KEY (`numero_carta`) REFERENCES `carta_di_credito` (`numero_carta`) ON UPDATE CASCADE,
-  CONSTRAINT `ordine_ibfk_3` FOREIGN KEY (`codice_consegna`) REFERENCES `informazioni_di_consegna` (`codice`) ON UPDATE CASCADE,
-  CONSTRAINT `ordine_chk_1` CHECK ((`tipo_utente` in (_utf8mb4'R',_utf8mb4'G')))
+CREATE TABLE `codice_sconto` (
+  `codice` varchar(10) NOT NULL,
+  `valore` double NOT NULL,
+  `prezzo_minimo` double NOT NULL,
+  `riutilizzbile` tinyint(1) NOT NULL,
+  `scadenza` date DEFAULT NULL,
+  PRIMARY KEY (`codice`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ordine`
+-- Dumping data for table `codice_sconto`
 --
 
-LOCK TABLES `ordine` WRITE;
-/*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
+LOCK TABLES `codice_sconto` WRITE;
+/*!40000 ALTER TABLE `codice_sconto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `codice_sconto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -62,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-11 22:24:58
+-- Dump completed on 2021-05-11 22:58:30

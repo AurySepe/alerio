@@ -18,29 +18,31 @@ USE `alerio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `wish_list`
+-- Table structure for table `composizione`
 --
 
-DROP TABLE IF EXISTS `wish_list`;
+DROP TABLE IF EXISTS `composizione`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `wish_list` (
-  `cliente` varchar(40) NOT NULL,
-  `varianti_modello_per_colore` int NOT NULL,
-  PRIMARY KEY (`cliente`,`varianti_modello_per_colore`),
-  KEY `varianti_modello_per_colore` (`varianti_modello_per_colore`),
-  CONSTRAINT `wish_list_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `wish_list_ibfk_2` FOREIGN KEY (`varianti_modello_per_colore`) REFERENCES `varianti_modello_per_colore` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `composizione` (
+  `codice_prodotto` int NOT NULL,
+  `codice_ordine` int NOT NULL,
+  `quantita` int NOT NULL,
+  `prezzo` double NOT NULL,
+  PRIMARY KEY (`codice_prodotto`,`codice_ordine`),
+  KEY `codice_ordine` (`codice_ordine`),
+  CONSTRAINT `composizione_ibfk_1` FOREIGN KEY (`codice_prodotto`) REFERENCES `prodotto` (`codice`) ON UPDATE CASCADE,
+  CONSTRAINT `composizione_ibfk_2` FOREIGN KEY (`codice_ordine`) REFERENCES `ordine` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `wish_list`
+-- Dumping data for table `composizione`
 --
 
-LOCK TABLES `wish_list` WRITE;
-/*!40000 ALTER TABLE `wish_list` DISABLE KEYS */;
-/*!40000 ALTER TABLE `wish_list` ENABLE KEYS */;
+LOCK TABLES `composizione` WRITE;
+/*!40000 ALTER TABLE `composizione` DISABLE KEYS */;
+/*!40000 ALTER TABLE `composizione` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-11 22:24:58
+-- Dump completed on 2021-05-11 22:58:30

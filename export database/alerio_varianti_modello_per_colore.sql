@@ -18,29 +18,33 @@ USE `alerio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `sconto`
+-- Table structure for table `varianti_modello_per_colore`
 --
 
-DROP TABLE IF EXISTS `sconto`;
+DROP TABLE IF EXISTS `varianti_modello_per_colore`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sconto` (
-  `codice_ordine` int NOT NULL,
-  `codice_sconto` varchar(10) NOT NULL,
-  PRIMARY KEY (`codice_ordine`,`codice_sconto`),
-  KEY `codice_sconto` (`codice_sconto`),
-  CONSTRAINT `sconto_ibfk_1` FOREIGN KEY (`codice_ordine`) REFERENCES `ordine` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `sconto_ibfk_2` FOREIGN KEY (`codice_sconto`) REFERENCES `codice_sconto` (`codice`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `varianti_modello_per_colore` (
+  `codice` int NOT NULL AUTO_INCREMENT,
+  `modello_prodotto` int NOT NULL,
+  `colore` varchar(30) NOT NULL,
+  `in_vendita` tinyint(1) NOT NULL,
+  `prezzo_attuale` double DEFAULT NULL,
+  PRIMARY KEY (`codice`),
+  UNIQUE KEY `colore` (`colore`,`modello_prodotto`),
+  KEY `modello_prodotto` (`modello_prodotto`),
+  CONSTRAINT `varianti_modello_per_colore_ibfk_1` FOREIGN KEY (`modello_prodotto`) REFERENCES `modello_prodotto` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sconto`
+-- Dumping data for table `varianti_modello_per_colore`
 --
 
-LOCK TABLES `sconto` WRITE;
-/*!40000 ALTER TABLE `sconto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sconto` ENABLE KEYS */;
+LOCK TABLES `varianti_modello_per_colore` WRITE;
+/*!40000 ALTER TABLE `varianti_modello_per_colore` DISABLE KEYS */;
+INSERT INTO `varianti_modello_per_colore` VALUES (1,1,'Rosso',1,150),(2,1,'Argento',1,250),(3,2,'Rosa',1,200),(4,2,'Blue',1,300);
+/*!40000 ALTER TABLE `varianti_modello_per_colore` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-11 22:24:57
+-- Dump completed on 2021-05-11 22:58:30
