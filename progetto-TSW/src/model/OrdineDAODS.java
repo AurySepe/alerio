@@ -19,7 +19,39 @@ public class OrdineDAODS {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO" + TABLE_NAME + " () ";
+		String insertSQL = "INSERT INTO" + TABLE_NAME 
+							+ " (codice, email_cliente, data_di_acquisto, iva, "
+							+ "costo_totale, tipo_utente, numero_carta, codice_consegna) "
+							+ " VALUES (?, ?, ?, ?; ?; ?; ?, ?) ";
+		
+		try
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setInt(1, ordine.getCodiceOrdine());
+			preparedStatement.setString(2, ordine.getEmail());
+			preparedStatement.setDate(3, ordine.getData()); 
+			preparedStatement.setDouble(4, ordine.getIva());
+			preparedStatement.setDouble(5, ordine.getCosto());
+			preparedStatement.setString(6, ordine.getTipoUtentee());
+			preparedStatement.setString(7, ordine.getNumeroCarta());
+			preparedStatement.setInt(8, ordine.getCodiceConsegna());
+			preparedStatement.executeUpdate();
+		}
+		finally
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		
 	}
 	
 	
