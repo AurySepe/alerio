@@ -20,8 +20,8 @@ public class ProductDAODS implements ProductDAO {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " +TABLE_NAME
-				+ " (varianti_modello_per_colore, TAGLIA) "
-				+ "VALUES (?, ?)";
+				+ " (varianti_modello_per_colore, TAGLIA, quantita) "
+				+ "VALUES (?, ?, ?)";
 
 		try 
 		{
@@ -29,6 +29,7 @@ public class ProductDAODS implements ProductDAO {
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, product.getCodiceVarianteModello());
 			preparedStatement.setString(2, product.getTaglia());
+			preparedStatement.setInt(3, product.getQuantita());
 			preparedStatement.executeUpdate();
 
 		} 
@@ -64,7 +65,8 @@ public class ProductDAODS implements ProductDAO {
 
 			result = preparedStatement.executeUpdate();
 
-		} finally 
+		} 
+		finally 
 		{
 			try 
 			{
