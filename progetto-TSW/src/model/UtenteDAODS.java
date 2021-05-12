@@ -20,13 +20,20 @@ public class UtenteDAODS implements UtenteDAO
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO" + TABLE_NAME + " (email, nome, cognome, ) ";
+		String insertSQL = "INSERT INTO" + TABLE_NAME + " (email, nome, cognome, pwd, genere, registrato) " 
+							+ " VALUES(?, ?, ?, ?, ?, ?) ";  
 				
 				
 		try
 		{
 			connection = ds.getConnection();
-			
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, utente.getEmail());
+			preparedStatement.setString(2, utente.getNome());
+			preparedStatement.setString(3, utente.getCognome());
+			preparedStatement.setString(4, utente.getPwd());
+			preparedStatement.setString(5, utente.getGenere());
+			preparedStatement.setBoolean(6, utente.isRegistrato());
 			preparedStatement.executeUpdate();
 		}
 		finally
