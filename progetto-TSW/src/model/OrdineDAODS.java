@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class OrdineDAODS {
+public class OrdineDAODS implements OrdineDAO {
 
 	public synchronized void doSave(OrdineBean ordine) throws SQLException
 	{
@@ -21,9 +21,9 @@ public class OrdineDAODS {
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO" + TABLE_NAME 
-							+ " (codice, email_cliente, data_di_acquisto, iva, "
+							+ " (codice,email_cliente, data_di_acquisto, iva, "
 							+ "costo_totale, tipo_utente, numero_carta, codice_consegna) "
-							+ " VALUES (?, ?, ?, ?; ?; ?; ?, ?) ";
+							+ " VALUES (?,?, ?, ?; ?; ?; ?, ?) ";
 		
 		try
 		{
@@ -235,6 +235,41 @@ public class OrdineDAODS {
 			}
 		}
 		return ordini;
+	}
+	
+	public synchronized int nextCode() throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		int result = 1;
+
+		String codiceSQL = "select max(codice) + 1 as nuovo_codice from " + TABLE_NAME;
+		
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(codiceSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next())
+			{
+				result = rs.getInt("nuovo_codice");
+			}
+		}
+		finally
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return result;
 	}
 	
 	

@@ -16,4 +16,6 @@ public interface OrdineDAO {
 	
 	public List<OrdineBean> doRetriveAllForUtente(UtenteBean utente) throws SQLException;
 	
+	public int nextCode() throws SQLException;
+	
 }
