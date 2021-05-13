@@ -41,6 +41,28 @@ public class ComposizioneBean {
 	{
 		this.prezzo = prezzo;
 	}
+	
+	public ProductBean getProdotto() 
+	{
+		return prodotto;
+	}
+
+	public void setProdotto(ProductBean prodotto) 
+	{
+		this.prodotto = prodotto;
+	}
+
+	public OrdineBean getOrdine() 
+	{
+		return ordine;
+	}
+
+	public void setOrdine(OrdineBean ordine) 
+	{
+		this.ordine = ordine;
+	}
+
+
 
 	private int codiceProdotto;
 	
@@ -49,4 +71,8 @@ public class ComposizioneBean {
 	private int quantita;
 	
 	private double prezzo;
+	
+	private ProductBean prodotto;
+	
+	private OrdineBean ordine;
 }

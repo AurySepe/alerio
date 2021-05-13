@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class UtenteBean {
 
 	
@@ -63,6 +65,20 @@ public class UtenteBean {
 		this.registrato = registrato;
 	}
 	
+	
+	
+	public List<OrdineBean> getOrdini() 
+	{
+		return ordini;
+	}
+
+	public void setOrdini(List<OrdineBean> ordini) 
+	{
+		this.ordini = ordini;
+	}
+
+
+
 	private String email;
 	
 	private String nome;
@@ -74,4 +90,6 @@ public class UtenteBean {
 	private String genere;
 	
 	private boolean registrato;
+	
+	private List<OrdineBean> ordini;
 }

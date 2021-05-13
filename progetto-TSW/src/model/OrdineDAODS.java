@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -188,6 +189,53 @@ public class OrdineDAODS {
 		return ordini;
 	}	
 	
+	public synchronized List<OrdineBean> doRetriveAllForUtente(UtenteBean utente) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		List<OrdineBean> ordini = new LinkedList<OrdineBean>();
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE EMAIL_CLIENTE = ? ORDER BY COSTO_TOTALE ";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, utente.getEmail());
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				OrdineBean ordine = new OrdineBean();
+				ordine.setCodiceOrdine(rs.getInt("codice"));
+				ordine.setEmail(rs.getString("email_cliente"));
+				ordine.setDate(rs.getDate("data_di_acquisto"));
+				ordine.setIva(rs.getDouble("iva"));
+				ordine.setCosto(rs.getDouble("costo_totale"));
+				ordine.setTipoUtente(rs.getString("tipo_utente"));
+				ordine.setNumeroCarta(rs.getString("numero_carta"));
+				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
+				ordine.setUtente(utente);
+				ordini.add(ordine);
+			}
+
+		}
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return ordini;
+	}
 	
 	
 private static DataSource ds;

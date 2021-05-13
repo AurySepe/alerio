@@ -15,5 +15,7 @@ public interface ProductDAO
 	public Collection<ProductBean> doRetrieveAll(String order) throws SQLException;
 	
 	public List<ProductBean> doRetriveForVariant(TemplateColorVariantBean templateVariant) throws SQLException;
+	
+	public ProductBean doRetriveForComposizione(ComposizioneBean composizione) throws SQLException;
 
 }

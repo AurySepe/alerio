@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import java.util.List;
 
 public class OrdineBean {
 	
@@ -84,6 +85,30 @@ public class OrdineBean {
 		this.codiceConsegna = codiceConsegna;
 	}
 	
+	
+	
+	public List<ComposizioneBean> getComposizione() 
+	{
+		return composizione;
+	}
+
+	public void setComposizione(List<ComposizioneBean> composizione) 
+	{
+		this.composizione = composizione;
+	}
+
+	public UtenteBean getUtente() 
+	{
+		return utente;
+	}
+
+	public void setUtente(UtenteBean utente) 
+	{
+		this.utente = utente;
+	}
+
+
+
 	private int codiceOrdine;
 	
 	private String email;
@@ -99,4 +124,8 @@ public class OrdineBean {
 	private String numeroCarta;
 	
 	private int codiceConsegna;
+	
+	private List<ComposizioneBean> composizione;
+	
+	private UtenteBean utente;
 }

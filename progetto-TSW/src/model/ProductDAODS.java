@@ -213,6 +213,11 @@ public class ProductDAODS implements ProductDAO {
 		return products;
 	}
 	
+	public synchronized ProductBean doRetriveForComposizione(ComposizioneBean composizione) throws SQLException
+	{
+		return doRetrieveByKey(composizione.getCodiceProdotto());
+	}
+	
 private static DataSource ds;
 	
 	static

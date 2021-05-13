@@ -131,6 +131,53 @@ public class UtenteDAODS implements UtenteDAO
 		return utente;
 	}
 	
+	public synchronized UtenteBean verificaUtente(UtenteBean utenteDaVerificare) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		UtenteBean utente=new UtenteBean();
+		
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE EMAIL=? AND PASSWORD = ?";
+		
+		try
+		{
+			connection=ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, utenteDaVerificare.getEmail());
+			preparedStatement.setString(2, utenteDaVerificare.getPwd());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next())
+			{
+				utente.setCognome(rs.getString("cognome"));
+				utente.setNome(rs.getString("nome"));
+				utente.setEmail(rs.getString("email"));
+				utente.setPwd(rs.getString("pwd"));
+				utente.setGenere(rs.getString("genere"));
+				utente.setRegistrato(rs.getBoolean("registrato"));
+			}
+			else
+			{
+				utente = null;
+			}
+		}
+		finally
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return utente;
+	}
+	
 	
 	public synchronized Collection<UtenteBean> doRetrieveAll() throws SQLException
 	{
@@ -174,6 +221,11 @@ public class UtenteDAODS implements UtenteDAO
 			}
 		}
 		return utenti;
+	}
+	
+	public synchronized UtenteBean doRetriveForOrder(OrdineBean ordine) throws SQLException
+	{
+		return doRetrieveByKey(ordine.getEmail());
 	}
 	
 	

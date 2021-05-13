@@ -12,4 +12,8 @@ public interface UtenteDAO {
 	public UtenteBean doRetrieveByKey(String email) throws SQLException;
 	
 	public Collection<UtenteBean> doRetrieveAll() throws SQLException;
+	
+	public UtenteBean verificaUtente(UtenteBean utente) throws SQLException;
+	
+	public UtenteBean doRetriveForOrder(OrdineBean ordine) throws SQLException;
 }
