@@ -1,0 +1,24 @@
+/*setta sfondo e colore del testo*/
+footer {
+    background-color: black;
+    color: white;
+}
+
+/*allineamento e dimensioni testo*/
+td, th{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left
+}
+
+/*ingrandisce i titoli delle sezioni*/
+th{
+    font-size: x-large;
+}
+
+/*setto il colore dei link sempre a bianco*/
+a {
+    color: white;
+}
