@@ -20,7 +20,7 @@
 		<title> ${prodotto.modelloProdotto.nome}</title>
 	</head>
 	<body>
-	<%@ include file = "fragments/barraNavigazionale.jsp" %>
+	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 	<%
 	for(TemplateColorVariantBean templateVariant : bean.getModelloProdotto().getVariantiModello()) {
 		request.setAttribute("templateVariant", templateVariant);

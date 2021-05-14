@@ -138,7 +138,7 @@ public class UtenteDAODS implements UtenteDAO
 		
 		UtenteBean utente=new UtenteBean();
 		
-		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE EMAIL=? AND PASSWORD = ?";
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE EMAIL=? AND PWD = ?";
 		
 		try
 		{
@@ -150,6 +150,7 @@ public class UtenteDAODS implements UtenteDAO
 			ResultSet rs = preparedStatement.executeQuery();
 			if(rs.next())
 			{
+				System.out.println("utente trovato");
 				utente.setCognome(rs.getString("cognome"));
 				utente.setNome(rs.getString("nome"));
 				utente.setEmail(rs.getString("email"));
@@ -159,6 +160,7 @@ public class UtenteDAODS implements UtenteDAO
 			}
 			else
 			{
+				System.out.println("utente non trovato");
 				utente = null;
 			}
 		}

@@ -17,7 +17,7 @@
 		<title>Carrello</title>
 	</head>
 	<body>
-	<%@ include file = "fragments/barraNavigazionale.jsp" %>
+	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 	<table>
 			<tr>
 				<th>NOME</th>
