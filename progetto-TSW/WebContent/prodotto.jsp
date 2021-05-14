@@ -49,5 +49,6 @@
 		</ol>
 		<Button type = "submit">Aggiungi al carrello</Button>
 		</form><br/>
+		<%@ include file = "fragments/footer.html" %>
 	</body>
 </html>

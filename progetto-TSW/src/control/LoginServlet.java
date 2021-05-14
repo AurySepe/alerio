@@ -47,13 +47,15 @@ public class LoginServlet extends HttpServlet {
 			}
 			else
 			{
-				
-				session.setAttribute("loggato", "true");
-				session.setAttribute("utente", utente);
-				if(session.getAttribute("pagina precedente")!=null)
-					response.sendRedirect((String)session.getAttribute("pagina precedente"));
-				else
-					response.sendRedirect("homepage.jsp");
+				synchronized (session) 
+				{
+					session.setAttribute("loggato", "true");
+					session.setAttribute("utente", utente);
+					if(session.getAttribute("pagina precedente")!=null)
+						response.sendRedirect((String)session.getAttribute("pagina precedente"));
+					else
+						response.sendRedirect("homepage.jsp");
+				}
 			}
 				
 			

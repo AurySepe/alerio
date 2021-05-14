@@ -66,5 +66,7 @@
 				<p>Costo:${carrello.costoTotale}</p>
 			</form>
 		<%} %>
+		
+		<%@ include file = "fragments/footer.html" %>
 	</body>
 </html>

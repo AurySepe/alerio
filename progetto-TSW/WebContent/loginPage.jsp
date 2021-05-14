@@ -10,7 +10,7 @@
 <body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 	<div>
-			<form class="bottone" action="http://localhost:8081/progetto-TSW/LoginServlet" method="post">
+			<form class="bottone" action="/progetto-TSW/LoginServlet" method="post">
                <h1> Log-in </h1>  
                <p>
                 Email: <input type="text" name="email" placeholder="Enter email"> <br>
@@ -25,7 +25,7 @@
                     <button type="submit"> Log in </button>
                 </form>
                 
-                <form class="bottone" action="" method="post">
+                <form class="bottone" action="signinPage.jsp" method="post">
                     <button type="submit"> Sign in </button>
                 </form>
                 

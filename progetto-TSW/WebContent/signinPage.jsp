@@ -1,11 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+	<meta charset="ISO-8859-1">
 	<title> Sign-in page </title>
 	<link href="css/loginPage.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
+	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 	<div>
      <form action="" method="get">
         <h1> Sign-in </h1>  
@@ -34,5 +37,6 @@
      </form>
         
     </div>
+    <%@ include file = "fragments/footer.html" %>
 </body>
 </html>
