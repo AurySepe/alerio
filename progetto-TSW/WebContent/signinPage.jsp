@@ -10,7 +10,7 @@
 <body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 	<div>
-     <form action="" method="get">
+     <form action="/progetto-TSW/SigninServlet" method="post">
         <h1> Sign-in </h1>  
         <p>
          Email: <input type="text" name="email"> <br>

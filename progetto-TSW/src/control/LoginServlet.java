@@ -41,8 +41,10 @@ public class LoginServlet extends HttpServlet {
 			utente.setPwd(pwd);
 			utente=dao.verificaUtente(utente);
 			if(utente==null)
-			{			
-				response.sendRedirect("loginPage.jsp");
+			{		
+				RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(response.encodeURL("/loginPage.jsp"));
+				dispatcher.forward(request, response);
+				//response.sendRedirect("/Progetto-TSW/loginPage.jsp");
 			}
 			else
 			{
@@ -58,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 				if(paginaPrecedente !=null)
 					response.sendRedirect(paginaPrecedente);
 				else
-					response.sendRedirect("homepage.jsp");
+					response.sendRedirect("homepage.jsp"); 
 			}
 				
 			
@@ -67,7 +69,6 @@ public class LoginServlet extends HttpServlet {
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("pagina bianca");
 		}
 		
 	}

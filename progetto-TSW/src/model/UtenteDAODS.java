@@ -20,7 +20,7 @@ public class UtenteDAODS implements UtenteDAO
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO" + TABLE_NAME + " (email, nome, cognome, pwd, genere, registrato) " 
+		String insertSQL = "INSERT INTO " + TABLE_NAME + " (email, nome, cognome, pwd, genere, registrato) " 
 							+ " VALUES(?, ?, ?, ?, ?, ?) ";  
 				
 				
