@@ -18,33 +18,6 @@ USE `alerio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `ordine`
---
-
-DROP TABLE IF EXISTS `ordine`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ordine` (
-  `codice` int NOT NULL AUTO_INCREMENT,
-  `email_cliente` varchar(40) DEFAULT NULL,
-  `data_di_acquisto` date NOT NULL,
-  `iva` double NOT NULL,
-  `costo_totale` double NOT NULL,
-  `tipo_utente` char(1) NOT NULL,
-  `numero_carta` varchar(16) NOT NULL,
-  `codice_consegna` int DEFAULT NULL,
-  PRIMARY KEY (`codice`),
-  KEY `email_cliente` (`email_cliente`),
-  KEY `numero_carta` (`numero_carta`),
-  KEY `codice_consegna` (`codice_consegna`),
-  CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`email_cliente`) REFERENCES `cliente` (`email`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `ordine_ibfk_2` FOREIGN KEY (`numero_carta`) REFERENCES `carta_di_credito` (`numero_carta`) ON UPDATE CASCADE,
-  CONSTRAINT `ordine_ibfk_3` FOREIGN KEY (`codice_consegna`) REFERENCES `informazioni_di_consegna` (`codice`) ON UPDATE CASCADE,
-  CONSTRAINT `ordine_chk_1` CHECK ((`tipo_utente` in (_utf8mb4'R',_utf8mb4'G')))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `ordine`
 --
 
@@ -62,4 +35,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-11 22:58:31
+-- Dump completed on 2021-05-14 17:58:07

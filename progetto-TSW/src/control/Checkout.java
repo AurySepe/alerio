@@ -47,12 +47,12 @@ public class Checkout extends HttpServlet
 				String Query = "";
 				if(request.getQueryString() != null)
 				{
-					Query = request.getQueryString();
+					Query = "?" +  request.getQueryString();
 				}
 				session.setAttribute("pagina precedente", request.getRequestURI()+ Query);
 				System.out.println(session.getAttribute("pagina precedente"));
 			}
-			response.sendRedirect(response.encodeRedirectURL("login"));
+			response.sendRedirect(response.encodeRedirectURL("loginPage.jsp"));
 			return;
 		}
 		
@@ -93,12 +93,12 @@ public class Checkout extends HttpServlet
 			}
 			catch(Exception e)
 			{
+				e.printStackTrace();
 				response.sendError(response.SC_NOT_FOUND);
 			}
 		}
 		
 		
-		response.sendRedirect(response.encodeURL("catalogo"));
 	}
 	
 	public void doPost(HttpServletRequest request,HttpServletResponse response)

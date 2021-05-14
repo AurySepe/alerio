@@ -18,25 +18,6 @@ USE `alerio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `composizione`
---
-
-DROP TABLE IF EXISTS `composizione`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `composizione` (
-  `codice_prodotto` int NOT NULL,
-  `codice_ordine` int NOT NULL,
-  `quantita` int NOT NULL,
-  `prezzo` double NOT NULL,
-  PRIMARY KEY (`codice_prodotto`,`codice_ordine`),
-  KEY `codice_ordine` (`codice_ordine`),
-  CONSTRAINT `composizione_ibfk_1` FOREIGN KEY (`codice_prodotto`) REFERENCES `prodotto` (`codice`) ON UPDATE CASCADE,
-  CONSTRAINT `composizione_ibfk_2` FOREIGN KEY (`codice_ordine`) REFERENCES `ordine` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `composizione`
 --
 
@@ -54,4 +35,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-11 22:58:30
+-- Dump completed on 2021-05-14 17:58:06

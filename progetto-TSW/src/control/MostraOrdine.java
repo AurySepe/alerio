@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import model.ComposizioneBean;
 import model.ComposizioneDAO;
 import model.ComposizioneDAODS;
+import model.ImageDAO;
+import model.ImageDAODS;
 import model.OrdineBean;
 import model.OrdineDAO;
 import model.OrdineDAODS;
@@ -38,6 +40,7 @@ public class MostraOrdine extends HttpServlet
 	private static ProductDAO productModel = new ProductDAODS();
 	private static TemplateColorVariantDAO templateColourVariantModel = new TemplateColorVariantDAODS();
 	private static ProductTemplateDAO productTemplatModel = new ProductTemplateDAODS();
+	private static ImageDAO imageModel = new ImageDAODS();
 	
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws ServletException,IOException
@@ -60,12 +63,12 @@ public class MostraOrdine extends HttpServlet
 					String Query = "";
 					if(request.getQueryString() != null)
 					{
-						Query = request.getQueryString();
+						Query = "?" + request.getQueryString();
 					}
-					session.setAttribute("pagina precedente", request.getRequestURI()+ Query);
+					session.setAttribute("pagina precedente", request.getRequestURI() + Query);
 					System.out.println(session.getAttribute("pagina precedente"));
 				}
-				response.sendRedirect(response.encodeRedirectURL("login"));
+				response.sendRedirect(response.encodeRedirectURL("loginPage.jsp"));
 			}
 			else
 			{
@@ -78,6 +81,7 @@ public class MostraOrdine extends HttpServlet
 						c.setProdotto(p);
 						TemplateColorVariantBean v = templateColourVariantModel.doRetrieveProductVariant(p);
 						p.setVarianteProdotto(v);
+						v.setImmaginiVariante(imageModel.doRetrieveAllFromTemplateVariant(v));
 						ProductTemplateBean t = productTemplatModel.doRetrieveVariantTemplate(v);
 						v.setModelloProdotto(t);
 					}
@@ -93,6 +97,7 @@ public class MostraOrdine extends HttpServlet
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			response.sendError(response.SC_NOT_FOUND);
 		}
 	}

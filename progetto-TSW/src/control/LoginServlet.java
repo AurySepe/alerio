@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
 	{
 		String mail=request.getParameter("email");
 		String pwd=request.getParameter("password");
-		System.out.println(mail + pwd);
 		HttpSession session = request.getSession(true);
 		UtenteBean utente=new UtenteBean();
 		
@@ -47,15 +46,19 @@ public class LoginServlet extends HttpServlet {
 			}
 			else
 			{
+				String paginaPrecedente;
 				synchronized (session) 
 				{
 					session.setAttribute("loggato", "true");
 					session.setAttribute("utente", utente);
-					if(session.getAttribute("pagina precedente")!=null)
-						response.sendRedirect((String)session.getAttribute("pagina precedente"));
-					else
-						response.sendRedirect("homepage.jsp");
+					paginaPrecedente = (String) session.getAttribute("pagina precedente");
+					session.setMaxInactiveInterval(3600);
 				}
+				
+				if(paginaPrecedente !=null)
+					response.sendRedirect(paginaPrecedente);
+				else
+					response.sendRedirect("homepage.jsp");
 			}
 				
 			

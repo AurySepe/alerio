@@ -34,15 +34,24 @@
 	</div>
 	<div>
 		<table>
+		
+			<tr>
+				<th>Immagine</th>
+				<th>Nome</th>
+				<th>Taglia</th>
+				<th>Prezzo</th>
+				<th>Quantità</th>
+			</tr>
 			<% for(ComposizioneBean c : ordine.getComposizione())
 			{
 				request.setAttribute("composizione", c);	
 				costoTotale += c.getPrezzo();
 			%>
 			<tr>
-				<td><img src = "immagine?codice=${composizione.prodotto.varianteProdotto.immagini[0].codice }"></td>
+				<td><img src = "immagine?codice=${composizione.prodotto.varianteProdotto.immaginiVariante[0].codice }" width="80" height="80"></td>
 				<td><a href = "mostraProdotto?codice=${composizione.prodotto.varianteProdotto.codice}&codiceModello=${composizione.prodotto.varianteProdotto.modelloProdotto.codice}">
 				${composizione.prodotto.varianteProdotto.modelloProdotto.nome}</a></td>
+				<td>${composizione.prodotto.taglia}</td>
 				<td>${composizione.prezzo}</td>
 				<td>${composizione.quantita}<td>
 			</tr>
