@@ -10,29 +10,5 @@
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
-  <servlet>
-    <servlet-name>Catalogo</servlet-name>
-    <servlet-class>control.CatalogoServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Catalogo</servlet-name>
-    <url-pattern>/catalogo</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>AggiungiCarrello</servlet-name>
-    <servlet-class>control.AggiungiCarrelloProdottiServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AggiungiCarrello</servlet-name>
-    <url-pattern>/aggiungiCarrello</url-pattern>
-  </servlet-mapping>
-   <servlet>
-    <servlet-name>Carrello</servlet-name>
-    <servlet-class>control.MostraCarrello</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Carrello</servlet-name>
-    <url-pattern>/carrello</url-pattern>
-  </servlet-mapping>
   
 </web-app>
