@@ -20,10 +20,10 @@ public class OrdineDAODS implements OrdineDAO {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO" + TABLE_NAME 
+		String insertSQL = "INSERT INTO " + TABLE_NAME 
 							+ " (codice,email_cliente, data_di_acquisto, iva, "
 							+ "costo_totale, tipo_utente, numero_carta, codice_consegna) "
-							+ " VALUES (?,?, ?, ?; ?; ?; ?, ?) ";
+							+ " VALUES (?,?, ?, ?, ?, ?, ?, ?) ";
 		
 		try
 		{
@@ -113,8 +113,8 @@ public class OrdineDAODS implements OrdineDAO {
 			
 			while(rs.next())
 			{
-				ordine.setCodiceOrdine(rs.getInt("codiceOrdine"));
-				ordine.setEmail(rs.getString("email"));
+				ordine.setCodiceOrdine(rs.getInt("codice"));
+				ordine.setEmail(rs.getString("email_cliente"));
 				ordine.setDate(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));

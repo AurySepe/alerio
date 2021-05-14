@@ -37,7 +37,7 @@ public class OrdiniUtente extends HttpServlet
 				String Query = "";
 				if(request.getQueryString() != null)
 				{
-					Query = request.getQueryString();
+					Query = "?" +  request.getQueryString();
 				}
 				session.setAttribute("pagina precedente", request.getRequestURI()+ Query);
 				System.out.println(session.getAttribute("pagina precedente"));

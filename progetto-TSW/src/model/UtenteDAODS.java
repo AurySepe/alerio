@@ -138,7 +138,7 @@ public class UtenteDAODS implements UtenteDAO
 		
 		UtenteBean utente=new UtenteBean();
 		
-		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE EMAIL=? AND PWD = ?";
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE EMAIL = ? AND PWD = ?";
 		
 		try
 		{

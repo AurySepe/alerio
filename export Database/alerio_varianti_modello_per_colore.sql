@@ -18,26 +18,6 @@ USE `alerio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `varianti_modello_per_colore`
---
-
-DROP TABLE IF EXISTS `varianti_modello_per_colore`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `varianti_modello_per_colore` (
-  `codice` int NOT NULL AUTO_INCREMENT,
-  `modello_prodotto` int NOT NULL,
-  `colore` varchar(30) NOT NULL,
-  `in_vendita` tinyint(1) NOT NULL,
-  `prezzo_attuale` double DEFAULT NULL,
-  PRIMARY KEY (`codice`),
-  UNIQUE KEY `colore` (`colore`,`modello_prodotto`),
-  KEY `modello_prodotto` (`modello_prodotto`),
-  CONSTRAINT `varianti_modello_per_colore_ibfk_1` FOREIGN KEY (`modello_prodotto`) REFERENCES `modello_prodotto` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `varianti_modello_per_colore`
 --
 
@@ -56,4 +36,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-11 22:58:30
+-- Dump completed on 2021-05-14 17:58:06

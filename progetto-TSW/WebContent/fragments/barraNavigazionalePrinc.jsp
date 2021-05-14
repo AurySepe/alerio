@@ -23,7 +23,7 @@
   
                 <li> <img src="/progetto-TSW/img/lente_di_ricerca.jpg" alt="icona lente non visualizzabile" width="20" height="20"> </li>
                 <% if(session.getAttribute("loggato").equals("false")){ %>
-                <li> <a href="http://localhost:8081/progetto-TSW/loginPage.jsp"> <img src="/progetto-TSW\img\profilo.jpg" alt="icona profilo non visualizzabile" width="20" height="20"> </a></li>
+                <li> <a href="/progetto-TSW/loginPage.jsp"> <img src="/progetto-TSW\img\profilo.jpg" alt="icona profilo non visualizzabile" width="20" height="20"> </a></li>
                 <% } else{ %> 
                 <li> <a href="https://www.google.it/"> <img src="/progetto-TSW/img\profilo.jpg" alt="icona profilo non visualizzabile" width="20" height="20"> </a></li>
                 <% } %>

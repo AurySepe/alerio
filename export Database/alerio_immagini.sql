@@ -18,26 +18,6 @@ USE `alerio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `immagini`
---
-
-DROP TABLE IF EXISTS `immagini`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `immagini` (
-  `codice` int NOT NULL AUTO_INCREMENT,
-  `img` blob NOT NULL,
-  `posizione` int NOT NULL,
-  `varianti_modello_per_colore` int NOT NULL,
-  PRIMARY KEY (`codice`),
-  UNIQUE KEY `posizione` (`posizione`,`varianti_modello_per_colore`),
-  KEY `varianti_modello_per_colore` (`varianti_modello_per_colore`),
-  CONSTRAINT `immagini_ibfk_1` FOREIGN KEY (`varianti_modello_per_colore`) REFERENCES `varianti_modello_per_colore` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `immagini_chk_1` CHECK ((`posizione` >= 1))
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `immagini`
 --
 
@@ -56,4 +36,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-11 22:58:30
+-- Dump completed on 2021-05-14 17:58:06

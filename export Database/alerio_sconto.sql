@@ -18,23 +18,6 @@ USE `alerio`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `sconto`
---
-
-DROP TABLE IF EXISTS `sconto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sconto` (
-  `codice_ordine` int NOT NULL,
-  `codice_sconto` varchar(10) NOT NULL,
-  PRIMARY KEY (`codice_ordine`,`codice_sconto`),
-  KEY `codice_sconto` (`codice_sconto`),
-  CONSTRAINT `sconto_ibfk_1` FOREIGN KEY (`codice_ordine`) REFERENCES `ordine` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `sconto_ibfk_2` FOREIGN KEY (`codice_sconto`) REFERENCES `codice_sconto` (`codice`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `sconto`
 --
 
@@ -52,4 +35,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-11 22:58:30
+-- Dump completed on 2021-05-14 17:58:06
