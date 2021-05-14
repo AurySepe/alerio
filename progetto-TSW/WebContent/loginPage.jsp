@@ -8,6 +8,7 @@
 	<link href="css/loginPage.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
+	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 	<div>
 			<form class="bottone" action="http://localhost:8081/progetto-TSW/LoginServlet" method="post">
                <h1> Log-in </h1>  
@@ -31,5 +32,6 @@
                </p>
                
         </div>
+        <%@ include file = "fragments/footer.html" %>
 </body>
 </html>

@@ -47,11 +47,11 @@ public class LoginServlet extends HttpServlet {
 			}
 			else
 			{
-				s
+				
 				session.setAttribute("loggato", "true");
 				session.setAttribute("utente", utente);
 				if(session.getAttribute("pagina precedente")!=null)
-					response.sendRedirect(session.getAttrubite("pagina precedente"));
+					response.sendRedirect((String)session.getAttribute("pagina precedente"));
 				else
 					response.sendRedirect("homepage.jsp");
 			}
@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			System.out.println("pagina bianca");
 		}
 		
 	}
