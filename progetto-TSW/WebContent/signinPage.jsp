@@ -6,6 +6,7 @@
 	<meta charset="ISO-8859-1">
 	<title> Sign-in page </title>
 	<link href="css/loginPage.css" rel="stylesheet" type="text/css" >
+	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
