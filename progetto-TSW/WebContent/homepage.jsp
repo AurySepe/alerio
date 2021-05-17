@@ -61,6 +61,19 @@
         </tr>
     </table>
     
+    <div>
+        <div> <h1> Cosa dicono di noi </h1> </div>
+        <div> 
+            <table>
+                <tr>
+                    <td> <img src="/progetto-TSW/img/recensione1.JPG" alt="recensione1 non visualizzabile" width="100%" height="100%"></td>
+                    <td> <img src="/progetto-TSW/img/recensione2.jpg" alt="recensione2 non visualizzabile" width="100%" height="100%"></td>
+                    <td> <img src="/progetto-TSW/img/recensione3.jpg" alt="recensione3 non visualizzabile" width="100%" height="100%"></td>
+                </tr> 
+            </table>>
+        </div>  
+    </div>
+    
     <%@ include file = "fragments/footer.html" %>
 </body>
 </html>
