@@ -18,13 +18,13 @@
 	
 	<table class="esterna">
         <tr>
-            <td> gioielli italiani home preziosi casa calvcio partita
-                jfjfjrfnobdnkb njkcngsr
-            bsfrbvsirignrjhbkjsrngsrhhhjbnjfhio </td>
+            <td> I nostri gioielli sono interamente realizzati in Italia, seguendo un processo di lavorazione molto accurato.
+            	 Nella provincia di Salerno, centinaia di artigiani lavorano quotidianamente nel nostro stabilimento
+            	 per far si che la nostra passione possa arrivare nelle vostre case in tutta Italia. </td>
 
             <td> 
                 <table class="interna">
-                    <tr> <th> </th><th> Donna </th></tr>
+                    <tr> <th> </th> <th> Donna </th> </tr>
                     <tr>
                         <td> <a href=""> <img src="/progetto-TSW/img/anello-donna.JPG" alt="anelli non visualizzabili" width="50" height="50"> </a> </td>
                         <td> <a href=""> <img src="/progetto-TSW/img/collana-donna.jpg" alt="collana non visualizzabile" width="50" height="50"> </a> </td>
@@ -43,6 +43,7 @@
         <tr>
             <td>
                 <table class="interna">
+                <tr> <th> </th> <th> Uomo </th> </tr>
                     <tr>
                         <td> <a href=""> <img src="/progetto-TSW/img/anello-donna.JPG" alt="anelli non visualizzabili" width="50" height="50"> </a> </td>
                         <td> <a href=""> <img src="/progetto-TSW/img/collana-donna.jpg" alt="collana non visualizzabile" width="50" height="50"> </a> </td>
@@ -57,7 +58,9 @@
                 </table> 
                 
             </td>
-            <td> gioielli italiani home preziosi casa calvcio partita </td>
+            <td> La nostra attenzione al cliente è massima, ci teniamo a soddisfare il nostro pubblico e speriamo che la nostra trasparenza 
+            	sia gradita. Intanto, come potete vedere, sotto riportiamo alcune testimonianze di clienti che siamo riusciti a soddisfare. 
+            	Ci auguriamo di cuore di riuscire a conquistare anche voi, buono shopping! </td>
         </tr>
     </table>
     
