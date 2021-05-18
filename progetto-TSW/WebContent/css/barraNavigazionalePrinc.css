@@ -10,6 +10,7 @@ header{
     border: 0;
     top: 0%;
     display: inline-block;
+    position: fixed;
 }
 
 nav{
