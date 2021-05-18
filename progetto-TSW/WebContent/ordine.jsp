@@ -1,6 +1,6 @@
-<%@page import="model.ComposizioneBean"%>
-<%@page import="model.ProductBean"%>
-<%@page import="model.OrdineBean"%>
+<%@page import="model.bean.ComposizioneBean"%>
+<%@page import="model.bean.ProductBean"%>
+<%@page import="model.bean.OrdineBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     

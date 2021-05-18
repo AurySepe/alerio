@@ -1,5 +1,7 @@
 package model;
 
+import model.bean.ProductBean;
+
 public class ItemCarrello 
 {
 	public ItemCarrello(ProductBean prodotto,int quantita)

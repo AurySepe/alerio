@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.bean.ProductBean;
+
 public class Carrello 
 {
 	public Carrello()

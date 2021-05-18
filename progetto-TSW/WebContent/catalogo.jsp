@@ -1,6 +1,6 @@
-<%@page import="model.TemplateColorVariantBean"%>
-<%@page import="model.ImageBean"%>
-<%@page import="model.ProductTemplateBean"%>
+<%@page import="model.bean.TemplateColorVariantBean"%>
+<%@page import="model.bean.ImageBean"%>
+<%@page import="model.bean.ProductTemplateBean"%>
 <%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

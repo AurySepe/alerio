@@ -1,7 +1,7 @@
-<%@page import="model.ImageBean"%>
-<%@page import="model.ProductBean"%>
-<%@page import="model.TemplateColorVariantBean"%>
-<%@page import="model.ProductTemplateBean"%>
+<%@page import="model.bean.ImageBean"%>
+<%@page import="model.bean.ProductBean"%>
+<%@page import="model.bean.TemplateColorVariantBean"%>
+<%@page import="model.bean.ProductTemplateBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -21,14 +21,16 @@
 	</head>
 	<body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
+		<ul>
 	<%
 	for(TemplateColorVariantBean templateVariant : bean.getModelloProdotto().getVariantiModello()) {
 		request.setAttribute("templateVariant", templateVariant);
 	%>
-		<p>
-		<a href="mostraProdotto?codiceModello=${templateVariant.modelloProdotto.codice }&codice=${templateVariant.codice}">${templateVariant.colore }</a>
-		</p>
+		
+		
+			<li><a href="mostraProdotto?codiceModello=${templateVariant.modelloProdotto.codice }&codice=${templateVariant.codice}">${templateVariant.colore }</a></li>
 	<%} %>
+		</ul>
 		<h1>${prodotto.modelloProdotto.nome}</h1>
 		<h3>Colore: ${prodotto.colore}</h3>
 		<h3>Collezione: ${prodotto.modelloProdotto.collezione}</h3>
