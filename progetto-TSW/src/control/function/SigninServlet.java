@@ -45,9 +45,9 @@ public class SigninServlet extends HttpServlet{
 		try 
 		{
 			String paginaPrecedente;
+			DAOS.getUtenteModel().doSave(utente);
 			synchronized(session)
 			{
-				DAOS.getUtenteModel().doSave(utente);
 				session.setAttribute("loggato", "true");
 				session.setAttribute("utente", utente);
 				paginaPrecedente = (String) session.getAttribute("pagina precedente");
@@ -61,6 +61,8 @@ public class SigninServlet extends HttpServlet{
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/signinPage.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 		

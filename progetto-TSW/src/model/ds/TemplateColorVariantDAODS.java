@@ -26,8 +26,8 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " +TABLE_NAME
-				+ " (MODELLO_PRODOTTO, COLORE,IN_VENDITA,PREZZO_ATTUALE) "
-				+ "VALUES (?, ?, ?, ?)";
+				+ " (MODELLO_PRODOTTO, COLORE,IN_VENDITA,PREZZO_ATTUALE,CODICE) "
+				+ "VALUES (?, ?, ?, ?, ?)";
 
 		try 
 		{
@@ -37,6 +37,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			preparedStatement.setString(2, productDetails.getColore());
 			preparedStatement.setBoolean(3, productDetails.isInVendita());
 			preparedStatement.setDouble(4, productDetails.getPrezzoAttuale());
+			preparedStatement.setInt(5, productDetails.getCodice());
 			preparedStatement.executeUpdate();
 
 		} 
@@ -54,6 +55,44 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			}
 		}
 
+	}
+	
+	public synchronized boolean doUpdate(TemplateColorVariantBean productDetails) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String updateSQL = "UPDATE " + TABLE_NAME + " "
+				+ "SET MODELLO_PRODOTTO = ? , COLORE = ?, IN_VENDITA = ? , PREZZO_ATTUALE = ?  "
+				+ "WHERE CODICE = ? ";
+
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSQL);
+			preparedStatement.setInt(1, productDetails.getCodiceModello());
+			preparedStatement.setString(2, productDetails.getColore());
+			preparedStatement.setBoolean(3, productDetails.isInVendita());
+			preparedStatement.setDouble(4, productDetails.getPrezzoAttuale());
+			preparedStatement.setInt(5, productDetails.getCodice());
+			result = preparedStatement.executeUpdate();
+
+		} finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return (result != 0);
 	}
 
 	public synchronized boolean doDelete(int code) throws SQLException 
@@ -233,6 +272,41 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			}
 		}
 		return products;
+	}
+	
+	public synchronized int nextCode() throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		int result = 1;
+
+		String codiceSQL = "select max(codice) + 1 as nuovo_codice from " + TABLE_NAME;
+		
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(codiceSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next())
+			{
+				result = rs.getInt("nuovo_codice");
+			}
+		}
+		finally
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return result;
 	}
 	
 private static DataSource ds;

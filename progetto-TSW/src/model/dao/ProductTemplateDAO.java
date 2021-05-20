@@ -9,7 +9,9 @@ import model.bean.TemplateColorVariantBean;
 
 public interface ProductTemplateDAO 
 {
-	public void doSave(ProductTemplateBean productInformation) throws SQLException;
+	public void doSave(ProductTemplateBean productTemplate) throws SQLException;
+	
+	public boolean doUpdate(ProductTemplateBean productTemplate) throws SQLException;
 
 	public boolean doDelete(int code) throws SQLException;
 
@@ -18,5 +20,7 @@ public interface ProductTemplateDAO
 	public Collection<ProductTemplateBean> doRetrieveAll(String order) throws SQLException;
 	
 	public ProductTemplateBean doRetrieveVariantTemplate(TemplateColorVariantBean templateVariant) throws SQLException;
+	
+	public int nextCode() throws SQLException;
 
 }

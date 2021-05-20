@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import control.UtenteServlet;
 import model.Carrello;
 import model.ItemCarrello;
 import model.bean.ComposizioneBean;
@@ -22,7 +23,7 @@ import model.ds.DAOS;
 import model.ds.OrdineDAODS;
 
 @WebServlet("/checkout")
-public class Checkout extends HttpServlet 
+public class Checkout extends UtenteServlet 
 {
 	
 	
@@ -30,31 +31,17 @@ public class Checkout extends HttpServlet
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
+		if(!verificaUtente(request, response))
+			return;
 		Carrello cart;
 		UtenteBean utente;
 		HttpSession session = request.getSession();
-		
 		synchronized (session) 
 		{
 			cart = (Carrello) session.getAttribute("carrello");
 			utente = (UtenteBean) session.getAttribute("utente");
 		}
-		if(utente == null)
-		{
-			synchronized (session) 
-			{
-				String Query = "";
-				if(request.getQueryString() != null)
-				{
-					Query = "?" +  request.getQueryString();
-				}
-				session.setAttribute("pagina precedente", request.getRequestURI()+ Query);
-				System.out.println(session.getAttribute("pagina precedente"));
-			}
-			response.sendRedirect(response.encodeRedirectURL("loginPage.jsp"));
-			return;
-		}
-		
+			
 		if(cart.isEmpty())
 		{
 			response.sendError(response.SC_FORBIDDEN);
@@ -93,7 +80,7 @@ public class Checkout extends HttpServlet
 			catch(Exception e)
 			{
 				e.printStackTrace();
-				response.sendError(response.SC_NOT_FOUND);
+				response.sendError(response.SC_FORBIDDEN);
 			}
 		}
 		

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import control.UtenteServlet;
 import model.bean.ComposizioneBean;
 import model.bean.OrdineBean;
 import model.bean.ProductBean;
@@ -33,12 +34,14 @@ import model.ds.TemplateColorVariantDAODS;
 import model.ds.UtenteDAODS;
 
 @WebServlet("/ordine")
-public class MostraOrdine extends HttpServlet 
+public class MostraOrdine extends UtenteServlet
 {
 	
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws ServletException,IOException
 	{
+		if(!verificaUtente(request, response))
+			return;
 		try
 		{
 			int codice = Integer.parseInt(request.getParameter("codice"));
@@ -50,43 +53,27 @@ public class MostraOrdine extends HttpServlet
 			{
 				utente = (UtenteBean) session.getAttribute("utente");
 			}
-			if(utente == null)
+			
+			if(utente.getEmail().equals(ordine.getUtente().getEmail()))
 			{
-				synchronized (session) 
+				ordine.setComposizione(DAOS.getComposizioneModel().doRetriveAllForOrder(ordine));
+				for(ComposizioneBean c : ordine.getComposizione())
 				{
-					String Query = "";
-					if(request.getQueryString() != null)
-					{
-						Query = "?" + request.getQueryString();
-					}
-					session.setAttribute("pagina precedente", request.getRequestURI() + Query);
-					System.out.println(session.getAttribute("pagina precedente"));
+					ProductBean p = DAOS.getProductModel().doRetriveForComposizione(c);
+					c.setProdotto(p);
+					TemplateColorVariantBean v = DAOS.getProductTemplateVariantModel().doRetrieveProductVariant(p);
+					p.setVarianteProdotto(v);
+					v.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(v));
+					ProductTemplateBean t = DAOS.getProductTemplateModel().doRetrieveVariantTemplate(v);
+					v.setModelloProdotto(t);
 				}
-				response.sendRedirect(response.encodeRedirectURL("loginPage.jsp"));
+				request.setAttribute("ordine", ordine);
+				RequestDispatcher dispacher = getServletContext().getRequestDispatcher(response.encodeRedirectURL("/ordine.jsp"));
+				dispacher.forward(request, response);
 			}
 			else
 			{
-				if(utente.getEmail().equals(ordine.getUtente().getEmail()))
-				{
-					ordine.setComposizione(DAOS.getComposizioneModel().doRetriveAllForOrder(ordine));
-					for(ComposizioneBean c : ordine.getComposizione())
-					{
-						ProductBean p = DAOS.getProductModel().doRetriveForComposizione(c);
-						c.setProdotto(p);
-						TemplateColorVariantBean v = DAOS.getProductTemplateVariantModel().doRetrieveProductVariant(p);
-						p.setVarianteProdotto(v);
-						v.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(v));
-						ProductTemplateBean t = DAOS.getProductTemplateModel().doRetrieveVariantTemplate(v);
-						v.setModelloProdotto(t);
-					}
-					request.setAttribute("ordine", ordine);
-					RequestDispatcher dispacher = getServletContext().getRequestDispatcher(response.encodeRedirectURL("/ordine.jsp"));
-					dispacher.forward(request, response);
-				}
-				else
-				{
-					response.sendError(response.SC_FORBIDDEN);
-				}
+				response.sendError(response.SC_FORBIDDEN);
 			}
 		}
 		catch(Exception e)

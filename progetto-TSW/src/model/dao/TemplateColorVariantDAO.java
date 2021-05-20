@@ -11,6 +11,8 @@ import model.bean.TemplateColorVariantBean;
 public interface TemplateColorVariantDAO 
 {
 	public void doSave(TemplateColorVariantBean productDetails) throws SQLException;
+	
+	public boolean doUpdate(TemplateColorVariantBean templateVariant) throws SQLException;
 
 	public boolean doDelete(int code) throws SQLException;
 
@@ -22,5 +24,7 @@ public interface TemplateColorVariantDAO
 	
 	public List<TemplateColorVariantBean> doRetriveVariantsForTemplate(ProductTemplateBean template)
 	throws SQLException;
+	
+	public int nextCode() throws SQLException;
 
 }

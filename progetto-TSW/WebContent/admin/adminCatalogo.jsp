@@ -21,6 +21,7 @@
 	<body>
 		<%@ include file = "../fragments/admin/BarraNavigazionaleAdmin.jsp" %>
 		<h1>Catalogo</h1>
+		<h2><a href = "aggiungiModello.jsp">Aggiungi un Modello</a></h2>
 		<%
 		for(ProductTemplateBean template : catalogo){
 			request.setAttribute("template", template);

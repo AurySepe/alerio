@@ -57,6 +57,46 @@ public class ProductTemplateDAODS implements ProductTemplateDAO
 		}
 	}
 	
+	public synchronized boolean doUpdate(ProductTemplateBean productTemplate) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String updateSQL = "UPDATE " + TABLE_NAME + " "
+				+ "SET NOME = ? , DATA_DI_AGGIUNTA = ?, COLLEZIONE = ? , CATEGORIA = ? , INFORMAZIONI = ? "
+				+ "WHERE CODICE = ? ";
+
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSQL);
+			preparedStatement.setString(1, productTemplate.getNome());
+			preparedStatement.setDate(2, productTemplate.getDataAggiunta());
+			preparedStatement.setString(3, productTemplate.getCollezione());
+			preparedStatement.setString(4, productTemplate.getCategoria());
+			preparedStatement.setString(5, productTemplate.getInformazioni());
+			preparedStatement.setInt(6, productTemplate.getCodice());
+
+			result = preparedStatement.executeUpdate();
+
+		} finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return (result != 0);
+	}
+	
 	public synchronized ProductTemplateBean doRetrieveByKey(int code) throws SQLException 
 	{
 		Connection connection = null;
@@ -204,6 +244,41 @@ public class ProductTemplateDAODS implements ProductTemplateDAO
 		{
 			System.out.println("Error:" + e.getMessage());
 		}
+	}
+	
+	public synchronized int nextCode() throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		int result = 1;
+
+		String codiceSQL = "select max(codice) + 1 as nuovo_codice from " + TABLE_NAME;
+		
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(codiceSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next())
+			{
+				result = rs.getInt("nuovo_codice");
+			}
+		}
+		finally
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return result;
 	}
 	
 	private static final String TABLE_NAME = "modello_prodotto";

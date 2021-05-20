@@ -32,8 +32,11 @@ public class CatalogoAdmin extends AdminServlet
 			for(ProductTemplateBean p : modelli)
 			{
 				p.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsForTemplate(p));
-				TemplateColorVariantBean v = p.getVariantiModello().get(0);
-				v.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(v));
+				if(!p.getVariantiModello().isEmpty())
+				{
+					TemplateColorVariantBean v = p.getVariantiModello().get(0);
+					v.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(v));
+				}
 			}
 			request.setAttribute("catalogo", modelli);
 			RequestDispatcher dispacher = getServletContext().getRequestDispatcher(response.encodeURL("/admin/adminCatalogo.jsp"));

@@ -1,8 +1,7 @@
-package control.page.admin;
+package control.function.admin;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,38 +12,52 @@ import model.bean.ProductTemplateBean;
 import model.bean.TemplateColorVariantBean;
 import model.ds.DAOS;
 
-@WebServlet("/admin/modello")
+@WebServlet("/admin/disattivaVarianti")
 
-public class MostraModello extends AdminServlet 
+public class DisattivaVarianti extends AdminServlet 
 {
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
 		if(!verificaAdmin(request, response))
 			return;
-		String codice = request.getParameter("codice");
 		try
 		{
-			int code = Integer.parseInt(codice);
-			ProductTemplateBean modello = DAOS.getProductTemplateModel().doRetrieveByKey(code);
+			int codice = Integer.parseInt(request.getParameter("codice"));
+			ProductTemplateBean modello = DAOS.getProductTemplateModel().doRetrieveByKey(codice);
 			modello.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsForTemplate(modello));
+			String[] varianti = request.getParameterValues("varianti");
 			for(TemplateColorVariantBean v : modello.getVariantiModello())
 			{
-				v.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(v));
+				boolean trovato = false;
+				if(varianti != null)
+				{
+					String code = "" + v.getCodice();
+					for(String s : varianti)
+					{
+						if(code.equals(s))
+						{
+							trovato = true;
+						}
+					}
+				}
+				
+				v.setInVendita(trovato);
+				DAOS.getProductTemplateVariantModel().doUpdate(v);
 			}
-			request.setAttribute("modello", modello);
-			RequestDispatcher dispacher = getServletContext().getRequestDispatcher(response.encodeURL("/admin/modello.jsp"));
-			dispacher.forward(request, response);
+			response.sendRedirect(response.encodeRedirectURL("modello?codice=" + modello.getCodice()));
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			response.sendError(response.SC_FORBIDDEN);
+			response.sendError(HttpServletResponse.SC_FORBIDDEN);
+			return;
 		}
 	}
+	
 	public void doPost(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
-		doGet(request, response);	
+		doGet(request, response);		
 	}
 }
