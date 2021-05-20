@@ -34,6 +34,9 @@ public class DAOS
 	public static UtenteDAO getUtenteModel() {
 		return utenteModel;
 	}
+	public static BlobDS getBlobModel() {
+		return blobModel;
+	}
 	private static ProductTemplateDAO productTemplateModel = new ProductTemplateDAODS();
 	private static TemplateColorVariantDAO productTemplateVariantModel = new TemplateColorVariantDAODS(); 
 	private static ProductDAO productModel = new ProductDAODS();
@@ -41,6 +44,7 @@ public class DAOS
 	private static OrdineDAO ordineModel = new OrdineDAODS();
 	private static ComposizioneDAO composizioneModel = new ComposizioneDAODS();
 	private static UtenteDAO utenteModel = new UtenteDAODS();
+	private static BlobDS blobModel = new BlobDS();
 	
 	
 }

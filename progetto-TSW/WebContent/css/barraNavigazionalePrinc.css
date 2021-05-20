@@ -13,26 +13,26 @@ header{
     position: fixed;
 }
 
-nav{
+header nav{
     background-color:white;
     height: 100%;
     display: inline;
     float: right;
 }
 
-img{
+header img{
     float: left;
     margin: 5px 5px;
     padding: 5px 5px;
 }
 
-.logo{
+header .logo{
     margin-top: 0px;
     margin-bottom: 5px;
     padding: 10px;
     
 }
 
-li{
+header li{
     display: inline;
 }

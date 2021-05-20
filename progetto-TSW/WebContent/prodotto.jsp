@@ -27,7 +27,7 @@
 		request.setAttribute("templateVariant", templateVariant);
 	%>
 		
-		
+			
 			<li><a href="mostraProdotto?codiceModello=${templateVariant.modelloProdotto.codice }&codice=${templateVariant.codice}">${templateVariant.colore }</a></li>
 	<%} %>
 		</ul>

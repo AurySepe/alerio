@@ -5,7 +5,7 @@ footer {
 }
 
 /*allineamento e dimensioni testo*/
-td, th{
+footer td, th{
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 5px;
@@ -14,11 +14,11 @@ td, th{
 }
 
 /*ingrandisce i titoli delle sezioni*/
-th{
+footer th{
     font-size: x-large;
 }
 
 /*setto il colore dei link sempre a bianco*/
-a {
+footer a {
     color: white;
 }

@@ -80,9 +80,8 @@ public class NuovaVariante extends AdminServlet
 				ImageBean image = new ImageBean();
 				image.setCodiceVariante(variante.getCodice());
 				image.setPosizione(i);
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/alerio?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","Root");
-				Blob b = con.createBlob();
 				byte[] bytes = p.getInputStream().readAllBytes();
+				Blob b = DAOS.getBlobModel().getNewBlob();
 				b.setBytes(1, bytes);
 				image.setImg(b);
 				DAOS.getImageModel().doSave(image);
