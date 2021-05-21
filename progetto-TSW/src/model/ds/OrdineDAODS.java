@@ -2,6 +2,7 @@
 package model.ds;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -275,6 +276,82 @@ public class OrdineDAODS implements OrdineDAO {
 			}
 		}
 		return result;
+	}
+	
+	public synchronized Collection<OrdineBean> doRetrieveAllByDatesAndUser(Date inizio,Date fine,UtenteBean utente) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		Collection<OrdineBean> ordini = new LinkedList<OrdineBean>();
+		String where = "WHERE TRUE ";
+		if(inizio != null)
+		{
+			where += " AND TRUE AND data_di_acquisto >= ? " ;
+		}
+		if(fine != null)
+		{
+			where += " AND TRUE AND data_di_acquisto <= ? " ;
+		}
+		if(utente != null)
+		{
+			where += " AND TRUE AND email_cliente = ? " ;
+		}
+		
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " " + where +  " ORDER BY data_di_acquisto  ";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			int i = 1;
+			if(inizio != null)
+			{
+				preparedStatement.setDate(i, inizio);
+				i++;
+			}
+			if(fine != null)
+			{
+				preparedStatement.setDate(i, fine);
+				i++;
+			}
+			if(utente != null)
+			{
+				preparedStatement.setString(i, utente.getEmail());
+				i++;
+			}
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				OrdineBean ordine = new OrdineBean();
+				ordine.setCodiceOrdine(rs.getInt("codice"));
+				ordine.setEmail(rs.getString("email_cliente"));
+				ordine.setDate(rs.getDate("data_di_acquisto"));
+				ordine.setIva(rs.getDouble("iva"));
+				ordine.setCosto(rs.getDouble("costo_totale"));
+				ordine.setTipoUtente(rs.getString("tipo_utente"));
+				ordine.setNumeroCarta(rs.getString("numero_carta"));
+				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
+				ordini.add(ordine);
+			}
+
+		}
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return ordini;
 	}
 	
 	

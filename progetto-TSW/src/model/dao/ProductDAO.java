@@ -13,6 +13,8 @@ public interface ProductDAO
 	public void doSave(ProductBean product) throws SQLException;
 
 	public boolean doDelete(int code) throws SQLException;
+	
+	public boolean doUpdate(ProductBean product) throws SQLException;
 
 	public ProductBean doRetrieveByKey(int code) throws SQLException;
 	

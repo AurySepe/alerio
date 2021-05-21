@@ -40,21 +40,27 @@ public class MostraOrdine extends UtenteServlet
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws ServletException,IOException
 	{
-		if(!verificaUtente(request, response))
+		HttpSession session = request.getSession();
+		boolean admin = false;
+		synchronized (session) 
+		{
+			admin = session.getAttribute("isAdmin") != null;
+		}
+		
+		if(!admin && !verificaUtente(request, response))
 			return;
 		try
 		{
 			int codice = Integer.parseInt(request.getParameter("codice"));
 			OrdineBean ordine = DAOS.getOrdineModel().doRetrieveByKey(codice);
 			ordine.setUtente(DAOS.getUtenteModel().doRetriveForOrder(ordine));
-			HttpSession session = request.getSession();
 			UtenteBean utente;
 			synchronized (session) 
 			{
 				utente = (UtenteBean) session.getAttribute("utente");
 			}
 			
-			if(utente.getEmail().equals(ordine.getUtente().getEmail()))
+			if((utente != null && utente.getEmail().equals(ordine.getUtente().getEmail())) || admin)
 			{
 				ordine.setComposizione(DAOS.getComposizioneModel().doRetriveAllForOrder(ordine));
 				for(ComposizioneBean c : ordine.getComposizione())

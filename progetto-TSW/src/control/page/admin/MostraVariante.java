@@ -9,42 +9,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import control.AdminServlet;
-import model.bean.ProductTemplateBean;
 import model.bean.TemplateColorVariantBean;
 import model.ds.DAOS;
 
-@WebServlet("/admin/modello")
+@WebServlet("/admin/variante")
 
-public class MostraModello extends AdminServlet 
+public class MostraVariante extends AdminServlet 
 {
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
 		if(!verificaAdmin(request, response))
 			return;
-		String codice = request.getParameter("codice");
 		try
 		{
-			int code = Integer.parseInt(codice);
-			ProductTemplateBean modello = DAOS.getProductTemplateModel().doRetrieveByKey(code);
-			modello.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsForTemplate(modello));
-			for(TemplateColorVariantBean v : modello.getVariantiModello())
-			{
-				v.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(v));
-			}
-			request.setAttribute("modello", modello);
-			RequestDispatcher dispacher = getServletContext().getRequestDispatcher("/admin/modello.jsp");
+			int code = Integer.parseInt(request.getParameter("codice"));
+			TemplateColorVariantBean variante = DAOS.getProductTemplateVariantModel().doRetrieveByKey(code);
+			variante.setModelloProdotto(DAOS.getProductTemplateModel().doRetrieveVariantTemplate(variante));
+			variante.setProdotti(DAOS.getProductModel().doRetriveForVariant(variante));
+			variante.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(variante));
+			request.setAttribute("variante", variante);
+			RequestDispatcher dispacher = getServletContext().getRequestDispatcher("/admin/mostraVariante.jsp");
 			dispacher.forward(request, response);
+			return;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			response.sendError(response.SC_FORBIDDEN);
+			response.sendError(HttpServletResponse.SC_FORBIDDEN);
+			return;
 		}
 	}
+	
 	public void doPost(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
 		doGet(request, response);	
 	}
+	
 }

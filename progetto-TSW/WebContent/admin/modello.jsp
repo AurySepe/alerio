@@ -36,7 +36,7 @@
 					request.setAttribute("variante", v);
 				%>
 				<div class = "variante">
-					In vendita <input type = "checkbox" value = "${variante.codice}" name = "varianti" <%if(v.isInVendita()){ %> checked="checked"<%} %> >${variante.colore}
+					In vendita <input type = "checkbox" value = "${variante.codice}" name = "varianti" <%if(v.isInVendita()){ %> checked="checked"<%} %> ><a href = "variante?codice=${variante.codice}">${variante.colore}</a>
 					<img height="50" width="50" src = "../immagine?codice=${variante.immaginiVariante[0].codice}" alt = "immagineVariante">
 				</div>
 				<%} %>
