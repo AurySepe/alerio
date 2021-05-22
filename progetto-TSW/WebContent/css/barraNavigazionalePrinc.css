@@ -9,30 +9,49 @@ header{
     margin: 0;
     border: 0;
     top: 0%;
-    display: inline-block;
     position: fixed;
+    text-align: center;
 }
+
+header h1{
+	text-align: center;
+	content-align: center;
+	text-color: black;
+	font-family: "lucida calligraphy";
+	font-size: xx-large;
+	display: inline-block;
+}
+
 
 header nav{
     background-color:white;
-    height: 100%;
-    display: inline;
+    height: 50%;
+    display: inline-block;
     float: right;
 }
+
 
 header img{
     float: left;
     margin: 5px 5px;
-    padding: 5px 5px;
+    padding: 5px 5px; 
+    display: inline-block;
 }
 
-header .logo{
-    margin-top: 0px;
-    margin-bottom: 5px;
-    padding: 10px;
-    
-}
+
 
 header li{
     display: inline;
+}
+
+header .primo{
+	text-align: center;
+	width: 100%;
+	height: 70%;
+}
+
+header table{
+	width: 100%;
+	height: 30%;
+	background-color: grey;
 }

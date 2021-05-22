@@ -5,12 +5,13 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title> Homepage </title>
-	<link href="css/homepage.css" rel="stylesheet" type="text/css" >
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+	<link href="css/homepage.css" rel="stylesheet" type="text/css" >
 </head>
 	
 <body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
+	
 	
 	<figure>
             <img class="main" src="/progetto-TSW/img/immagineHomepage.jpg" alt="immagine non visualizzabile" style="width:100%">
@@ -65,7 +66,7 @@
     </table>
     
     <div>
-        <div> <h1> Cosa dicono di noi </h1> </div>
+        <div> <h1 class="tit_recensioni"> Cosa dicono di noi </h1> </div>
         <div> 
             <table>
                 <tr>

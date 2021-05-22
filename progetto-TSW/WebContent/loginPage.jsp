@@ -5,11 +5,12 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Insert title here</title>
-	<link href="css/loginPage.css" rel="stylesheet" type="text/css" >
+	
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+	<link href="css/loginPage.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
-	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
+	<%-- <%@ include file = "fragments/barraNavigazionalePrinc.jsp" %> --%>
 	<div>
 			<form class="bottone" action="/progetto-TSW/LoginServlet" method="post">
                <h1> Log-in </h1>  

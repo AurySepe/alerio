@@ -9,7 +9,7 @@
     Collection<ProductTemplateBean> catalogo =(Collection<ProductTemplateBean>) request.getAttribute("catalogo");
             	if(catalogo == null)
             	{
-            		response.sendRedirect("/catalogo");
+            		response.sendRedirect("catalogo");
             		return;
             	}
     %>

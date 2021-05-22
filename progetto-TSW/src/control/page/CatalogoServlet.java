@@ -34,11 +34,12 @@ public class CatalogoServlet extends HttpServlet
 	throws IOException,ServletException
 	{
 		response.setContentType("text/html");
-		String order = request.getParameter("ordine");
+		String categoria = request.getParameter("categoria");
 		Collection<ProductTemplateBean> catalogo = null;
 		try
 		{
-			catalogo = DAOS.getProductTemplateModel().doRetrieveAll(order);
+			
+			catalogo = DAOS.getProductTemplateModel().doRetrieveByCategory(categoria);
 			for(ProductTemplateBean b : catalogo)
 			{
 				b.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsForTemplate(b));
@@ -68,4 +69,5 @@ public class CatalogoServlet extends HttpServlet
 		doGet(request, response);
 	}
 
+	
 }

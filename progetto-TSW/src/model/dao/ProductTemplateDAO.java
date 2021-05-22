@@ -22,5 +22,7 @@ public interface ProductTemplateDAO
 	public ProductTemplateBean doRetrieveVariantTemplate(TemplateColorVariantBean templateVariant) throws SQLException;
 	
 	public int nextCode() throws SQLException;
+	
+	public Collection<ProductTemplateBean> doRetrieveByCategory(String categoria) throws SQLException;
 
 }

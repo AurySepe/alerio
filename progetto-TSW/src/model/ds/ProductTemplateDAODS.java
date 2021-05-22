@@ -229,22 +229,60 @@ public class ProductTemplateDAODS implements ProductTemplateDAO
 		return doRetrieveByKey(templateVariant.getCodiceModello());
 	}
 	
-	private static DataSource ds;
-	
-	static
+	public Collection<ProductTemplateBean> doRetrieveByCategory(String categoria) 
+	throws SQLException
 	{
-		try 
-		{
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
 
-			ds = (DataSource) envCtx.lookup("jdbc/storage");
+		Collection<ProductTemplateBean> products = new LinkedList<ProductTemplateBean>();
 
-		} catch (NamingException e) 
-		{
-			System.out.println("Error:" + e.getMessage());
+		String selectSQL = "SELECT * FROM " + TABLE_NAME;
+
+		if (categoria != null && !categoria.equals("")) {
+			selectSQL += " WHERE categoria = ? ";
 		}
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			if (categoria != null && !categoria.equals(""))
+			{
+				preparedStatement.setString(1, categoria);
+			}
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				ProductTemplateBean bean = new ProductTemplateBean();
+				bean.setCodice(rs.getInt("CODICE"));
+				bean.setNome(rs.getString("NOME"));
+				bean.setInformazioni(rs.getString("INFORMAZIONI"));
+				bean.setDataAggiunta(rs.getDate("DATA_DI_AGGIUNTA"));
+				bean.setCategoria(rs.getString("CATEGORIA"));
+				bean.setCollezione(rs.getString("COLLEZIONE"));
+				products.add(bean);
+			}
+
+		}
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return products;
 	}
+	
 	
 	public synchronized int nextCode() throws SQLException
 	{
@@ -279,6 +317,23 @@ public class ProductTemplateDAODS implements ProductTemplateDAO
 			}
 		}
 		return result;
+	}
+	
+private static DataSource ds;
+	
+	static
+	{
+		try 
+		{
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+
+			ds = (DataSource) envCtx.lookup("jdbc/storage");
+
+		} catch (NamingException e) 
+		{
+			System.out.println("Error:" + e.getMessage());
+		}
 	}
 	
 	private static final String TABLE_NAME = "modello_prodotto";
