@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
@@ -20,5 +21,7 @@ public interface OrdineDAO {
 	public List<OrdineBean> doRetriveAllForUtente(UtenteBean utente) throws SQLException;
 	
 	public int nextCode() throws SQLException;
+	
+	public Collection<OrdineBean> doRetrieveAllByDatesAndUser(Date inizio,Date fine,UtenteBean utente) throws SQLException;
 	
 }
