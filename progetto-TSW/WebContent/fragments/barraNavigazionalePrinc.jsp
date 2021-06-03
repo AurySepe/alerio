@@ -34,8 +34,8 @@
     	<table>
      	<tr>
      		<td> <a href=""> anelli </a></td>
-     		<td> <a href=""> bracciali </a> </td>
-     		<td> <a href=""> collane </a></td>
+     		<td> <a href="https://localhost:8443/progetto-TSW/catalogo?categoria=anello"> bracciali </a> </td>
+     		<td> <a href="https://localhost:8443/progetto-TSW/catalogo?categoria=collana"> collane </a></td>
      		<td> <a href=""> fedi nunziali </a></td>
      		<td> <a href=""> coordinati </a></td>
      		<td> <a href=""> orecchini </a></td>

@@ -1,25 +1,37 @@
-loginPage body {
+body {
     background-color: thistle;
     color: black;
     align-content: center;
-    margin: 50px;
+    margin: 5%;
 }
  
-loginPage div {
-    width: 350px;
-    height: 300px;
+div {
+    width: 25%;
+    height: 38%;
     background-color: orchid;
     color: black;
     align-content: center;
     text-align: center;
-    padding: 100px 100px;
-    margin: 50px 400px;
+    padding: 10% 10%;
+    margin: 5% 30%;
+    border-radius: 8%;
 }
 
-loginPage .bottone {
-    display: inline;
+.bottone {
+    height: 5%;
+    width: 40%;  
+    border-radius: 40%;
+	-moz-border-radius: 40%; /* firefox */ 
+    -webkit-border-radius: 40%; /* safari, chrome */
+    cursor: pointer; 
+    padding: 5% 9%;
+    border-style: hidden;
+	background: bisque;
+	border-color: bisque;
+	text-align: center;
 }
 
-loginPage form{            
+form{  
     align-content: center;
+    text-align: center;
 }

@@ -4,36 +4,33 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title> Log-in page </title>
 	
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 	<link href="css/loginPage.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
-	<%-- <%@ include file = "fragments/barraNavigazionalePrinc.jsp" %> --%>
 	<div>
-			<form class="bottone" action="/progetto-TSW/LoginServlet" method="post">
+			<form action="/progetto-TSW/LoginServlet" method="post">
                <h1> Log-in </h1>  
                <p>
-                Email: <input type="text" name="email" placeholder="Enter email"> <br>
+                Email: <br>
+                <input type="text" name="email" placeholder="Enter email"> <br>
                </p>
                
                <p>
-                Password: <input type="password" name="password" placeholder="Enter password"> <br> 
+                Password: <br>
+                <input type="password" name="password" placeholder="Enter password"> <br> 
                </p>
                
                <p>
                     
-                    <button type="submit"> Log in </button>
+                    <button class="bottone" type="submit"> Log in </button>              
+                    <a href="signinPage.jsp"> Sign in </a>
+                    
+                 </p>
                 </form>
-                
-                <form class="bottone" action="signinPage.jsp" method="post">
-                    <button type="submit"> Sign in </button>
-                </form>
-                
-               </p>
                
         </div>
-        <%@ include file = "fragments/footer.html" %>
 </body>
 </html>

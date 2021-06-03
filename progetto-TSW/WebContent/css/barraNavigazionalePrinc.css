@@ -26,7 +26,7 @@ header h1{
 header nav{
     background-color:white;
     height: 50%;
-    display: inline-block;
+    display: block;
     float: right;
 }
 
