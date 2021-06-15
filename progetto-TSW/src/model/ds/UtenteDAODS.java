@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import model.bean.CreditCardBean;
+import model.bean.DeliveryBean;
 import model.bean.OrdineBean;
 import model.bean.UtenteBean;
 import model.dao.UtenteDAO;
@@ -65,7 +67,7 @@ public class UtenteDAODS implements UtenteDAO
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + TABLE_NAME + " EMAIL = ?";
+		String deleteSQL = "DELETE FROM " + TABLE_NAME + " where EMAIL = ?";
 		
 		try 
 		{
@@ -154,7 +156,6 @@ public class UtenteDAODS implements UtenteDAO
 			ResultSet rs = preparedStatement.executeQuery();
 			if(rs.next())
 			{
-				System.out.println("utente trovato");
 				utente.setCognome(rs.getString("cognome"));
 				utente.setNome(rs.getString("nome"));
 				utente.setEmail(rs.getString("email"));
@@ -164,7 +165,6 @@ public class UtenteDAODS implements UtenteDAO
 			}
 			else
 			{
-				System.out.println("utente non trovato");
 				utente = null;
 			}
 		}
@@ -232,6 +232,16 @@ public class UtenteDAODS implements UtenteDAO
 	public synchronized UtenteBean doRetriveForOrder(OrdineBean ordine) throws SQLException
 	{
 		return doRetrieveByKey(ordine.getEmail());
+	}
+	
+	public synchronized UtenteBean doRetriveForCard(CreditCardBean card) throws SQLException
+	{
+		return doRetrieveByKey(card.getEmailCliente());
+	}
+	
+	public synchronized UtenteBean doRetriveForDelivery(DeliveryBean delivery) throws SQLException
+	{
+		return doRetrieveByKey(delivery.getEmailCliente());
 	}
 	
 	

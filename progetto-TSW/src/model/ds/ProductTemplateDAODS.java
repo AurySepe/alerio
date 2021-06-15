@@ -27,8 +27,8 @@ public class ProductTemplateDAODS implements ProductTemplateDAO
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " +TABLE_NAME
-				+ " (NOME, DATA_DI_AGGIUNTA, COLLEZIONE,CATEGORIA,INFORMAZIONI) "
-				+ "VALUES (?, ?, ?, ?, ?)";
+				+ " (NOME, DATA_DI_AGGIUNTA, COLLEZIONE,CATEGORIA,INFORMAZIONI,codice) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 
 		try 
 		{
@@ -39,6 +39,7 @@ public class ProductTemplateDAODS implements ProductTemplateDAO
 			preparedStatement.setString(3, product.getCollezione());
 			preparedStatement.setString(4, product.getCategoria());
 			preparedStatement.setString(5, product.getInformazioni());
+			preparedStatement.setInt(6, product.getCodice());
 			preparedStatement.executeUpdate();
 
 		} 

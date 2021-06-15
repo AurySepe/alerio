@@ -44,7 +44,9 @@ public class OrdiniUtente extends UtenteServlet
 		}
 		catch(SQLException e)
 		{
-			response.sendError(response.SC_NOT_FOUND);
+			e.printStackTrace();
+			response.sendError(403);
+			return;
 		}
 		
 	}

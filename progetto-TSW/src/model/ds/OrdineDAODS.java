@@ -41,7 +41,7 @@ public class OrdineDAODS implements OrdineDAO {
 			preparedStatement.setDouble(4, ordine.getIva());
 			preparedStatement.setDouble(5, ordine.getCosto());
 			preparedStatement.setString(6, ordine.getTipoUtentee());
-			preparedStatement.setString(7, ordine.getNumeroCarta());
+			preparedStatement.setInt(7, ordine.getCodiceCarta());
 			preparedStatement.setInt(8, ordine.getCodiceConsegna());
 			preparedStatement.executeUpdate();
 		}
@@ -121,11 +121,11 @@ public class OrdineDAODS implements OrdineDAO {
 			{
 				ordine.setCodiceOrdine(rs.getInt("codice"));
 				ordine.setEmail(rs.getString("email_cliente"));
-				ordine.setDate(rs.getDate("data_di_acquisto"));
+				ordine.setData(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));
 				ordine.setTipoUtente(rs.getString("tipo_utente"));
-				ordine.setNumeroCarta(rs.getString("numero_carta"));
+				ordine.setCodiceCarta(rs.getInt("codice_carta"));
 				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
 			}
 		}
@@ -169,11 +169,11 @@ public class OrdineDAODS implements OrdineDAO {
 				OrdineBean ordine = new OrdineBean();
 				ordine.setCodiceOrdine(rs.getInt("codice"));
 				ordine.setEmail(rs.getString("email_cliente"));
-				ordine.setDate(rs.getDate("data_di_acquisto"));
+				ordine.setData(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));
 				ordine.setTipoUtente(rs.getString("tipo_utente"));
-				ordine.setNumeroCarta(rs.getString("numero_carta"));
+				ordine.setCodiceCarta(rs.getInt("codice_carta"));
 				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
 				ordini.add(ordine);
 			}
@@ -216,11 +216,11 @@ public class OrdineDAODS implements OrdineDAO {
 				OrdineBean ordine = new OrdineBean();
 				ordine.setCodiceOrdine(rs.getInt("codice"));
 				ordine.setEmail(rs.getString("email_cliente"));
-				ordine.setDate(rs.getDate("data_di_acquisto"));
+				ordine.setData(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));
 				ordine.setTipoUtente(rs.getString("tipo_utente"));
-				ordine.setNumeroCarta(rs.getString("numero_carta"));
+				ordine.setCodiceCarta(rs.getInt("codice_carta"));
 				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
 				ordine.setUtente(utente);
 				ordini.add(ordine);
@@ -328,11 +328,11 @@ public class OrdineDAODS implements OrdineDAO {
 				OrdineBean ordine = new OrdineBean();
 				ordine.setCodiceOrdine(rs.getInt("codice"));
 				ordine.setEmail(rs.getString("email_cliente"));
-				ordine.setDate(rs.getDate("data_di_acquisto"));
+				ordine.setData(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));
 				ordine.setTipoUtente(rs.getString("tipo_utente"));
-				ordine.setNumeroCarta(rs.getString("numero_carta"));
+				ordine.setCodiceCarta(rs.getInt("codice_carta"));
 				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
 				ordini.add(ordine);
 			}

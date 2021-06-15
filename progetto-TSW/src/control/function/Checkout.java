@@ -54,11 +54,11 @@ public class Checkout extends UtenteServlet
 				OrdineBean ordine = new OrdineBean();
 				ordine.setCodiceOrdine(DAOS.getOrdineModel().nextCode());
 				ordine.setEmail(utente.getEmail());
-				ordine.setDate(new Date((new java.util.Date()).getTime()) );
+				ordine.setData(new Date((new java.util.Date()).getTime()) );
 				ordine.setIva(0.22);
 				ordine.setCosto(cart.getCostoTotale());
 				ordine.setTipoUtente("R");
-				ordine.setNumeroCarta("AAAA");
+				ordine.setCodiceCarta(1);
 				ordine.setCodiceConsegna(1);
 				DAOS.getOrdineModel().doSave(ordine);
 				for(ItemCarrello i : cart.getElementi())

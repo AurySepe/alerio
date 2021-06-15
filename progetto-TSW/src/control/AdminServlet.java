@@ -39,4 +39,16 @@ public class AdminServlet extends HttpServlet
 		}
 		return admin;
 	}
+	
+	public boolean verificaAdminAjax(HttpServletRequest request,HttpServletResponse response)
+	throws IOException,ServletException
+	{
+		HttpSession session = request.getSession();
+		boolean admin = false;
+		synchronized (session) 
+		{
+			admin = session.getAttribute("isAdmin") != null;
+		}
+		return admin;
+	}
 }

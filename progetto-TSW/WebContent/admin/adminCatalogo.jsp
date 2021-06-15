@@ -16,6 +16,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>catalogo admin</title>
+		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 	</head>
 	
 	<body>

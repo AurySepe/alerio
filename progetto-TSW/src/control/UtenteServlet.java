@@ -32,10 +32,21 @@ public class UtenteServlet extends HttpServlet
 			{
 				String paginaPrecedente = request.getRequestURI() + Query;
 				session.setAttribute("pagina precedente",  paginaPrecedente);
-				System.out.println(paginaPrecedente);
 			}
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/loginPage.jsp");
 			dispatcher.forward(request, response);
+		}
+		return utente;
+	}
+	
+	public boolean verificaUtenteAjax(HttpServletRequest request,HttpServletResponse response)
+	throws IOException,ServletException
+	{
+		HttpSession session = request.getSession();
+		boolean utente = true;
+		synchronized (session) 
+		{
+			utente = session.getAttribute("utente") != null;
 		}
 		return utente;
 	}

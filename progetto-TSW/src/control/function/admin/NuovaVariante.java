@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Collection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -68,15 +69,13 @@ public class NuovaVariante extends AdminServlet
 						quantita = 0;
 					}
 					product.setQuantita(quantita);
-					System.out.println(taglia);
 					DAOS.getProductModel().doSave(product);
 				}
 			}
 			int i = 1;
 			Part p;
-			while((p = request.getPart("immagine " + i)) != null  )
+			while((p = request.getPart("immagine" + i)) != null  )
 			{
-				System.out.println("prova");
 				ImageBean image = new ImageBean();
 				image.setCodiceVariante(variante.getCodice());
 				image.setPosizione(i);
@@ -87,8 +86,9 @@ public class NuovaVariante extends AdminServlet
 				DAOS.getImageModel().doSave(image);
 				i++;
 			}
-		
-			response.sendRedirect(response.encodeRedirectURL("modello?codice=" + Integer.parseInt(request.getParameter("codice"))));
+			RequestDispatcher dispacher = getServletContext().getRequestDispatcher("/admin/variante?codice=" + variante.getCodice());
+			dispacher.forward(request, response);
+			
 		}
 		catch(Exception e)
 		{

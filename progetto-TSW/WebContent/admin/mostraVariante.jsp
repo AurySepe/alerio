@@ -17,6 +17,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Variante</title>
+		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 	</head>
 	<body>
 		<%@ include file = "../fragments/admin/BarraNavigazionaleAdmin.jsp" %>
@@ -38,17 +39,46 @@
 		<div>
 		<form id = "modificaVariante" method="post" action = "modificaVariante">
 		<input type = "hidden" value = "${variante.codice}" name = "codice">
+		<div>
+				<span>prezzo</span><input value = "${variante.prezzoAttuale}" type = "number" name = "prezzo" >
+		</div>
 		<%for(ProductBean prodotto : variante.getProdotti())
 		   {
 			request.setAttribute("prodotto", prodotto);	
 		
 		%>
 			<div>
-				<span>quantità ${prodotto.taglia}</span><input value = "${prodotto.quantita}" type = "number" name = "quantita-${prodotto.taglia}" >
+				<span>quantità ${prodotto.taglia}</span><input  value = "${prodotto.quantita}" type = "number" name = "quantita-${prodotto.taglia}" >
 			</div>
 		<% } %>
-			<button type = "submit">aggiorna</button>
 		</form>
+			<button id = "submit">aggiorna</button>
 		</div>
+		<script src = "../javascript/jquery-3.6.0.js"></script>
+		<script type="text/javascript">
+			$(document).ready
+			(
+				function()
+				{
+					$("#submit").click
+					(
+						function()
+						{
+							var dati = {};
+							$("#modificaVariante input").each
+							(
+								function()
+								{
+									dati[$(this).attr("name")] = $(this).val();
+								}
+							)
+							var wrapper = {"richiesta" : JSON.stringify(dati)};
+							
+							$.post("/progetto-TSW/admin/modificaVariante",wrapper,function(){});
+						}
+					)
+				}
+			)
+		</script>
 	</body>
 </html>

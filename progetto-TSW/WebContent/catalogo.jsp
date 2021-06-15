@@ -7,17 +7,20 @@
     
 <%
     Collection<ProductTemplateBean> catalogo =(Collection<ProductTemplateBean>) request.getAttribute("catalogo");
-            	if(catalogo == null)
-            	{
-            		response.sendRedirect("catalogo");
-            		return;
-            	}
+    if(catalogo == null)
+    {
+    	response.sendRedirect("catalogo");
+    	return;
+    }
     %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Catalogo</title>
+		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
+		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
 	</head>
 	<body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>

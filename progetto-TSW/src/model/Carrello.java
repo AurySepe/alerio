@@ -91,6 +91,19 @@ public class Carrello
 		}
 		return result;
 	}
+	
+	public ItemCarrello getItem(ProductBean bean)
+	{
+		for(ItemCarrello i : elementi)
+		{
+			int codice = i.getProdotto().getCodice();
+			if(bean.getCodice() == codice)
+			{
+				return i;
+			}
+		}
+		return null;
+	}
 
 
 

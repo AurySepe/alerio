@@ -18,6 +18,9 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title> ${prodotto.modelloProdotto.nome}</title>
+		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
+		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
 	</head>
 	<body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
@@ -41,16 +44,38 @@
 		%>
 		<img alt="immagine prodotto" src="immagine?codice=${immagine.codice}" width="300" height="300">
 		<%} %>
-		<form name = "aggiungi al carrello" action = "aggiungiCarrello" method = "Post">
 		<ol type = "none">
 			<%for(ProductBean product : bean.getProdotti()) {
 				request.setAttribute("product", product);
 			%>
-				<li><input name = "codice" type = "radio" value = "${product.codice}" required>${product.taglia}<li>
+				<li><input class = "taglia" name = "codice" type = "radio" value = "${product.codice}" required>${product.taglia}<li>
 			<%} %>
 		</ol>
-		<Button type = "submit">Aggiungi al carrello</Button>
-		</form><br/>
+		<Button id = "bottone" type = "submit">Aggiungi al carrello</Button>
 		<%@ include file = "fragments/footer.html" %>
+		<script src = "javascript/jquery-3.6.0.js"></script>
+		<script src = "javascript/addToCart.js"></script>
+		<script type="text/javascript">
+			function successo(response)
+			{
+				alert("elemento aggiunto con successo");
+			}
+			
+			function errore()
+			{
+				alert("errore");
+			}
+		</script>
+		<script type="text/javascript">
+			var taglia = {"codice" : null};
+			$(document).ready
+			(
+				function()
+				{
+					$("input.taglia").click(function(){ taglia.codice = $(this).val() })
+					$("#bottone").click(function(){ addToCart(taglia,successo,errore) })
+				}
+			)
+		</script>
 	</body>
 </html>

@@ -7,6 +7,8 @@
 	<title> Log-in page </title>
 	
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+	<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
+	<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
 	<link href="css/loginPage.css" rel="stylesheet" type="text/css" >
 </head>
 <body>

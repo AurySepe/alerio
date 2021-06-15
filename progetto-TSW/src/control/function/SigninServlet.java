@@ -20,13 +20,13 @@ public class SigninServlet extends HttpServlet{
 	
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException
+	throws IOException, ServletException
 	{
 		chiamaErrore(request, response, "il metodo get non è supportato");
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException
+	throws IOException, ServletException
 	{
 		String mail=request.getParameter("email");
 		String pwd=request.getParameter("password");

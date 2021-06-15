@@ -26,8 +26,6 @@ public class MostraOrdini extends AdminServlet
 		String inizio = request.getParameter("inizio");
 		String fine = request.getParameter("fine");
 		String utente = request.getParameter("utente");
-		System.out.println(fine);
-		System.out.println(inizio);
 		Date start = null;
 		Date end = null;
 		UtenteBean user = null;

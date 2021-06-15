@@ -1,6 +1,8 @@
 package model.ds;
 
 import model.dao.ComposizioneDAO;
+import model.dao.CreditCardDAO;
+import model.dao.DeliveryDAO;
 import model.dao.ImageDAO;
 import model.dao.OrdineDAO;
 import model.dao.ProductDAO;
@@ -37,6 +39,16 @@ public class DAOS
 	public static BlobDS getBlobModel() {
 		return blobModel;
 	}
+	
+	public static CreditCardDAO getCreditCardModel() {
+		return creditCardModel;
+	}
+	public static DeliveryDAO getDeliveryModel() {
+		return deliveryModel;
+	}
+
+
+
 	private static ProductTemplateDAO productTemplateModel = new ProductTemplateDAODS();
 	private static TemplateColorVariantDAO productTemplateVariantModel = new TemplateColorVariantDAODS(); 
 	private static ProductDAO productModel = new ProductDAODS();
@@ -45,6 +57,8 @@ public class DAOS
 	private static ComposizioneDAO composizioneModel = new ComposizioneDAODS();
 	private static UtenteDAO utenteModel = new UtenteDAODS();
 	private static BlobDS blobModel = new BlobDS();
+	private static CreditCardDAO creditCardModel = new CreditCardDAODS();
+	private static DeliveryDAO deliveryModel = new DeliveryDAODS();
 	
 	
 }

@@ -63,6 +63,8 @@ public class MostraOrdine extends UtenteServlet
 			if((utente != null && utente.getEmail().equals(ordine.getUtente().getEmail())) || admin)
 			{
 				ordine.setComposizione(DAOS.getComposizioneModel().doRetriveAllForOrder(ordine));
+				ordine.setCarta(DAOS.getCreditCardModel().doRetrieveByOrder(ordine));
+				ordine.setDelivery(DAOS.getDeliveryModel().doRetriveByOrdine(ordine));
 				for(ComposizioneBean c : ordine.getComposizione())
 				{
 					ProductBean p = DAOS.getProductModel().doRetriveForComposizione(c);

@@ -30,7 +30,7 @@ public class OrdineBean {
 		return data;
 	}
 	
-	public void setDate(Date data) 
+	public void setData(Date data) 
 	{
 		this.data = data;
 	}
@@ -65,14 +65,14 @@ public class OrdineBean {
 		this.tipoUtente = tipoUtente;
 	}
 	
-	public String getNumeroCarta() 
+	public int getCodiceCarta() 
 	{
-		return numeroCarta;
+		return codiceCarta;
 	}
 	
-	public void setNumeroCarta(String numeroCarta) 
+	public void setCodiceCarta(int codiceCarta) 
 	{
-		this.numeroCarta = numeroCarta;
+		this.codiceCarta = codiceCarta;
 	}
 	
 	public int getCodiceConsegna() 
@@ -107,6 +107,26 @@ public class OrdineBean {
 		this.utente = utente;
 	}
 
+	
+	
+
+	public CreditCardBean getCarta() {
+		return carta;
+	}
+
+	public void setCarta(CreditCardBean carta) {
+		this.carta = carta;
+	}
+
+	public DeliveryBean getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(DeliveryBean delivery) {
+		this.delivery = delivery;
+	}
+
+
 
 
 	private int codiceOrdine;
@@ -121,11 +141,15 @@ public class OrdineBean {
 	
 	private String tipoUtente;
 	
-	private String numeroCarta;
+	private int codiceCarta;
 	
 	private int codiceConsegna;
 	
 	private List<ComposizioneBean> composizione;
 	
 	private UtenteBean utente;
+	
+	private CreditCardBean carta;
+	
+	private DeliveryBean delivery;
 }

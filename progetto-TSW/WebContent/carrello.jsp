@@ -13,6 +13,9 @@
 %>
 <html>
 	<head>
+		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
+		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
 		<meta charset="ISO-8859-1">
 		<title>Carrello</title>
 	</head>
@@ -32,26 +35,23 @@
 		<%for(ItemCarrello item : cart.getElementi()) {
 			request.setAttribute("item", item);
 		%>
-			<tr>
+			<tr id = "${item.prodotto.codice}">
 				<td><a href = "mostraProdotto?codiceModello=${item.prodotto.varianteProdotto.modelloProdotto.codice}
 				&codice=${item.prodotto.varianteProdotto.codice}">
 				${item.prodotto.varianteProdotto.modelloProdotto.nome}</a></td>
 				<td>${item.prodotto.varianteProdotto.prezzoAttuale}</td>
 				<td>${item.prodotto.taglia}</td>
 				<td>${item.prodotto.varianteProdotto.colore}</td>
-				<td>${item.quantitaProdotto}</td>
-				<td>${item.prodotto.varianteProdotto.prezzoAttuale * item.quantitaProdotto}</td>
+				<td class = "numero">${item.quantitaProdotto}</td>
+				<td class = "prezzo">${item.prodotto.varianteProdotto.prezzoAttuale * item.quantitaProdotto}</td>
 				<td>
-					<form name = "aggiungi al carrello" action = "aggiungiCarrello" method = "Post">
-						<input type = "hidden" value = "${item.prodotto.codice}" name = "codice">
-						<input type = "number" min = "0"   name = "quantita">
-						<Button type = "submit">modifica quantità</Button>
-					</form><br/>
-					<form name = "rimuovi dal carrello" action = "aggiungiCarrello" method = "Post">
-						<input type = "hidden" value = "${item.prodotto.codice}" name = "codice">
-						<input type = "hidden" value = "-1"  name = "quantita">
-						<Button type = "submit">elimina</Button>
-					</form><br/>
+					<div>
+						<input class = "quantita" type = "number" min = "1"   name = "quantita">
+						<Button class = "aggiorna" type = "submit" value = "${item.prodotto.codice}">modifica quantità</Button>
+					</div>
+					<div>
+						<Button class = "elimina" type = "submit" value = "${item.prodotto.codice}">elimina</Button>
+					</div>
 				</td>
 				
 			</tr>
@@ -59,14 +59,79 @@
 		<%} %>
 			
 		</table>
-		<% if(!cart.isEmpty()) {%>
-			<form name = "checkout" action="checkout" method = "post">
+			<form id = "checkout" name = "checkout" action="checkout" method = "post">
 				<p>Effettua il checkout</p>
 				<button type = "submit">Checkout</button>
-				<p>Costo:${carrello.costoTotale}</p>
+				<p id = "Costo">Costo:${carrello.costoTotale}</p>
 			</form>
-		<%} %>
 		
 		<%@ include file = "fragments/footer.html" %>
+		<script src = "javascript/jquery-3.6.0.js"></script>
+		<script src = "javascript/addToCart.js"></script>
+		<script type="text/javascript">
+			function successo(data)
+			{
+				var response = JSON.parse(data);
+				console.log(response)
+				if(response.quantitaProdotto < 0)
+				{
+					$("#" + response.prodotto.codice).remove();
+				}
+				else
+				{
+					$("#" + response.prodotto.codice + " td.numero").html(response.quantitaProdotto);
+					$("#" + response.prodotto.codice + " td.prezzo").html( "" + (response.quantitaProdotto * response.prodotto.varianteProdotto.prezzoAttuale));
+				}
+				mostraCheckout();
+			}
+			
+			function errore()
+			{
+				alert("errore");
+			}
+			
+			function mostraCheckout()
+			{
+				var costoTotale = 0;
+				$("td.prezzo").each(function(){ costoTotale += parseInt($(this).html())});
+				if(costoTotale == 0)
+				{
+					$("#checkout").hide();	
+				}
+				else
+				{
+					$("#checkout").show();	
+				}
+				$("#Costo").html("Costo: " + costoTotale);
+			}
+		</script>
+		<script type="text/javascript">
+			$(document).ready
+			(
+				function()
+				{
+					mostraCheckout();
+					
+					$("button.aggiorna").click
+					(
+						function()
+						{
+							var request = { "codice" : $(this).val() };
+							request.quantita = $("#" + request.codice + " input.quantita").val();
+							addToCart(request,successo,errore);
+						}
+					)
+					$("button.elimina").click
+					(
+						function()
+						{
+							var request = { "codice" : $(this).val() };
+							request.quantita = "-1";
+							addToCart(request,successo,errore);
+						}
+					)
+				}
+			)
+		</script>
 	</body>
 </html>

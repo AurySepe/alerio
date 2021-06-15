@@ -1,5 +1,6 @@
-<%@page import="java.text.SimpleDateFormat"%>
+
 <%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.bean.UtenteBean"%>
 <%@page import="java.sql.Date"%>
 <%@page import="model.bean.OrdineBean"%>
@@ -10,7 +11,7 @@
 <%
 	Collection<OrdineBean> ordini = (Collection<OrdineBean>) request.getAttribute("ordini");
 	Collection<UtenteBean> utenti = (Collection<UtenteBean>) request.getAttribute("utenti");
-	DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+	DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 	Date inizio = (Date) request.getAttribute("data-inizio");
 	Date fine = (Date) request.getAttribute("data-fine");
 	UtenteBean utente = (UtenteBean) request.getAttribute("utente");
@@ -25,6 +26,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>ordini</title>
+		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 	</head>
 	
 	<body>

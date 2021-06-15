@@ -18,6 +18,8 @@
 		<meta charset="ISO-8859-1">
 		<title>Ordini</title>
 		<link rel = "stylesheet" href = "css/stileGenerale.css" type = "text/css">
+		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
+		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
 	</head>
 	
 	<body>

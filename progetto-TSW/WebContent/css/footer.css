@@ -4,8 +4,12 @@ footer {
     color: white;
 }
 
+footer table{
+	background-color: black;
+}
+
 /*allineamento e dimensioni testo*/
-footer td, th{
+footer td, footer th{
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 5px;

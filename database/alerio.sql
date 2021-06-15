@@ -74,45 +74,29 @@ create table wish_list
 create table informazioni_di_consegna
 (
 	codice int auto_increment primary key,
+    cliente varchar(40),
     telefono varchar(20) not null,
     nominativo varchar(30) not null,
     citta varchar(40) not null,
     cap char(5),
     numero_civico int not null,
-    via varchar(60) not null
+    via varchar(60) not null,
+    foreign key (cliente) references cliente(email)
+		on update cascade
+        on delete cascade
 );
 
-create table registra
-(
-	email_cliente varchar(40),
-    codice_consegna int,
-    primary key(email_cliente, codice_consegna),
-    foreign key (email_cliente) references cliente(email)
-		on update cascade
-        on delete cascade,
-	foreign key (codice_consegna) references informazioni_di_consegna(codice)
-		on update cascade
-        on delete no action
-);
 
 create table carta_di_credito
 (
-	numero_carta varchar(16) primary key,
+	codice int primary key auto_increment,
+	numero_carta varchar(16),
+    cliente varchar(40),
 	data_scadenza date not null,
-    nominativo varchar(40) not null
-);
-
-create table utilizzo_carta
-(
-	email_cliente varchar(40),
-    numero_carta varchar(16),
-    primary key(email_cliente, numero_carta),
-    foreign key (email_cliente) references cliente(email)
+    nominativo varchar(40) not null,
+    foreign key (cliente) references cliente(email)
 		on update cascade
-        on delete cascade,
-	foreign key (numero_carta) references carta_di_credito(numero_carta)
-		on update cascade
-        on delete no action
+        on delete cascade
 );
 
 create table ordine
@@ -123,12 +107,12 @@ create table ordine
     iva double not null,
     costo_totale double not null,
     tipo_utente char not null check(tipo_utente in ('R', 'G')), /*R per registrato,G per guest*/
-    numero_carta varchar(16) not null,
+    codice_carta int not null,
     codice_consegna int,
     foreign key(email_cliente) references cliente(email)
 		on update cascade
         on delete set null,
-	foreign key (numero_carta) references carta_di_credito(numero_carta)
+	foreign key (codice_carta) references carta_di_credito(codice)
 		on update cascade
         on delete no action,
 	foreign key (codice_consegna) references informazioni_di_consegna(codice)

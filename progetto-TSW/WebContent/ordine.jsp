@@ -19,6 +19,9 @@
 		<meta charset="ISO-8859-1">
 		<link rel = "stylesheet" href = "css/stileGenerale.css" type = "text/css">
 		<title>ordine</title>
+		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
+		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
 	</head>
 	
 	<body>
@@ -26,10 +29,10 @@
 	
 	<div>
 		<div>
-			<p>Indirizzo Spedizione: qualcosa</p>
+			<p>Indirizzo Spedizione: ${ordine.delivery.via}, ${ordine.delivery.cap}, ${ordine.delivery.numeroCivico} </p>
 		</div>
 		<div>
-			<p>Carta usata: qualcosa</p>
+			<p>Carta usata: ${ordine.carta.numeroCarta}</p>
 		</div>
 	</div>
 	<div>

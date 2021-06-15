@@ -6,15 +6,17 @@
 	<meta charset="ISO-8859-1">
 	<title> Homepage </title>
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+	<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
+	<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
 	<link href="css/homepage.css" rel="stylesheet" type="text/css" >
 </head>
 	
 <body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 	
-	
+	<div id = "homepage">
 	<figure>
-            <img class="main" src="/progetto-TSW/img/immagineHomepage.jpg" alt="immagine non visualizzabile" style="width:100%">
+            <img class="main" src="/progetto-TSW/img/immagineHomepage.jpg" alt="immagine non visualizzabile">
      </figure>
 	
 	<table class="esterna">
@@ -76,6 +78,7 @@
                 </tr> 
             </table>>
         </div>  
+    </div>
     </div>
     
     <%@ include file = "fragments/footer.html" %>

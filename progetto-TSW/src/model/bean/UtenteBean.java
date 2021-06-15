@@ -1,5 +1,6 @@
 package model.bean;
 
+import java.util.Collection;
 import java.util.List;
 
 public class UtenteBean {
@@ -77,6 +78,22 @@ public class UtenteBean {
 		this.ordini = ordini;
 	}
 
+	public Collection<CreditCardBean> getCarte() {
+		return carte;
+	}
+
+	public void setCarte(Collection<CreditCardBean> carte) {
+		this.carte = carte;
+	}
+
+	public Collection<DeliveryBean> getIndirizzi() {
+		return indirizzi;
+	}
+
+	public void setIndirizzi(Collection<DeliveryBean> indirizzi) {
+		this.indirizzi = indirizzi;
+	}
+
 
 
 	private String email;
@@ -92,4 +109,9 @@ public class UtenteBean {
 	private boolean registrato;
 	
 	private List<OrdineBean> ordini;
+	
+	private Collection<CreditCardBean> carte;
+	
+	private Collection<DeliveryBean> indirizzi;
+	
 }

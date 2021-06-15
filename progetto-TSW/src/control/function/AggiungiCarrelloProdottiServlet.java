@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import model.Carrello;
+import model.ItemCarrello;
 import model.bean.ProductBean;
 import model.bean.ProductTemplateBean;
 import model.bean.TemplateColorVariantBean;
@@ -30,7 +33,7 @@ public class AggiungiCarrelloProdottiServlet extends HttpServlet
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
-		chiamaErrore(request, response, "il metodo get non è supportato");
+		doPost(request, response);
 	}
 	
 	public void doPost(HttpServletRequest request,HttpServletResponse response)
@@ -61,31 +64,34 @@ public class AggiungiCarrelloProdottiServlet extends HttpServlet
 			{
 				if(numero == null)
 				{
-					cart.aggiungiProdotto(bean);
+					synchronized (cart) 
+					{	
+						cart.aggiungiProdotto(bean);
+					}
 				}
 				else
 				{
 					int quantita = 0;					
 					quantita = Integer.parseInt(numero);
-					cart.settaQuantitaProdotto(bean, quantita); 
+					synchronized (cart) 
+					{	
+						cart.settaQuantitaProdotto(bean, quantita);  
+					}
 				}
 			}
+			ItemCarrello i = cart.getItem(bean);
+			if(i == null)
+			{
+				i = new ItemCarrello(bean,-1);
+			}
+			Gson g = new Gson();
+			response.getWriter().print(g.toJson(i));
+			response.setStatus(HttpServletResponse.SC_OK);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 		}
-		RequestDispatcher dispacher = getServletContext().getRequestDispatcher(response.encodeURL("/carrello.jsp"));
-		dispacher.forward(request, response);
-		
-			
-	
-	}
-	
-	private void chiamaErrore(HttpServletRequest request,HttpServletResponse response,String errore) throws ServletException, IOException
-	{
-		request.setAttribute("error", errore);
-		RequestDispatcher dispacher = getServletContext().getRequestDispatcher("/error.jsp");
-		dispacher.forward(request, response);
 	}
 }
