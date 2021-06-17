@@ -291,6 +291,8 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			if(rs.next())
 			{
 				result = rs.getInt("nuovo_codice");
+				if(result == 0)
+					result = 1;
 			}
 		}
 		finally

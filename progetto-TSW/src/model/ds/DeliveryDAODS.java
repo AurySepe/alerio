@@ -25,8 +25,8 @@ public class DeliveryDAODS implements DeliveryDAO {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO " + TABLE_NAME + " (telefono,nominativo,citta,cap,numero_civico,via,cliente) " 
-							+ " VALUES( ? , ? , ? , ? , ? , ? , ?) ";  
+		String insertSQL = "INSERT INTO " + TABLE_NAME + " (telefono,nominativo,citta,cap,numero_civico,via,cliente,codice) " 
+							+ " VALUES( ? , ? , ? , ? , ? , ? , ? , ?) ";  
 				
 				
 		try
@@ -40,6 +40,7 @@ public class DeliveryDAODS implements DeliveryDAO {
 			preparedStatement.setInt(5, delivery.getNumeroCivico());
 			preparedStatement.setString(6, delivery.getVia());
 			preparedStatement.setString(7, delivery.getEmailCliente());
+			preparedStatement.setInt(8, delivery.getCodice());
 			preparedStatement.executeUpdate();
 		}
 		finally
@@ -236,6 +237,43 @@ public class DeliveryDAODS implements DeliveryDAO {
 			}
 		}
 		return deliverys;
+	}
+	
+	public synchronized int nextCode() throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		int result = 1;
+
+		String codiceSQL = "select max(codice) + 1 as nuovo_codice from " + TABLE_NAME;
+		
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(codiceSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next())
+			{
+				result = rs.getInt("nuovo_codice");
+				if(result == 0)
+					result = 1;
+			}
+		}
+		finally
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return result;
 	}
 	
 private static DataSource ds;

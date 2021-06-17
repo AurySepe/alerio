@@ -28,7 +28,7 @@ public class OrdineDAODS implements OrdineDAO {
 		
 		String insertSQL = "INSERT INTO " + TABLE_NAME 
 							+ " (codice,email_cliente, data_di_acquisto, iva, "
-							+ "costo_totale, tipo_utente, numero_carta, codice_consegna) "
+							+ "costo_totale, tipo_utente, codice_carta, codice_consegna) "
 							+ " VALUES (?,?, ?, ?, ?, ?, ?, ?) ";
 		
 		try
@@ -260,6 +260,8 @@ public class OrdineDAODS implements OrdineDAO {
 			if(rs.next())
 			{
 				result = rs.getInt("nuovo_codice");
+				if(result == 0)
+					result = 1;
 			}
 		}
 		finally

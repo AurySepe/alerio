@@ -59,7 +59,7 @@
 		<%} %>
 			
 		</table>
-			<form id = "checkout" name = "checkout" action="checkout" method = "post">
+			<form id = "checkout" name = "checkout" action="mostraCheckout" method = "post">
 				<p>Effettua il checkout</p>
 				<button type = "submit">Checkout</button>
 				<p id = "Costo">Costo:${carrello.costoTotale}</p>

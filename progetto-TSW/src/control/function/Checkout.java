@@ -14,6 +14,8 @@ import control.UtenteServlet;
 import model.Carrello;
 import model.ItemCarrello;
 import model.bean.ComposizioneBean;
+import model.bean.CreditCardBean;
+import model.bean.DeliveryBean;
 import model.bean.OrdineBean;
 import model.bean.UtenteBean;
 import model.dao.ComposizioneDAO;
@@ -51,15 +53,18 @@ public class Checkout extends UtenteServlet
 		{
 			try
 			{
+				int cardCode = Integer.parseInt(request.getParameter("carta"));
+				int deliveryCode = Integer.parseInt(request.getParameter("indirizzo"));
 				OrdineBean ordine = new OrdineBean();
 				ordine.setCodiceOrdine(DAOS.getOrdineModel().nextCode());
+				System.out.println(ordine.getCodiceOrdine());
 				ordine.setEmail(utente.getEmail());
 				ordine.setData(new Date((new java.util.Date()).getTime()) );
 				ordine.setIva(0.22);
 				ordine.setCosto(cart.getCostoTotale());
 				ordine.setTipoUtente("R");
-				ordine.setCodiceCarta(1);
-				ordine.setCodiceConsegna(1);
+				ordine.setCodiceCarta(cardCode);
+				ordine.setCodiceConsegna(deliveryCode);
 				DAOS.getOrdineModel().doSave(ordine);
 				for(ItemCarrello i : cart.getElementi())
 				{
@@ -72,8 +77,7 @@ public class Checkout extends UtenteServlet
 				}
 				synchronized (session) 
 				{
-					session.setAttribute("carrello", new Carrello());
-					
+					session.setAttribute("carrello", new Carrello());	
 				}
 				response.sendRedirect(response.encodeRedirectURL("ordine?codice=" + ordine.getCodiceOrdine()));
 			}

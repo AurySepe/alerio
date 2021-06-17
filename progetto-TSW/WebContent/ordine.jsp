@@ -48,7 +48,7 @@
 			<% for(ComposizioneBean c : ordine.getComposizione())
 			{
 				request.setAttribute("composizione", c);	
-				costoTotale += c.getPrezzo();
+				costoTotale += c.getPrezzo()*c.getQuantita();
 			%>
 			<tr>
 				<td><img src = "immagine?codice=${composizione.prodotto.varianteProdotto.immaginiVariante[0].codice }" width="80" height="80"></td>

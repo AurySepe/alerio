@@ -20,4 +20,6 @@ public interface DeliveryDAO
 	public DeliveryBean doRetriveByOrdine(OrdineBean ordine) throws SQLException;
 	
 	public Collection<DeliveryBean> doRetrieveAllByUtente(UtenteBean utente) throws SQLException;
+	
+	public int nextCode() throws SQLException;
 }

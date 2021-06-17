@@ -40,7 +40,7 @@
 			<%} %>
 			<div id = "aggiungi-carta">
 				<form name = "aggiungi-carta">
-					<div>
+				<div>
 					<div>Numero Carta: <input type = "text" maxlength="20" name = "numeroCarta"></div>
 					<div>
 						<span>Data di scadenza: <input type = "date"  name = "dataScadenza"></span>  
@@ -56,42 +56,27 @@
 		</div>
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
-		<script type="text/javascript" src = "javscript/carta.js"></script>
+		<script type="text/javascript" src = "javascript/carta.js"></script>
+		<script type="text/javascript">
+		function success(data)
+		{
+			data = JSON.parse(data);
+			var date = new Date(data.dataScadenza);
+			data.dataScadenza = "" + (date.getMonth() + 1).toLocaleString('en-US', { minimumIntegerDigits: 2,useGrouping: false})
+			    + "/" + (date.getFullYear()) 
+			var s = "<div class = 'carta'><div>" + data.numeroCarta + "</div>\n " +
+			"<div><span>" + data.dataScadenza + "</span>  <span>" + data.nominativo + "</span></div></div>"
+
+			$(s).insertBefore( $( "#aggiungi-carta" ) );
+			
+		};
+		</script>
 		<script type="text/javascript">
 			$(document).ready
 			(
 				function()
 				{
-					$("#nuovaCarta").click
-					(
-						function()
-						{
-							var dati = {};
-							$("#aggiungi-carta input").each
-							(
-								function()
-								{
-									dati[$(this).attr("name")] = $(this).val();
-								}
-							)
-							var request = {"richiesta" : JSON.stringify(dati)};
-							var success = 
-							function(data)
-							{
-								data = JSON.parse(data);
-								var date = new Date(data.dataScadenza);
-								data.dataScadenza = "" + (date.getMonth() + 1).toLocaleString('en-US', { minimumIntegerDigits: 2,useGrouping: false})
-								    + "/" + (date.getFullYear()) 
-								var s = "<div class = 'carta'><div>" + data.numeroCarta + "</div>\n " +
-								"<div><span>" + data.dataScadenza + "</span>  <span>" + data.nominativo + "</span></div></div>"
-
-								$(s).insertBefore( $( "#aggiungi-carta" ) );
-								
-							};
-							$.get("/progetto-TSW/nuovacarta",request,success);
-						}	
-							
-					)
+					nuovaCarta(success);
 				}
 			)
 		</script>
