@@ -1,28 +1,38 @@
 /*setta sfondo e colore del testo*/
 footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 98%;
+	height: auto;
     background-color: black;
     color: white;
+    margin: 0 1%;
+    padding: 0 1%;
 }
 
-footer table{
-	background-color: black;
-}
-
-/*allineamento e dimensioni testo*/
-footer td, footer th{
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: left
-}
-
-/*ingrandisce i titoli delle sezioni*/
-footer th{
-    font-size: x-large;
+footer div {
+	text-align: left;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 /*setto il colore dei link sempre a bianco*/
 footer a {
     color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px){
+	footer{
+		flex-direction: column;
+		justify-content: center;
+	}
+	
+	footer div {
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+	
 }
