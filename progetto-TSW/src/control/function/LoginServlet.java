@@ -2,6 +2,8 @@ package control.function;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import model.bean.UtenteBean;
 import model.dao.UtenteDAO;
@@ -34,19 +38,22 @@ public class LoginServlet extends HttpServlet {
 		String pwd=request.getParameter("password");
 		HttpSession session = request.getSession(true);
 		UtenteBean utente=new UtenteBean();
+		Gson g = new Gson();
 		
 		try 
 		{
+			Map<String, Object> resp = new HashMap<String, Object>();
 			utente.setEmail(mail);
 			utente.setPwd(pwd);
 			utente=DAOS.getUtenteModel().verificaUtente(utente);
+			
 			if(utente==null)
 			{		
-				RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(response.encodeURL("/loginPage.jsp"));
-				dispatcher.forward(request, response);
+				resp.put("loggato", false);
 			}
 			else
 			{
+				resp.put("loggato", true);
 				String paginaPrecedente;
 				synchronized (session) 
 				{
@@ -57,17 +64,21 @@ public class LoginServlet extends HttpServlet {
 				}
 				
 				if(paginaPrecedente !=null)
-					response.sendRedirect(paginaPrecedente);
+					resp.put("pagina", paginaPrecedente);
 				else
-					response.sendRedirect("homepage.jsp"); 
-			}
+					resp.put("pagina", "homepage.jsp");
 				
+				
+			}
+			response.getWriter().println(g.toJson(resp));
+			response.setStatus(200);	
 			
 				
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			response.sendError(403);		
 		}
 		
 	}
