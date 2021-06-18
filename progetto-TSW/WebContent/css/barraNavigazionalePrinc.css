@@ -65,6 +65,32 @@ header ul{
 
 header #titolo {
 	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+header a:link{
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+header a:hover{
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+header a:active{
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+header a:visited{
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
 }
 
 #placeholder 

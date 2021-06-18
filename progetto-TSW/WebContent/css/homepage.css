@@ -1,18 +1,24 @@
 @charset "ISO-8859-1"; 
 
-#homepage .interna{
+body{
 	width: 100%;
+}
+
+#homepage .interna{
+	display: flex;
+	justify-content: space-between;
 	height: 100%;
-	table-layout: fixed;
 }
 
 #homepage .esterna{
-	width: 98%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 96%;
     height: 20%;
     padding: 2%;
-    margin: 3% 1%;
-    border: 5%;
-    table-layout: fixed;
+    margin: 2% 1%;
+    border: 0 5%;
     color: black;
     align-content: center;
     text-align: center;
@@ -22,21 +28,32 @@
     color: violet;
 }
 
-#homepage table {
+#homepage div.linea p{
+	width: 46%;
+	margin: 3%;
+}
+
+#homepage div.tit{
+	width: 46%;
+	flex-direction: column;
+}
+
+#homepage .linea{
+	display: flex;
 	text-align: center;
 	width: 100%;
 }
 
-#homepage th{
-	text-align: center;
-}
-
 #homepage .main{
         width:100%;
- }
+}
+
+#homepage span{
+	font-weight: bold;
+}
  
-#homepage .tit_recensioni{
- 	text-align: center;
+#homepage h1{
+	text-align: center;
  	color: mediumvioletred;
  }
  
@@ -44,3 +61,41 @@
 {
 	margin-top: 0;
 }
+
+
+#homepage .recensioni{
+	justify-content: center;
+}
+
+#homepage .imgRec{
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+	width: auto;
+}
+
+@media screen and (max-width: 600px) {
+  #homepage .linea {
+    flex-direction: column;
+  }
+  
+  #homepage div.tit{
+  	width: 100%;
+  	margin: 2% 0;
+  }
+  
+  #homepage div.linea p{
+  	width: 100%;
+  	margin: 2% 0;
+  }
+  
+  #homepage .imgRec{
+  	flex-direction: column;
+  	margin: 0 1%;
+  	padding: 0 1%;
+  }
+  
+}
+	
+	
+
