@@ -62,16 +62,18 @@ body{
 	margin-top: 0;
 }
 
-
 #homepage .recensioni{
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	width: 100%;
 }
 
 #homepage .imgRec{
-	display: flex;
-	justify-content: space-between;
-	height: 100%;
-	width: auto;
+	flex-direction: column;
+	justify-content: center;
+	height: auto;
+	width: 100%;
 }
 
 @media screen and (max-width: 600px) {
@@ -96,6 +98,3 @@ body{
   }
   
 }
-	
-	
-

@@ -6,15 +6,12 @@ function controllaInput(dati,nome)
 {
 	var elemento = dati[nome];
 	var valore = $("#" + nome + " input").val();
-    if(!elemento.validazione(valore))
+	var risposta = elemento.validazione(valore);
+    if(!risposta.valore)
     {
-      $("#"+ nome +" span.errore").html(elemento.errorMessage);
       dati.submit = false;
     }
-    else
-    {
-      	$("#"+ nome +" span.errore").html("");
-    }
+    $("#"+ nome +" span.errore").html(risposta.messaggio);
 }
 
 function valEmail(s)
