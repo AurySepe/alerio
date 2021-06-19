@@ -1,7 +1,7 @@
 <%@page import="model.bean.TemplateColorVariantBean"%>
 <%@page import="model.bean.ProductTemplateBean"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <%
@@ -15,9 +15,9 @@
 
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>Modello</title>
-		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
+		<link href="/progetto-TSW/css/stileGenerale.css" rel="stylesheet" type="text/css" >
 	</head>
 
 	<body>
@@ -29,9 +29,9 @@
 				COLLEZIONE:${modello.collezione}</br>
 				CATEGORIA:${modello.categoria}</br>
 			</div>
-			<div id = "form">
+			<div id = "varianti">
 				Varianti:</br>
-				<div id = "varianti">
+				<div>
 				<%for(TemplateColorVariantBean v : modello.getVariantiModello()) {
 					request.setAttribute("variante", v);
 				%>
@@ -45,27 +45,74 @@
 		</div>
 		<div>	
 			<h3>Aggiungi Nuova Variante</h3>	
-		 	<form action="nuovaVariante" method="post" enctype="multipart/form-data">
-		 		Colore:<input name = "colore" type = "text" required><br/>
-		 		In Vendita:<input name = "inVendita" type = "checkbox" value = "true"><br/>
-		 		Prezzo:<input name = "prezzo" type = "number" required><br/>
-		 		S:<input name = "taglie" type = "checkbox" value = "S">
-		 		quantit�:<input name = "S-quantit�" type = "number"><br/>
-		 		M:<input name = "taglie" type = "checkbox" value = "M">
-		 		quantit�:<input name = "M-quantit�" type = "number"><br/>
-		 		L:<input name = "taglie" type = "checkbox" value = "L">
-		 		quantit�:<input name = "L-quantit�" type = "number"><br/>
+		 	<form id = "form-variante" action="nuovaVariante" method="post" enctype="multipart/form-data">
+		 		<div class = "input" id = "colore">		 		
+		 			Colore:<br/>
+		 			<input name = "colore" type = "text" required><br/>
+		 			<span class = "errore"></span>
+		 		</div>
+		 		<div class = "input" id = "inVendita">
+		 			In Vendita:<br/>
+		 			<input name = "inVendita" type = "checkbox" value = "true"><br/>
+		 			<span class = "errore"></span>
+		 		</div>
+		 		<div class = "input" id = "prezzo">
+			 		Prezzo:<br/>
+			 		<input name = "prezzo" type = "number" required><br/>
+			 		<span class = "errore"></span>
+		 		</div>
+		 		<div class = "taglie" >
+		 		<div>
+		 			<div class = "input taglia" id = "S">		 		
+		 				S:<br/>
+		 				<input name = "taglie" type = "checkbox" value = "S"><br/>
+		 				<span class = "errore"></span>
+		 			</div>
+		 			<div class = "input quantità" id = "S-quantità">	 		
+			 			quantità:<br/>
+			 			<input name = "S-quantità" type = "number"><br/>
+			 			<span class = "errore"></span>
+		 			</div>
+		 		</div>
+		 		<div>
+		 			<div class = "input taglia" id = "M">		 		
+		 				M:<br/>
+		 				<input name = "taglie" type = "checkbox" value = "M"><br/>
+		 				<span class = "errore"></span>
+		 			</div>
+		 			<div class = "input quantità" id = "M-quantità">	 		
+			 			quantità:<br/>
+			 			<input name = "M-quantità" type = "number"><br/>
+			 			<span class = "errore"></span>
+		 			</div>
+		 		</div>
+		 		<div>
+		 			<div class = "input taglia" id = "L">		 		
+		 				L:<br/>
+		 				<input name = "taglie" type = "checkbox" value = "L"><br/>
+		 				<span class = "errore"></span>
+		 			</div>
+		 			<div class = "input quantità" id = "L-quantità">	 		
+			 			quantità:<br/>
+			 			<input name = "L-quantità" type = "number"><br/>
+			 			<span class = "errore"></span>
+		 			</div>
+		 		</div>
+		 		<span class = "errore"></span>
+		 		</div>
 		 		<input name = "codice" type = "hidden" value = "${modello.codice}"><br/>
 		 		<button type = "button" id = "aggiungiFoto" >Aggiungi Foto</button><br/>
-		 		<button type = "submit">Salva</button>
-		 		<script src = "../javascript/jquery-3.6.0.js"></script>
+		 		<button type = "button" id = "variante-button">Salva</button>
+		 		<script src = "/progetto-TSW/javascript/jquery-3.6.0.js"></script>
+		 		<script src = "/progetto-TSW/javascript/validation/modello.js"></script>
+		 		<script src = "/progetto-TSW/javascript/validation.js"></script>
 		 		<script type="text/javascript">
 		 			var i = 1;
 		 			$(document).ready
 		 			(
 		 				function()
 		 				{
-		 					$("input.attivaV").click
+		 					$("#varianti input.attivaV").click
 		 					(
 		 						function()
 		 						{
@@ -80,15 +127,35 @@
 		 					(
 		 						function()
 		 						{
-		 							$("<div><input type = file name = immagine" + i + " accept = image/*></div>").insertBefore( $( "#aggiungiFoto" ) );
+		 							s = 
+		 							'<div class = "input foto" id = "immagine'+ i +'">' +
+		 					 			'<input name = "immagine' + i +'"type = "file"><br/>' +
+		 					 			'<span class = "errore"></span>' +
+		 				 			'</div>';
+		 							$(s).insertBefore( $( "#aggiungiFoto" ) );
 		 							i++;
 		 						}
 		 					);
 		 					
+		 					$(".taglie input").click
+		 					(
+		 						function()
+		 						{
+		 							var s = $(this).val() + "-quantità";
+		 							var disable = !this.checked;
+		 							$("#" + s + " input").prop( "disabled", disable );
+		 							$("#" + s + " input").val("");
+		 						}
+		 					)
+		 					
+		 					$(".quantità input").prop( "disabled", true );
+		 					
 		 					if($(".variante").length == 0)
 		 					{
-		 						$("#form").hide();
+		 						$("#varianti").hide();
 		 					}
+		 					
+		 					validazioneModello();
 		 				}
 		 					
 		 			);

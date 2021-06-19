@@ -1,6 +1,6 @@
 <%@page import="model.bean.UtenteBean"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
     <%
     UtenteBean utente = (UtenteBean) request.getAttribute("utente");
@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>Pagina Utente</title>
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">

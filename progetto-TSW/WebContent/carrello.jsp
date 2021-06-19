@@ -1,7 +1,7 @@
 <%@page import="model.ItemCarrello"%>
 <%@page import="model.Carrello"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
 	Carrello cart = (Carrello)session.getAttribute("carrello");
@@ -16,7 +16,7 @@
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>Carrello</title>
 	</head>
 	<body>
@@ -47,7 +47,7 @@
 				<td>
 					<div>
 						<input class = "quantita" type = "number" min = "1"   name = "quantita">
-						<Button class = "aggiorna" type = "submit" value = "${item.prodotto.codice}">modifica quantità</Button>
+						<Button class = "aggiorna" type = "submit" value = "${item.prodotto.codice}">modifica quantitÃ </Button>
 					</div>
 					<div>
 						<Button class = "elimina" type = "submit" value = "${item.prodotto.codice}">elimina</Button>

@@ -1,8 +1,8 @@
 <%@page import="model.bean.DeliveryBean"%>
 <%@page import="java.util.Collection"%>
 <%@page import="model.bean.UtenteBean"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
     <%
     UtenteBean utente = (UtenteBean) request.getAttribute("utente");
@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>informazioni di consegna</title>
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
@@ -36,47 +36,74 @@
 				</div>
 			
 			<%} %>
-			<div id = "aggiungi-indirizzo">
-				<form name = "aggiungi-indirizzo">
+			<div >
+				<form name = "aggiungi-indirizzo" id = "aggiungi-indirizzo">
 				<div>
-					<div>Città: <input type = "text" name = "citta"></div>
-					<div>Cap: <input type = "text" name = "cap"></div>
-					<div>Via: <input type = "text" name = "via"></div>
-					<div>numero civico: <input type = "number" name = "numeroCivico"></div>
-					<div>Nominativo: <input type = "text" name = "nominativo"></div>
-					<div>Telefono: <input type = "text" name = "telefono"></div>
+					
+					<div class = "input" id = "citta">
+						CittÃ : <br/>
+						<input type = "text" name = "citta"><br/>
+						<span class = "errore"></span>
+					</div>
+					<div class = "input" id = "cap">
+						Cap: <br/>
+						<input type = "text" name = "cap"><br/>
+						<span class = "errore"></span>
+					</div>
+					<div class = "input" id = "via">
+						Via: <br/>
+						<input type = "text" name = "via"><br/>
+						<span class = "errore"></span>	
+					</div>
+					<div class = "input" id = "numeroCivico">
+						numero civico: <br/>
+						<input type = "number" name = "numeroCivico"><br/>
+						<span class = "errore"></span>
+					</div>
+					<div class = "input" id = "nominativoIndirizzo">
+						Nominativo: <br/>
+						<input type = "text" name = "nominativo"><br/>
+						<span class = "errore"></span>
+					</div>
+					<div class = "input" id = "telefono">
+						Telefono: <br/>
+						<input type = "text" name = "telefono"><br/>
+						<span class = "errore"></span>
+					</div>
 					<input type = "hidden" name = "emailCliente" value = "${utente.email}">
 				</div>
-				</form>
 				<div>
-						<button id = "nuovoIndirizzo">aggiungi</button>
+						<button id = "nuovoIndirizzo" type = "button">aggiungi</button>
 				</div>
+				</form>
 			</div>
 		</div>
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
 		<script type="text/javascript" src = "javascript/indirizzo.js"></script>
-		<script type="text/javascript">
-		function success(data)
-		{
-			data = JSON.parse(data);
-			s = 
-			"<div class = 'indirizzo'>\n" +
-				"<div>" + data.citta + ", "+ data.cap +", "+ data.via +", "+ data.numeroCivico +"</div>\n" +
-				"<div>Nominativo: "+ data.nominativo +"</div>\n" +
-				"<div>Telefono: "+ data.telefono +"</div>\n" +
-			"</div>\n"
-			
-			$(s).insertBefore( $( "#aggiungi-indirizzo" ) );
-			
-		}
-		</script>
+		<script src = "javascript/validation.js"></script>
+       	<script src = "javascript/validation/indirizzi.js"></script>
+       	<script type="text/javascript">
+       	function success(data)
+       	{
+       		data = JSON.parse(data);
+       		s = 
+       		"<div class = 'indirizzo'>\n" +
+       			"<div>" + data.citta + ", "+ data.cap +", "+ data.via +", "+ data.numeroCivico +"</div>\n" +
+       			"<div>Nominativo: "+ data.nominativo +"</div>\n" +
+       			"<div>Telefono: "+ data.telefono +"</div>\n" +
+       		"</div>\n"
+       				
+       		$(s).insertBefore( $( "#aggiungi-indirizzo" ) );
+       				
+       	}
+       	</script>
 		<script type="text/javascript">
 			$(document).ready
 			(
 				function()
 				{
-					nuovoIndirizzo(success);
+					validazioneIndirizzi(success);
 				}
 			)
 		</script>

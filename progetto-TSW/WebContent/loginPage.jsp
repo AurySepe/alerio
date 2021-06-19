@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
 	<title> Log-in page </title>
 	
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
@@ -17,12 +17,14 @@
                <h1> Log-in </h1>
                <div class = "input" id = "email">  
                 Email: <br>
-                <input type="text" name="email" placeholder="Enter email"><span class = "errore"></span> <br>
+                <input type="text" name="email" placeholder="Enter email"><br>
+                <span class = "errore"></span>
                </div>
                
                <div class = "input" id = "password">
                 Password: <br>
-                <input type="password" name="password" placeholder="Enter password"><span class = "errore"></span> <br> 
+                <input type="password" name="password" placeholder="Enter password"><br> 
+                <span class = "errore"></span> 
                </div>
                <div>
  
@@ -36,66 +38,13 @@
         </div>
         <script src = "javascript/jquery-3.6.0.js"></script>
         <script src = "javascript/validation.js"></script>
-        <script type="text/javascript">
-        	function controllaForm()
-        	{
-        		var submit = true;
-        		var email = $("#email input").val();
-        		if(!valEmail(email))
-        		{
-        			 $("#email span.errore").html("email non valida");
-        			 submit = false;
-        		}
-        		else
-        		{
-        			$("#email span.errore").html("");
-        		}
-        		var password = $("#password input").val();
-        		if(!valPassword(password))
-        		{
-        			 $("#password span.errore").html("password non valida");
-        			 submit = false;	
-        		}
-        		else
-        		{
-        			$("#password span.errore").html("");
-        		}
-        		
-        		return submit;
-        		
-        	}
-        	
-        	function cambiaPagina(response)
-        	{
-        		response = JSON.parse(response);
-        		if(response.loggato)
-        		{
-        			window.location.href =  response.pagina;
-        		}
-        		else
-        		{
-        			$("#form-login > span.errore").html("account non trovato");
-        		}
-        	}
-        </script>
+        <script src = "javascript/validation/login.js"></script>
         <script>
         	$(document).ready
         	(
         		function()
         		{
-        			$("#login-button").click
-        			(
-        				function()
-        				{
-        					if(controllaForm())
-        					{
-        						var email = $("#email input").val();
-        						var password = $("#password input").val();
-        						var request = {"email" : email , "password" : password};
-        						$.post("/progetto-TSW/LoginServlet",request,cambiaPagina);
-        					}
-        				}
-        			)
+        			validazioneLogin();
         		}
         	)
         </script>

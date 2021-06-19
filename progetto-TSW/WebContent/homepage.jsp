@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
 	<title> Homepage </title>
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 	<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
@@ -48,7 +48,7 @@
                     </div>
                  </div>
                 
-            <p> La nostra attenzione al cliente è massima, ci teniamo a soddisfare il nostro pubblico e speriamo che la nostra trasparenza 
+            <p> La nostra attenzione al cliente Ã¨ massima, ci teniamo a soddisfare il nostro pubblico e speriamo che la nostra trasparenza 
             	sia gradita. Intanto, come potete vedere, sotto riportiamo alcune testimonianze di clienti che siamo riusciti a soddisfare. 
             	Ci auguriamo di cuore di riuscire a conquistare anche voi, buono shopping! 
         	</p>

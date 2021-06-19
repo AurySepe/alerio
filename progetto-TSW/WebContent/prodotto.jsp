@@ -2,8 +2,8 @@
 <%@page import="model.bean.ProductBean"%>
 <%@page import="model.bean.TemplateColorVariantBean"%>
 <%@page import="model.bean.ProductTemplateBean"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <%
     TemplateColorVariantBean bean = (TemplateColorVariantBean)request.getAttribute("prodotto");
@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title> ${prodotto.modelloProdotto.nome}</title>
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">

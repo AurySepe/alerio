@@ -1,4 +1,4 @@
-<%@page import="model.Carrello"%>
+UTF-8<%@page import="model.Carrello"%>
 <%@page import="model.ItemCarrello"%>
 <%@page import="model.bean.DeliveryBean"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -6,8 +6,8 @@
 <%@page import="model.bean.CreditCardBean"%>
 <%@page import="java.util.Collection"%>
 <%@page import="model.bean.UtenteBean"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
     <%
     UtenteBean utente = (UtenteBean) request.getAttribute("utente");
@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>Checkout</title>
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
@@ -33,15 +33,15 @@
 	<body>
 		<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 		<div id = "checkout">
-			<form action="checkout" name = "checkout" method = "post">
-				<fieldset>
+			<form action="checkout" name = "checkout" method = "post" id = "checkout-form">
+				<fieldset id = "indirizzo">
 					<legend>indirizzo di spedizione</legend>
 					<div>
 						<% for(DeliveryBean delivery : indirizzi ) {
 							request.setAttribute("indirizzo", delivery);
 						%>
 						<div>
-							<input type = "radio" name = "indirizzo" value = "${indirizzo.codice}" required>
+							<input class = "indirizzo-radio" type = "radio" name = "indirizzo" value = "${indirizzo.codice}" required>
 							<div class = "indirizzo">
 								<div>${indirizzo.citta}, ${indirizzo.cap}, ${indirizzo.via}, ${indirizzo.numeroCivico}</div>
 								<div>Nominativo: ${indirizzo.nominativo}</div>
@@ -51,30 +51,55 @@
 			
 						<%} %>
 						<div id = "aggiungi-indirizzo">
-							<div>
-								<div>Città: <input type = "text" name = "citta"></div>
-								<div>Cap: <input type = "text" name = "cap"></div>
-								<div>Via: <input type = "text" name = "via"></div>
-								<div>numero civico: <input type = "number" name = "numeroCivico"></div>
-								<div>Nominativo: <input type = "text" name = "nominativo"></div>
-								<div>Telefono: <input type = "text" name = "telefono"></div>
-								<input type = "hidden" name = "emailCliente" value = "${utente.email}">
-							</div>
-				
-							<div>
-								<button type = "button" id = "nuovoIndirizzo">aggiungi</button>
-							</div>
+								<div>
+					
+									<div class = "input" id = "citta">
+										CittÃ : <br/>
+										<input type = "text" name = "citta"><br/>
+										<span class = "errore"></span>
+									</div>
+									<div class = "input" id = "cap">
+										Cap: <br/>
+										<input type = "text" name = "cap"><br/>
+										<span class = "errore"></span>
+									</div>
+									<div class = "input" id = "via">
+										Via: <br/>
+										<input type = "text" name = "via"><br/>
+										<span class = "errore"></span>	
+									</div>
+									<div class = "input" id = "numeroCivico">
+										numero civico: <br/>
+										<input type = "number" name = "numeroCivico"><br/>
+										<span class = "errore"></span>
+									</div>
+									<div class = "input" id = "nominativoIndirizzo">
+										Nominativo: <br/>
+										<input type = "text" name = "nominativo"><br/>
+										<span class = "errore"></span>
+									</div>
+									<div class = "input" id = "telefono">
+										Telefono: <br/>
+										<input type = "text" name = "telefono"><br/>
+										<span class = "errore"></span>
+									</div>
+									<input type = "hidden" name = "emailCliente" value = "${utente.email}">
+								</div>
+								<div>
+									<button id = "nuovoIndirizzo" type = "button">aggiungi</button>
+								</div>
 						</div>
 					</div>
+					<span class = "errore"></span>
 				</fieldset>
-				<fieldset>
+				<fieldset id = "pagamento">
 					<legend>Metodo di pagamento</legend>
 					<div>
 						<% for(CreditCardBean creditCard : carte ) {
 							request.setAttribute("carta", creditCard);
 						%>
 						<div>
-							<input type = "radio" name = "carta" value = "${carta.codice}" required>
+							<input class = "carta-radio" type = "radio" name = "carta" value = "${carta.codice}" required>
 							<div class = "carta">
 								<div>${carta.numeroCarta}</div>
 								<div><span><%= format.format(creditCard.getDataScadenza()) %></span>  <span>${carta.nominativo}</span></div>
@@ -83,18 +108,32 @@
 						<%} %>
 					</div>
 					<div id = "aggiungi-carta">
-							<div>
-								<div>Numero Carta: <input type = "text" maxlength="20" name = "numeroCarta"></div>
-								<div>
-									<span>Data di scadenza: <input type = "date"  name = "dataScadenza"></span>  
-									<span>Nominativo: <input type = "text"  name = "nominativo"></span>
-									<input type = "hidden" value = "${utente.email}" name = "emailCliente">
-								</div>
+				
+						<div>
+							<div class = "input" id = "numeroCarta">
+								Numero Carta:<br/>
+								<input type = "text" maxlength="20" name = "numeroCarta"><br/>
+								<span class = "errore"></span>
 							</div>
+						<div>
+							<div class = "input" id = "dataScadenza">					
+								<span>Data di scadenza:</span><br/>
+								<input type = "date"  name = "dataScadenza"><br/>
+								<span class = "errore"></span> 
+							</div>
+							<div class = "input" id = "nominativoCarta">
+								<span>Nominativo: </span><br/>
+								<input type = "text"  name = "nominativo"><br/>
+								<span class = "errore"></span> 
+							</div>
+							<input type = "hidden" value = "${utente.email}" name = "emailCliente">
+						</div>
+						</div>
 							<div>
-								<button type = "button" id = "nuovaCarta">aggiungi</button>
+								<button id = "nuovaCarta" type = "button">aggiungi</button>
 							</div>
 					</div>
+					<span class = "errore"></span>
 				</fieldset>
 				<fieldset>
 					<legend>Riepilogo ordine</legend>
@@ -133,7 +172,7 @@
 					</div>
 				</fieldset>
 				<div>
-					<button type = "submit">acquista</button>
+					<button type = "button" id = "acquista">acquista</button>
 				</div>
 			</form>
 		</div>
@@ -141,6 +180,10 @@
 		<script src = "javascript/jquery-3.6.0.js"></script>
 		<script type="text/javascript" src = "javascript/indirizzo.js"></script>
 		<script type="text/javascript" src = "javascript/carta.js"></script>
+		<script src = "javascript/validation.js"></script>
+       	<script src = "javascript/validation/pagamenti.js"></script>
+       	<script src = "javascript/validation/indirizzi.js"></script>
+       	<script src = "javascript/validation/checkout.js"></script>
 		<script type="text/javascript">
 		function successIndirizzo(data)
 		{
@@ -185,8 +228,9 @@
 			(
 				function()
 				{
-					nuovoIndirizzo(successIndirizzo);
-					nuovaCarta(successCarta);
+					validazionePagamenti(successCarta);
+					validazioneIndirizzi(successIndirizzo);
+					validazioneCheckout()
 					
 				}
 			)

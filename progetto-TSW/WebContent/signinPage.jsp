@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
 	<title> Sign-in page </title>
 	
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
@@ -45,7 +45,7 @@
 
         <div>
              <button id = "sigin-button" class="bottone" type="button"> Sign in </button>
-             <button class="bottone" type="reset"> Reset </button>
+             <button id = "reset-button"class="bottone" type="button"> Reset </button>
         </div>
         <span class = "errore"></span>
      </form>
@@ -53,56 +53,13 @@
     </div>
    		<script src = "javascript/jquery-3.6.0.js"></script>
         <script src = "javascript/validation.js"></script>
-        <script type="text/javascript">
-        	
-        	function controllaForm()
-        	{
-        		var elementi = {};
-        		elementi.submit = true;
-        		elementi.email = {"validazione" : valEmail, "errorMessage" : "l'email non è valida"};
-        		elementi.nome = {"validazione" : valNome, "errorMessage" : "il nome non è valido"};
-        		elementi.cognome = {"validazione" : valCognome, "errorMessage" : "il cognome non è valido"};
-        		elementi.password = {"validazione" : valPassword, "errorMessage" : "la password non è valida"};
-        		$("#sigin-form div.input").each
-        		(
-        				function ()
-        				{
-        					controllaInput(elementi,$(this).attr("id"))
-        				}
-        				
-        		);
-        		var email = $("#email input").val();
-        		if(checkEmail(email))
-        		{
-        			elementi.submit = false;
-        			$("#email span.errore").html("è già presente un account con questa mail");
-        		}
-        		else
-        		{
-        			$("#email span.errore").html("");
-        		}
-        		
-        		return elementi.submit;	
-        	}
-        	
-        </script>
+       	<script src = "javascript/validation/signin.js"></script>
         <script>
         	$(document).ready
         	(
         		function()
         		{
-        			var genere = document.getElementsByName('genere');
-        			genere[0].checked = true;
-        			$("#sigin-button").click
-        			(
-        				function()
-        				{
-        					if(controllaForm())
-        					{
-        						$("#sigin-form").submit();
-        					}
-        				}
-        			)
+        			validazioneSignIn();
         		}
         	)
         </script>
