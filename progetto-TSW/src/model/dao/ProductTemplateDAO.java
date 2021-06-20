@@ -24,5 +24,7 @@ public interface ProductTemplateDAO
 	public int nextCode() throws SQLException;
 	
 	public Collection<ProductTemplateBean> doRetrieveByCategory(String categoria) throws SQLException;
+	
+	
 
 }

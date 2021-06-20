@@ -11,7 +11,7 @@
         	<ul>
                 
                 <li> <a href="carrello"><img src="/progetto-TSW/img/carrello.png" alt="icona carrello non visualizzabile" width="20" height="20"></a></li>
-                <li> <img src="/progetto-TSW/img/wish_list.png" alt="icona wish list non visualizzabile" width="20" height="20"> </li>
+                <li> <a href = "/progetto-TSW/wishList"><img src="/progetto-TSW/img/wish_list.png" alt="icona wish list non visualizzabile" width="20" height="20"></a></li>
   
                 <li> <img src="/progetto-TSW/img/lente_di_ricerca.jpg" alt="icona lente non visualizzabile" width="20" height="20"> </li>
                 <li> <a href="/progetto-TSW/utente"> <img src="/progetto-TSW\img\profilo.jpg" alt="icona profilo non visualizzabile" width="20" height="20"> </a></li>

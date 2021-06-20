@@ -322,6 +322,7 @@ public class ProductTemplateDAODS implements ProductTemplateDAO
 		return result;
 	}
 	
+
 private static DataSource ds;
 	
 	static

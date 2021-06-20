@@ -7,6 +7,7 @@ import java.util.List;
 import model.bean.ProductBean;
 import model.bean.ProductTemplateBean;
 import model.bean.TemplateColorVariantBean;
+import model.bean.UtenteBean;
 
 public interface TemplateColorVariantDAO 
 {
@@ -26,5 +27,13 @@ public interface TemplateColorVariantDAO
 	throws SQLException;
 	
 	public int nextCode() throws SQLException;
+	
+	public Collection<TemplateColorVariantBean> doRetrieveByUserWishlist(UtenteBean utente) throws SQLException;
+	
+	public boolean doSaveInWishList(TemplateColorVariantBean variant, UtenteBean utente) throws SQLException;
+	
+	public boolean doDeleteFromWishList(TemplateColorVariantBean variant, UtenteBean utente) throws SQLException;
+	
+	public boolean IsInWishList(TemplateColorVariantBean variant, UtenteBean utente) throws SQLException;
 
 }

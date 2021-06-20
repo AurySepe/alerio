@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import model.WishList;
+import model.bean.TemplateColorVariantBean;
 import model.bean.UtenteBean;
 import model.dao.UtenteDAO;
 import model.ds.DAOS;
@@ -55,8 +57,21 @@ public class LoginServlet extends HttpServlet {
 			{
 				resp.put("loggato", true);
 				String paginaPrecedente;
+				WishList wishList;
 				synchronized (session) 
 				{
+					wishList = (WishList)session.getAttribute("wishList");
+					if(wishList != null)
+					{
+						for(TemplateColorVariantBean variant : wishList.getVarianti())
+						{
+							if(!DAOS.getProductTemplateVariantModel().IsInWishList(variant, utente))
+							{
+								DAOS.getProductTemplateVariantModel().doSaveInWishList(variant, utente);
+							}
+						}
+						session.removeAttribute("wishList");
+					}
 					session.setAttribute("loggato", "true");
 					session.setAttribute("utente", utente);
 					paginaPrecedente = (String) session.getAttribute("pagina precedente");

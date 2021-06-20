@@ -22,6 +22,8 @@ public class MostraImmagine extends HttpServlet
 	throws ServletException,IOException
 	{
 		String code = request.getParameter("codice");
+		if(code == null)
+			return;
 		response.setContentType("image/*");
 		try
 		{
@@ -34,7 +36,6 @@ public class MostraImmagine extends HttpServlet
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
 	}

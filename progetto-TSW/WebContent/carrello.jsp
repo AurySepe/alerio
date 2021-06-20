@@ -47,7 +47,8 @@
 				<td>
 					<div>
 						<input class = "quantita" type = "number" min = "1"   name = "quantita">
-						<Button class = "aggiorna" type = "submit" value = "${item.prodotto.codice}">modifica quantità</Button>
+						<Button class = "aggiorna" type = "submit" value = "${item.prodotto.codice}">modifica quantità</Button><br>
+						<span class = "errore"></span>
 					</div>
 					<div>
 						<Button class = "elimina" type = "submit" value = "${item.prodotto.codice}">elimina</Button>
@@ -68,11 +69,13 @@
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
 		<script src = "javascript/addToCart.js"></script>
+		<script src = "javascript/validation.js"></script>
 		<script type="text/javascript">
 			function successo(data)
 			{
 				var response = JSON.parse(data);
-				console.log(response)
+				console.log(response);
+				console.log($(this).attr("data"));
 				if(response.quantitaProdotto < 0)
 				{
 					$("#" + response.prodotto.codice).remove();
@@ -118,7 +121,15 @@
 						{
 							var request = { "codice" : $(this).val() };
 							request.quantita = $("#" + request.codice + " input.quantita").val();
-							addToCart(request,successo,errore);
+							if(regQuantita(request.quantita) && parseInt(request.quantita) > 0)
+							{
+								$("#" + request.codice + " span.errore").html("");
+								addToCart(request,successo,errore);
+							}
+							else
+							{
+								$("#" + request.codice + " span.errore").html("quantità non valida");
+							}
 						}
 					)
 					$("button.elimina").click

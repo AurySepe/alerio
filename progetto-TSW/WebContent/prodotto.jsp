@@ -44,7 +44,10 @@
 		%>
 		<img alt="immagine prodotto" src="immagine?codice=${immagine.codice}" width="300" height="300">
 		<%} %>
-		<ol type = "none">
+		<div id = "variante-${prodotto.codice}" class = "variante">	
+			<button type = "button" value="${prodotto.codice}"><img alt = "" src ="" width = 50 height = 50></button>
+		</div>
+		<ol type = "I">
 			<%for(ProductBean product : bean.getProdotti()) {
 				request.setAttribute("product", product);
 			%>
@@ -55,6 +58,7 @@
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
 		<script src = "javascript/addToCart.js"></script>
+		<script type="text/javascript" src = "javascript/wish_list.js"></script>
 		<script type="text/javascript">
 			function successo(response)
 			{
@@ -72,8 +76,9 @@
 			(
 				function()
 				{
-					$("input.taglia").click(function(){ taglia.codice = $(this).val() })
-					$("#bottone").click(function(){ addToCart(taglia,successo,errore) })
+					attivaWishList();
+					$("input.taglia").click(function(){ taglia.codice = $(this).val() });
+					$("#bottone").click(function(){ addToCart(taglia,successo,errore) });
 				}
 			)
 		</script>

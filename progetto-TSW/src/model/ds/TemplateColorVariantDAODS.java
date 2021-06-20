@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 import model.bean.ProductBean;
 import model.bean.ProductTemplateBean;
 import model.bean.TemplateColorVariantBean;
+import model.bean.UtenteBean;
 import model.dao.TemplateColorVariantDAO;
 
 public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
@@ -296,6 +297,157 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			}
 		}
 		finally
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return result;
+	}
+	
+	public synchronized Collection<TemplateColorVariantBean> doRetrieveByUserWishlist(UtenteBean utente) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<TemplateColorVariantBean> products = new LinkedList<TemplateColorVariantBean>();
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " where codice in "
+				+ " (select varianti_modello_per_colore from wish_list where cliente = ? )";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			preparedStatement.setString(1, utente.getEmail());
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				TemplateColorVariantBean bean = new TemplateColorVariantBean();
+				bean.setCodice(rs.getInt("CODICE"));
+				bean.setColore(rs.getString("COLORE"));
+				bean.setPrezzoAttuale(rs.getDouble("PREZZO_ATTUALE"));
+				bean.setInVendita(rs.getBoolean("IN_VENDITA"));
+				bean.setCodiceModello(rs.getInt("MODELLO_PRODOTTO"));
+				products.add(bean);
+			}
+
+		}
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return products;
+	}
+	
+	public synchronized boolean doSaveInWishList(TemplateColorVariantBean variant, UtenteBean utente) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String insertSQL = "INSERT INTO " + "wish_list"
+				+ " (cliente, varianti_modello_per_colore) "
+				+ "VALUES (?, ?)";
+
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, utente.getEmail());
+			preparedStatement.setInt(2, variant.getCodice());
+			result = preparedStatement.executeUpdate();
+
+		} 
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return result != 0;
+	}
+	
+	public synchronized boolean doDeleteFromWishList(TemplateColorVariantBean variant, UtenteBean utente) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "DELETE FROM " + "wish_list" + " WHERE CLIENTE = ? and varianti_modello_per_colore = ? ";
+
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, utente.getEmail());
+			preparedStatement.setInt(2, variant.getCodice());
+			
+
+			result = preparedStatement.executeUpdate();
+
+		} finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return (result != 0);
+	}
+	
+	public synchronized boolean IsInWishList(TemplateColorVariantBean variant, UtenteBean utente) throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		boolean result = false;
+
+		String deleteSQL = "select * FROM " + "wish_list" + " WHERE CLIENTE = ? and varianti_modello_per_colore = ? ";
+
+		try 
+		{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, utente.getEmail());
+			preparedStatement.setInt(2, variant.getCodice());
+			
+
+			ResultSet set = preparedStatement.executeQuery();
+			result = set.next();
+
+		} finally 
 		{
 			try 
 			{

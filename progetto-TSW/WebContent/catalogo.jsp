@@ -29,22 +29,35 @@
 				<th><a href = "catalogo?ordine=nome">NOME</a></th>
 				<th>COLORE</th>
 				<th>Immagine</th>
+				<th></th>
 			</tr>
 		<%
 		for(ProductTemplateBean modello : catalogo) {
 			for(TemplateColorVariantBean bean : modello.getVariantiModello()){
 				request.setAttribute("bean", bean);
 		%>
-			<tr>
+			<tr id = "variante-${bean.codice}" class = "variante">
 				<td><a href = "mostraProdotto?codiceModello=${bean.modelloProdotto.codice}&codice=${bean.codice}">
 				${bean.modelloProdotto.nome}</a></td>
 				<td>${bean.colore}</td>
 				<td><img alt="immagine prodotto" src="immagine?codice=${bean.immaginiVariante[0].codice}" width = 100 height = 100></td>	
+				<td><button type = "button" value="${bean.codice}"><img alt = "" src ="" width = 50 height = 50></button></td>
 			</tr>
 		
 		<%}} %>
 			
 		</table>
 		<%@ include file = "fragments/footer.html" %>
+		<script src = "javascript/jquery-3.6.0.js"></script>
+        <script type="text/javascript" src = "javascript/wish_list.js"></script>
+        <script type="text/javascript">
+        	$(document).ready
+        	(
+        		function()
+        		{
+        			attivaWishList();
+        		}
+        	)
+        </script>
 	</body>
 </html>
