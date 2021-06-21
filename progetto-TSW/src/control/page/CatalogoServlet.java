@@ -42,7 +42,7 @@ public class CatalogoServlet extends HttpServlet
 			catalogo = DAOS.getProductTemplateModel().doRetrieveByCategory(categoria);
 			for(ProductTemplateBean b : catalogo)
 			{
-				b.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsForTemplate(b));
+				b.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsInVenditaForTemplate(b));
 				for(TemplateColorVariantBean d : b.getVariantiModello())
 				{
 					d.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(d));

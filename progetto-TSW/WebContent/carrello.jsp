@@ -10,6 +10,8 @@
 		response.sendRedirect("carrello"); 
 		return;		
 	}
+	double iva =Double.parseDouble(application.getInitParameter("iva"));
+    application.setAttribute("iva", iva);
 %>
 <html>
 	<head>
@@ -39,11 +41,11 @@
 				<td><a href = "mostraProdotto?codiceModello=${item.prodotto.varianteProdotto.modelloProdotto.codice}
 				&codice=${item.prodotto.varianteProdotto.codice}">
 				${item.prodotto.varianteProdotto.modelloProdotto.nome}</a></td>
-				<td>${item.prodotto.varianteProdotto.prezzoAttuale}</td>
+				<td>${item.prodotto.varianteProdotto.prezzoAttuale * (1 + iva)}</td>
 				<td>${item.prodotto.taglia}</td>
 				<td>${item.prodotto.varianteProdotto.colore}</td>
 				<td class = "numero">${item.quantitaProdotto}</td>
-				<td class = "prezzo">${item.prodotto.varianteProdotto.prezzoAttuale * item.quantitaProdotto}</td>
+				<td class = "prezzo">${(item.prodotto.varianteProdotto.prezzoAttuale*(1 + iva) ) * item.quantitaProdotto}</td>
 				<td>
 					<div>
 						<input class = "quantita" type = "number" min = "1"   name = "quantita">
@@ -63,19 +65,18 @@
 			<form id = "checkout" name = "checkout" action="mostraCheckout" method = "post">
 				<p>Effettua il checkout</p>
 				<button type = "submit">Checkout</button>
-				<p id = "Costo">Costo:${carrello.costoTotale}</p>
+				<p id = "Costo">Costo:${carrello.costoTotale * (1 + iva)}</p>
 			</form>
 		
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
 		<script src = "javascript/addToCart.js"></script>
 		<script src = "javascript/validation.js"></script>
+		<script type="text/javascript" src = "javascript/abbellimentiGenerali.js"></script>
 		<script type="text/javascript">
 			function successo(data)
 			{
 				var response = JSON.parse(data);
-				console.log(response);
-				console.log($(this).attr("data"));
 				if(response.quantitaProdotto < 0)
 				{
 					$("#" + response.prodotto.codice).remove();
@@ -83,7 +84,7 @@
 				else
 				{
 					$("#" + response.prodotto.codice + " td.numero").html(response.quantitaProdotto);
-					$("#" + response.prodotto.codice + " td.prezzo").html( "" + (response.quantitaProdotto * response.prodotto.varianteProdotto.prezzoAttuale));
+					$("#" + response.prodotto.codice + " td.prezzo").html( "" + (response.quantitaProdotto * (response.prodotto.varianteProdotto.prezzoAttuale * (${iva} + 1)))) ;
 				}
 				mostraCheckout();
 			}
@@ -114,6 +115,7 @@
 				function()
 				{
 					mostraCheckout();
+					abbellimentiGenerali();
 					
 					$("button.aggiorna").click
 					(

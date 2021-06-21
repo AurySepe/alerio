@@ -55,16 +55,6 @@ public class OrdineBean {
 		this.costo = costo;
 	}
 	
-	public String getTipoUtentee() 
-	{
-		return tipoUtente;
-	}
-	
-	public void setTipoUtente(String tipoUtente) 
-	{
-		this.tipoUtente = tipoUtente;
-	}
-	
 	public int getCodiceCarta() 
 	{
 		return codiceCarta;
@@ -138,8 +128,6 @@ public class OrdineBean {
 	private double iva;
 	
 	private double costo;
-	
-	private String tipoUtente;
 	
 	private int codiceCarta;
 	

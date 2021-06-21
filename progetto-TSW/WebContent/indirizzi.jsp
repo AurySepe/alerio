@@ -83,7 +83,9 @@
 		<script type="text/javascript" src = "javascript/indirizzo.js"></script>
 		<script src = "javascript/validation.js"></script>
        	<script src = "javascript/validation/indirizzi.js"></script>
+       	<script type="text/javascript" src = "javascript/abbellimentiGenerali.js"></script>
        	<script type="text/javascript">
+       	
        	function success(data)
        	{
        		data = JSON.parse(data);
@@ -104,6 +106,7 @@
 				function()
 				{
 					validazioneIndirizzi(success);
+					abbellimentiGenerali();
 				}
 			)
 		</script>

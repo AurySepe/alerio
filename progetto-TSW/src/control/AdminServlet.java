@@ -32,7 +32,6 @@ public class AdminServlet extends HttpServlet
 			{
 				String paginaPrecedente = request.getRequestURI() + Query;
 				session.setAttribute("pagina admin precedente",  paginaPrecedente);
-				System.out.println(paginaPrecedente);
 			}
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/adminLogin.jsp");
 			dispatcher.forward(request, response);

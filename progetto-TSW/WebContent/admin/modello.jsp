@@ -37,7 +37,7 @@
 				%>
 				<div class = "variante">
 					In vendita <input class = "attivaV" type = "checkbox" value = "${variante.codice}" name = "varianti" <%if(v.isInVendita()){ %> checked="checked"<%} %> ><a href = "variante?codice=${variante.codice}">${variante.colore}</a>
-					<img height="50" width="50" src = "../immagine?codice=${variante.immaginiVariante[0].codice}" alt = "immagineVariante">
+					<img class = "evidenziate" height="50" width="50" src = "../immagine?codice=${variante.immaginiVariante[0].codice}" alt = "immagineVariante">
 				</div>
 				<%} %>
 				</div>
@@ -70,7 +70,7 @@
 		 			</div>
 		 			<div class = "input quantità" id = "S-quantità">	 		
 			 			quantità:<br/>
-			 			<input name = "S-quantità" type = "number"><br/>
+			 			<input name = "S-quantita" type = "number"><br/>
 			 			<span class = "errore"></span>
 		 			</div>
 		 		</div>
@@ -82,7 +82,7 @@
 		 			</div>
 		 			<div class = "input quantità" id = "M-quantità">	 		
 			 			quantità:<br/>
-			 			<input name = "M-quantità" type = "number"><br/>
+			 			<input name = "M-quantita" type = "number"><br/>
 			 			<span class = "errore"></span>
 		 			</div>
 		 		</div>
@@ -94,7 +94,7 @@
 		 			</div>
 		 			<div class = "input quantità" id = "L-quantità">	 		
 			 			quantità:<br/>
-			 			<input name = "L-quantità" type = "number"><br/>
+			 			<input name = "L-quantita" type = "number"><br/>
 			 			<span class = "errore"></span>
 		 			</div>
 		 		</div>
@@ -106,6 +106,7 @@
 		 		<script src = "/progetto-TSW/javascript/jquery-3.6.0.js"></script>
 		 		<script src = "/progetto-TSW/javascript/validation/modello.js"></script>
 		 		<script src = "/progetto-TSW/javascript/validation.js"></script>
+		 		<script type="text/javascript" src = "../javascript/abbellimentiGenerali.js"></script>
 		 		<script type="text/javascript">
 		 			var i = 1;
 		 			$(document).ready
@@ -129,7 +130,7 @@
 		 						{
 		 							s = 
 		 							'<div class = "input foto" id = "immagine'+ i +'">' +
-		 					 			'<input name = "immagine' + i +'"type = "file"><br/>' +
+		 					 			'<input name = "immagine' + i +'"type = "file" accept="image/*"><br/>' +
 		 					 			'<span class = "errore"></span>' +
 		 				 			'</div>';
 		 							$(s).insertBefore( $( "#aggiungiFoto" ) );
@@ -156,6 +157,7 @@
 		 					}
 		 					
 		 					validazioneModello();
+		 					abbellimentiGenerali();
 		 				}
 		 					
 		 			);

@@ -65,7 +65,7 @@
 			<tr>
 				<td>${ordine.data}</td>
 				<td>${ordine.iva}</td>
-				<td>${ordine.costo}</td>
+				<td>${ordine.costo * (1 + ordine.iva)}</td>
 				<td>${ordine.email}</td>
 				<td><a href = "/progetto-TSW/ordine?codice=${ordine.codiceOrdine}">dettagli ordine</a></td>
 			</tr>

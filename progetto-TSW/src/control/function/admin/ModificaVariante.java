@@ -5,6 +5,7 @@ import java.util.Enumeration;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +47,12 @@ public class ModificaVariante extends AdminServlet
 				prodotto.setQuantita(quantita);
 				DAOS.getProductModel().doUpdate(prodotto);
 			}
-			Double prezzo = Double.parseDouble((String) req.get("prezzo"));
+			ServletContext context = getServletContext();
+			double iva;
+			synchronized (context) {
+				iva = Double.parseDouble((String)context.getInitParameter("iva"));
+			}
+			Double prezzo = Double.parseDouble((String) req.get("prezzo")) / (1 + iva);
 			variante.setPrezzoAttuale(prezzo);
 			DAOS.getProductTemplateVariantModel().doUpdate(variante);
 			response.setStatus(200);

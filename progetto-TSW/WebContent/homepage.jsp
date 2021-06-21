@@ -68,5 +68,6 @@
     
     
     <%@ include file = "fragments/footer.html" %>
+    
 </body>
 </html>

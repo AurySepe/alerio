@@ -49,6 +49,7 @@
 		</div>
 		<script src = "/progetto-TSW/javascript/jquery-3.6.0.js"></script>
 		<script src = "/progetto-TSW/javascript/validation/aggiungiModello.js"></script>
+		<script type="text/javascript" src = "../javascript/abbellimentiGenerali.js"></script>
 		<script src = "/progetto-TSW/javascript/validation.js"></script>
 		<script >
 			$(document).ready
@@ -56,6 +57,7 @@
 				function()
 				{
 					validazioneAggiungiModello();
+					abbellimentiGenerali();
 				}
 			)
 		</script>

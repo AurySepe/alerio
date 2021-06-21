@@ -28,8 +28,8 @@ public class OrdineDAODS implements OrdineDAO {
 		
 		String insertSQL = "INSERT INTO " + TABLE_NAME 
 							+ " (codice,email_cliente, data_di_acquisto, iva, "
-							+ "costo_totale, tipo_utente, codice_carta, codice_consegna) "
-							+ " VALUES (?,?, ?, ?, ?, ?, ?, ?) ";
+							+ "costo_totale, codice_carta, codice_consegna) "
+							+ " VALUES (?,?, ?, ?, ?, ?, ?) ";
 		
 		try
 		{
@@ -40,9 +40,8 @@ public class OrdineDAODS implements OrdineDAO {
 			preparedStatement.setDate(3, ordine.getData()); 
 			preparedStatement.setDouble(4, ordine.getIva());
 			preparedStatement.setDouble(5, ordine.getCosto());
-			preparedStatement.setString(6, ordine.getTipoUtentee());
-			preparedStatement.setInt(7, ordine.getCodiceCarta());
-			preparedStatement.setInt(8, ordine.getCodiceConsegna());
+			preparedStatement.setInt(6, ordine.getCodiceCarta());
+			preparedStatement.setInt(7, ordine.getCodiceConsegna());
 			preparedStatement.executeUpdate();
 		}
 		finally
@@ -124,7 +123,6 @@ public class OrdineDAODS implements OrdineDAO {
 				ordine.setData(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));
-				ordine.setTipoUtente(rs.getString("tipo_utente"));
 				ordine.setCodiceCarta(rs.getInt("codice_carta"));
 				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
 			}
@@ -172,7 +170,6 @@ public class OrdineDAODS implements OrdineDAO {
 				ordine.setData(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));
-				ordine.setTipoUtente(rs.getString("tipo_utente"));
 				ordine.setCodiceCarta(rs.getInt("codice_carta"));
 				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
 				ordini.add(ordine);
@@ -219,7 +216,6 @@ public class OrdineDAODS implements OrdineDAO {
 				ordine.setData(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));
-				ordine.setTipoUtente(rs.getString("tipo_utente"));
 				ordine.setCodiceCarta(rs.getInt("codice_carta"));
 				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
 				ordine.setUtente(utente);
@@ -333,7 +329,6 @@ public class OrdineDAODS implements OrdineDAO {
 				ordine.setData(rs.getDate("data_di_acquisto"));
 				ordine.setIva(rs.getDouble("iva"));
 				ordine.setCosto(rs.getDouble("costo_totale"));
-				ordine.setTipoUtente(rs.getString("tipo_utente"));
 				ordine.setCodiceCarta(rs.getInt("codice_carta"));
 				ordine.setCodiceConsegna(rs.getInt("codice_consegna"));
 				ordini.add(ordine);

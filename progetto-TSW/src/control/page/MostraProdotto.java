@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +30,8 @@ public class MostraProdotto extends HttpServlet
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws IOException,ServletException
 	{
+		
+		
 		String templateCode = request.getParameter("codiceModello");
 		if(templateCode == null)
 		{
@@ -42,7 +45,7 @@ public class MostraProdotto extends HttpServlet
 			String code = request.getParameter("codice");
 			TemplateColorVariantBean templateVariant;
 			modelloProdotto = DAOS.getProductTemplateModel().doRetrieveByKey(codiceModello);
-			modelloProdotto.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsForTemplate(modelloProdotto));
+			modelloProdotto.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsInVenditaForTemplate(modelloProdotto));
 			if(code == null)
 			{
 				templateVariant = modelloProdotto.getVariantiModello().get(0);

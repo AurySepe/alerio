@@ -26,8 +26,8 @@ public class UtenteDAODS implements UtenteDAO
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO " + TABLE_NAME + " (email, nome, cognome, pwd, genere, registrato) " 
-							+ " VALUES(?, ?, ?, ?, ?, ?) ";  
+		String insertSQL = "INSERT INTO " + TABLE_NAME + " (email, nome, cognome, pwd, genere) " 
+							+ " VALUES(?, ?, ?, ?, ?) ";  
 				
 				
 		try
@@ -39,7 +39,6 @@ public class UtenteDAODS implements UtenteDAO
 			preparedStatement.setString(3, utente.getCognome());
 			preparedStatement.setString(4, utente.getPwd());
 			preparedStatement.setString(5, utente.getGenere());
-			preparedStatement.setBoolean(6, utente.isRegistrato());
 			preparedStatement.executeUpdate();
 		}
 		finally
@@ -118,7 +117,6 @@ public class UtenteDAODS implements UtenteDAO
 				utente.setEmail(rs.getString("email"));
 				utente.setPwd(rs.getString("pwd"));
 				utente.setGenere(rs.getString("genere"));
-				utente.setRegistrato(rs.getBoolean("registrato"));
 			}
 		}
 		finally
@@ -161,7 +159,6 @@ public class UtenteDAODS implements UtenteDAO
 				utente.setEmail(rs.getString("email"));
 				utente.setPwd(rs.getString("pwd"));
 				utente.setGenere(rs.getString("genere"));
-				utente.setRegistrato(rs.getBoolean("registrato"));
 			}
 			else
 			{
@@ -209,7 +206,6 @@ public class UtenteDAODS implements UtenteDAO
 				utente.setEmail(rs.getString("email"));
 				utente.setPwd(rs.getString("pwd"));
 				utente.setGenere(rs.getString("genere"));
-				utente.setRegistrato(rs.getBoolean("registrato"));
 				utenti.add(utente);
 			}
 		}

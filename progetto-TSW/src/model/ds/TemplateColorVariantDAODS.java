@@ -275,6 +275,54 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 		return products;
 	}
 	
+	public synchronized List<TemplateColorVariantBean> doRetriveVariantsInVenditaForTemplate(ProductTemplateBean template)
+	throws SQLException
+	{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		List<TemplateColorVariantBean> products = new LinkedList<TemplateColorVariantBean>();
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE MODELLO_PRODOTTO = ? AND IN_VENDITA = '1' "
+				+ " ORDER BY PREZZO_ATTUALE";
+
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, template.getCodice());
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) 
+			{
+				TemplateColorVariantBean bean = new TemplateColorVariantBean();
+				bean.setCodice(rs.getInt("CODICE"));
+				bean.setColore(rs.getString("COLORE"));
+				bean.setPrezzoAttuale(rs.getDouble("PREZZO_ATTUALE"));
+				bean.setInVendita(rs.getBoolean("IN_VENDITA"));
+				bean.setCodiceModello(rs.getInt("MODELLO_PRODOTTO"));
+				bean.setModelloProdotto(template);
+				products.add(bean);
+			}
+
+		}
+		finally 
+		{
+			try 
+			{
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} 
+			finally 
+			{
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return products;
+	}
+	
 	public synchronized int nextCode() throws SQLException
 	{
 		Connection connection = null;

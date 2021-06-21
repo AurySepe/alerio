@@ -32,6 +32,9 @@
 		<div>
 			<a href = "/progetto-TSW/indirizzi">i tuoi indirizzi di spedizione</a>
 		</div>
+		<div>
+			<a href = "/progetto-TSW/logout">esci</a>
+		</div>
 		<%@ include file = "fragments/footer.html" %>
 	
 	</body>

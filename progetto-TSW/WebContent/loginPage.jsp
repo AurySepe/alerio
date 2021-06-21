@@ -38,6 +38,7 @@
         </div>
         <script src = "javascript/jquery-3.6.0.js"></script>
         <script src = "javascript/validation.js"></script>
+        <script type="text/javascript" src = "javascript/abbellimentiGenerali.js"></script>
         <script src = "javascript/validation/login.js"></script>
         <script>
         	$(document).ready
@@ -45,6 +46,7 @@
         		function()
         		{
         			validazioneLogin();
+        			abbellimentiGenerali();
         		}
         	)
         </script>

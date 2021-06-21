@@ -41,7 +41,6 @@ public class SigninServlet extends HttpServlet{
 		utente.setCognome(cognome);
 		utente.setNome(nome);
 		utente.setGenere(genere);
-		utente.setRegistrato(true);
 		try 
 		{
 			String paginaPrecedente;

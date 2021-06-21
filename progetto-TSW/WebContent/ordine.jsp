@@ -55,13 +55,13 @@
 				<td><a href = "mostraProdotto?codice=${composizione.prodotto.varianteProdotto.codice}&codiceModello=${composizione.prodotto.varianteProdotto.modelloProdotto.codice}">
 				${composizione.prodotto.varianteProdotto.modelloProdotto.nome}</a></td>
 				<td>${composizione.prodotto.taglia}</td>
-				<td>${composizione.prezzo}</td>
+				<td>${composizione.prezzo * (1 + ordine.iva)}</td>
 				<td>${composizione.quantita}<td>
 			</tr>
 			
 			<%} %>
 		</table>
-		<h3>Costo totale = <%= costoTotale %> </h3>
+		<h3>Costo totale = <%= costoTotale * (1 + ordine.getIva())  %> </h3>
 	</div>
 	
 	<%@ include file = "fragments/footer.html" %>

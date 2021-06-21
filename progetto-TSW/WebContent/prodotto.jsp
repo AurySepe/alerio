@@ -12,6 +12,8 @@
         		response.sendRedirect("/catalogo");
         		return;
         	}
+     double iva =Double.parseDouble(application.getInitParameter("iva"));
+     application.setAttribute("iva", iva);
     %>
 <!DOCTYPE html>
 <html>
@@ -37,12 +39,12 @@
 		<h1>${prodotto.modelloProdotto.nome}</h1>
 		<h3>Colore: ${prodotto.colore}</h3>
 		<h3>Collezione: ${prodotto.modelloProdotto.collezione}</h3>
-		<h3>Prezzo: ${prodotto.prezzoAttuale}</h3>
+		<h3>Prezzo: ${prodotto.prezzoAttuale * (iva + 1)}</h3>
 		<p>${prodotto.modelloProdotto.informazioni}</p>
 		<%for(ImageBean image : bean.getImmaginiVariante()) {
 			request.setAttribute("immagine", image);
 		%>
-		<img alt="immagine prodotto" src="immagine?codice=${immagine.codice}" width="300" height="300">
+		<img class = "evidenziate" alt="immagine prodotto" src="immagine?codice=${immagine.codice}" width="300" height="300">
 		<%} %>
 		<div id = "variante-${prodotto.codice}" class = "variante">	
 			<button type = "button" value="${prodotto.codice}"><img alt = "" src ="" width = 50 height = 50></button>
@@ -54,31 +56,19 @@
 				<li><input class = "taglia" name = "codice" type = "radio" value = "${product.codice}" required>${product.taglia}<li>
 			<%} %>
 		</ol>
-		<Button id = "bottone" type = "submit">Aggiungi al carrello</Button>
+		<Button id = "bottone" type = "button" value = ""><img alt = "" src = "" width = 25 height = 25></Button>
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
 		<script src = "javascript/addToCart.js"></script>
+		<script src = "javascript/carrello.js"></script>
 		<script type="text/javascript" src = "javascript/wish_list.js"></script>
 		<script type="text/javascript">
-			function successo(response)
-			{
-				alert("elemento aggiunto con successo");
-			}
-			
-			function errore()
-			{
-				alert("errore");
-			}
-		</script>
-		<script type="text/javascript">
-			var taglia = {"codice" : null};
 			$(document).ready
 			(
 				function()
 				{
+					inizializzaCart();
 					attivaWishList();
-					$("input.taglia").click(function(){ taglia.codice = $(this).val() });
-					$("#bottone").click(function(){ addToCart(taglia,successo,errore) });
 				}
 			)
 		</script>

@@ -20,6 +20,8 @@ UTF-8<%@page import="model.Carrello"%>
 		response.sendRedirect(response.encodeURL("carte"));
 		return;
 	}
+	double iva =Double.parseDouble(application.getInitParameter("iva"));
+    application.setAttribute("iva", iva);
     %>
 <!DOCTYPE html>
 <html>
@@ -155,11 +157,11 @@ UTF-8<%@page import="model.Carrello"%>
 								<td><a href = "mostraProdotto?codiceModello=${item.prodotto.varianteProdotto.modelloProdotto.codice}
 									&codice=${item.prodotto.varianteProdotto.codice}">
 									${item.prodotto.varianteProdotto.modelloProdotto.nome}</a></td>
-								<td>${item.prodotto.varianteProdotto.prezzoAttuale}</td>
+								<td>${item.prodotto.varianteProdotto.prezzoAttuale * (iva + 1)}</td>
 								<td>${item.prodotto.taglia}</td>
 								<td>${item.prodotto.varianteProdotto.colore}</td>
 								<td class = "numero">${item.quantitaProdotto}</td>
-								<td class = "prezzo">${item.prodotto.varianteProdotto.prezzoAttuale * item.quantitaProdotto}</td>
+								<td class = "prezzo">${(item.prodotto.varianteProdotto.prezzoAttuale * (iva + 1 )) * item.quantitaProdotto}</td>
 				
 							</tr>
 		
@@ -168,7 +170,7 @@ UTF-8<%@page import="model.Carrello"%>
 						</table>
 					</div>
 					<div>
-						Totale:${carrello.costoTotale}
+						Totale:${carrello.costoTotale * (iva + 1 )}
 					</div>
 				</fieldset>
 				<div>
@@ -184,6 +186,7 @@ UTF-8<%@page import="model.Carrello"%>
        	<script src = "javascript/validation/pagamenti.js"></script>
        	<script src = "javascript/validation/indirizzi.js"></script>
        	<script src = "javascript/validation/checkout.js"></script>
+       	<script type="text/javascript" src = "javascript/abbellimentiGenerali.js"></script>
 		<script type="text/javascript">
 		function successIndirizzo(data)
 		{
@@ -230,7 +233,8 @@ UTF-8<%@page import="model.Carrello"%>
 				{
 					validazionePagamenti(successCarta);
 					validazioneIndirizzi(successIndirizzo);
-					validazioneCheckout()
+					validazioneCheckout();
+					abbellimentiGenerali();
 					
 				}
 			)

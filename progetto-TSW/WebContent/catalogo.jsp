@@ -40,7 +40,7 @@
 				<td><a href = "mostraProdotto?codiceModello=${bean.modelloProdotto.codice}&codice=${bean.codice}">
 				${bean.modelloProdotto.nome}</a></td>
 				<td>${bean.colore}</td>
-				<td><img alt="immagine prodotto" src="immagine?codice=${bean.immaginiVariante[0].codice}" width = 100 height = 100></td>	
+				<td><img class = "evidenziate" alt="immagine prodotto" src="immagine?codice=${bean.immaginiVariante[0].codice}" width = 100 height = 100></td>	
 				<td><button type = "button" value="${bean.codice}"><img alt = "" src ="" width = 50 height = 50></button></td>
 			</tr>
 		
@@ -50,7 +50,9 @@
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
         <script type="text/javascript" src = "javascript/wish_list.js"></script>
+        
         <script type="text/javascript">
+        
         	$(document).ready
         	(
         		function()

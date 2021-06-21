@@ -11,6 +11,8 @@
 		response.sendRedirect("admin");
 		return;
 	}
+	double iva =Double.parseDouble(application.getInitParameter("iva"));
+    application.setAttribute("iva", iva);
 %>
 <!DOCTYPE html>
 <html>
@@ -32,7 +34,7 @@
 		
 		%>
 			<div>
-				<img alt="immagine prodotto" src="../immagine?codice=${immagine.codice}" width="50" height="50">
+				<img class = "evidenziate" alt="immagine prodotto" src="../immagine?codice=${immagine.codice}" width="50" height="50">
 			</div>
 		<%	} %>
 		</div>
@@ -40,7 +42,7 @@
 		<form id = "modificaVariante" method="post" action = "modificaVariante">
 		<input type = "hidden" value = "${variante.codice}" name = "codice">
 		<div class = "input" id = "prezzo">
-				<span>prezzo</span><input value = "${variante.prezzoAttuale}" type = "number" name = "prezzo"><br/>
+				<span>prezzo</span><input value = "${variante.prezzoAttuale * (1 + iva)}" type = "number" name = "prezzo"><br/>
 				<span class = "errore"></span>
 		</div>
 		<%for(ProductBean prodotto : variante.getProdotti())
@@ -60,12 +62,14 @@
 		<script src = "../javascript/jquery-3.6.0.js"></script>
 		<script src = "/progetto-TSW/javascript/validation/mostraVariante.js"></script>
 		<script src = "/progetto-TSW/javascript/validation.js"></script>
+		<script type="text/javascript" src = "../javascript/abbellimentiGenerali.js"></script>
 		<script type="text/javascript">
 			$(document).ready
 			(
 				function()
 				{
 					validazioneVariante();
+					abbellimentiGenerali();
 				}
 			)
 		</script>

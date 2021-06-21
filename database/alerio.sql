@@ -6,9 +6,8 @@ create table cliente
     nome varchar(50),
     cognome varchar(50),
     pwd varchar(15),
-    genere char check(genere in ('F','M')),/*F per femmina, M per maschio*/
-    registrato boolean not null
-    );
+    genere char check(genere in ('F','M'))/*F per femmina, M per maschio*/
+);
 
 create table modello_prodotto
 (
@@ -106,7 +105,6 @@ create table ordine
     data_di_acquisto date not null,
     iva double not null,
     costo_totale double not null,
-    tipo_utente char not null check(tipo_utente in ('R', 'G')), /*R per registrato,G per guest*/
     codice_carta int not null,
     codice_consegna int,
     foreign key(email_cliente) references cliente(email)

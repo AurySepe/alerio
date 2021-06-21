@@ -3,6 +3,7 @@ package control.function;
 import java.io.IOException;
 import java.sql.Date;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,9 +61,13 @@ public class Checkout extends UtenteServlet
 				System.out.println(ordine.getCodiceOrdine());
 				ordine.setEmail(utente.getEmail());
 				ordine.setData(new Date((new java.util.Date()).getTime()) );
-				ordine.setIva(0.22);
+				ServletContext context = getServletContext();
+				double iva;
+				synchronized (context) {
+					iva = Double.parseDouble((String)context.getInitParameter("iva"));
+				}
+				ordine.setIva(iva);
 				ordine.setCosto(cart.getCostoTotale());
-				ordine.setTipoUtente("R");
 				ordine.setCodiceCarta(cardCode);
 				ordine.setCodiceConsegna(deliveryCode);
 				DAOS.getOrdineModel().doSave(ordine);

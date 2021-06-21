@@ -71,6 +71,7 @@
 		<script type="text/javascript" src = "javascript/carta.js"></script>
 		<script src = "javascript/validation.js"></script>
        	<script src = "javascript/validation/pagamenti.js"></script>
+       	<script type="text/javascript" src = "javascript/abbellimentiGenerali.js"></script>
        	<script type="text/javascript">
        	function success(data)
        	{
@@ -90,6 +91,7 @@
 				function()
 				{
 					validazionePagamenti(success);
+					abbellimentiGenerali();
 				}
 			)
 		</script>

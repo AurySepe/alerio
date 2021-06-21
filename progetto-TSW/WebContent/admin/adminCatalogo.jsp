@@ -29,7 +29,7 @@
 		%>
 			<div>
 				<a href = "modello?codice=${template.codice}"><span>${template.nome}</span></a></br>
-				<img src = "../immagine?codice=${template.variantiModello[0].immaginiVariante[0].codice}" alt = "immagine modello" width = 50 height = 50/>
+				<img class = "evidenziate" src = "../immagine?codice=${template.variantiModello[0].immaginiVariante[0].codice}" alt = "immagine modello" width = 50 height = 50/>
 			</div>
 		<%} %>
 	</body>

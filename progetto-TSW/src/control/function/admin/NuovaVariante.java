@@ -5,8 +5,10 @@ import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Collection;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +48,13 @@ public class NuovaVariante extends AdminServlet
 			TemplateColorVariantBean variante = new TemplateColorVariantBean();
 			variante.setCodice(DAOS.getProductTemplateVariantModel().nextCode());
 			variante.setColore(request.getParameter("colore"));
-			variante.setPrezzoAttuale(Double.parseDouble(request.getParameter("prezzo")));
+			ServletContext context = getServletContext();
+			double iva;
+			synchronized (context) {
+				iva = Double.parseDouble((String)context.getInitParameter("iva"));
+			}
+			double prezzo = Double.parseDouble(request.getParameter("prezzo")) /(1 + iva);
+			variante.setPrezzoAttuale(prezzo);
 			variante.setCodiceModello(Integer.parseInt(request.getParameter("codice")));
 			variante.setInVendita(request.getParameter("inVendita") != null);
 			DAOS.getProductTemplateVariantModel().doSave(variante);
@@ -58,7 +66,7 @@ public class NuovaVariante extends AdminServlet
 					ProductBean product = new ProductBean();
 					product.setCodiceVarianteModello(variante.getCodice());
 					product.setTaglia(taglia);
-					String quantitaString = request.getParameter(taglia + "-quantità");
+					String quantitaString = request.getParameter(taglia + "-quantita");
 					int quantita = 0;
 					try
 					{

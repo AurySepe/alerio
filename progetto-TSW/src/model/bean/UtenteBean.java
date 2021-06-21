@@ -56,17 +56,6 @@ public class UtenteBean {
 		this.genere = genere;
 	}
 	
-	public boolean isRegistrato() 
-	{
-		return registrato;
-	}
-	
-	public void setRegistrato(boolean registrato) 
-	{
-		this.registrato = registrato;
-	}
-	
-	
 	
 	public List<OrdineBean> getOrdini() 
 	{
@@ -105,8 +94,6 @@ public class UtenteBean {
 	private String pwd;
 	
 	private String genere;
-	
-	private boolean registrato;
 	
 	private List<OrdineBean> ordini;
 	

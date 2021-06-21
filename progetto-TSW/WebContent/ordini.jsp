@@ -39,7 +39,7 @@
 			<tr>
 				<td>${ordine.data}</td>
 				<td>${ordine.iva}</td>
-				<td>${ordine.costo}</td>
+				<td>${ordine.costo * (ordine.iva + 1)}</td>
 				<td><a href = "ordine?codice=${ordine.codiceOrdine}">dettagli ordine</a></td>
 			</tr>
 			
