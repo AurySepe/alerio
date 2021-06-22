@@ -66,17 +66,21 @@
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
+	margin-bottom: 3%;
 }
 
 #homepage .imgRec{
 	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
 	width: 100%;
 }
 
-#hompage .immaginiRecensioni{
+#homepage .paragrafoRecensioni{
+	justify-content: center;
 	width: 30%;
 }
+
 
 @media screen and (max-width: 600px) {
   #homepage .linea {

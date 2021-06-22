@@ -58,9 +58,9 @@
     <div class="recensioni">
          <h1> Cosa dicono di noi </h1>
         <div class="imgRec"> 
-        	<div class = "immaginiRecensioni"> <img src="/progetto-TSW/img/recensione1.JPG" alt="recensione1 non visualizzabile"> </div>
-        	<div class = "immaginiRecensioni"> <img src="/progetto-TSW/img/recensione2.jpg" alt="recensione2 non visualizzabile"> </div>
-        	<div class = "immaginiRecensioni"> <img src="/progetto-TSW/img/recensione3.jpg" alt="recensione3 non visualizzabile"> </div>
+        	<div class = "paragrafoRecensioni"> <p> "Impeccabili: gioielli raffinati e ricevuti in poco tempo. Grazie!"   -Paola </p> </div>
+        	<div class = "paragrafoRecensioni"> <p> "L'ordine è arrivato in poco tempo e i gioielli sono proprio come in foto. Ho regalato questi gioielli a mia figlia e ne è rimasta molto felice.    -Maria Teresa" </p> </div>
+        	<div class = "paragrafoRecensioni"> <p> "Io e mia moglie abbiamo preso qui le fedi nunziali e ne siamo rimasti entusiasti. Grazie!    -Carmine" </p> </div>
         </div>  
     </div>
     
