@@ -45,7 +45,7 @@ public class MostraProdotto extends HttpServlet
 			String code = request.getParameter("codice");
 			TemplateColorVariantBean templateVariant;
 			modelloProdotto = DAOS.getProductTemplateModel().doRetrieveByKey(codiceModello);
-			modelloProdotto.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsInVenditaForTemplate(modelloProdotto));
+			modelloProdotto.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsInVenditaForTemplate(modelloProdotto, null));
 			if(code == null)
 			{
 				templateVariant = modelloProdotto.getVariantiModello().get(0);
