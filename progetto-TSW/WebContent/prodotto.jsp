@@ -39,6 +39,7 @@
 		<h1>${prodotto.modelloProdotto.nome}</h1>
 		<h3>Colore: ${prodotto.colore}</h3>
 		<h3>Collezione: ${prodotto.modelloProdotto.collezione}</h3>
+		<h3>Genere: ${prodotto.genere}</h3>
 		<h3>Prezzo: ${prodotto.prezzoAttuale * (iva + 1)}</h3>
 		<p>${prodotto.modelloProdotto.informazioni}</p>
 		<%for(ImageBean image : bean.getImmaginiVariante()) {

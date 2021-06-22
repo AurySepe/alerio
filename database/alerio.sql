@@ -25,6 +25,7 @@ create table varianti_modello_per_colore
     modello_prodotto int not null,
     colore varchar(30)  not null,
     in_vendita boolean not null,
+	genere varchar(20),
     prezzo_attuale double,
     foreign key (modello_prodotto) references modello_prodotto(codice)
     on update cascade

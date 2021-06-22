@@ -33,8 +33,10 @@ function validazioneModello()
 					elementi[$(this).attr("id")] = {"validazione" : valFoto, "valore" : getFileSize};
 				}
 			);
-			var result = controllaTaglie();
-        	if(controllaForm("form-variante",elementi) && result)
+			var resultTaglie = controllaTaglie();
+			var resultGenere = controllaGenere();
+			var resultForm = controllaForm("form-variante",elementi);
+        	if(resultForm && resultTaglie && resultGenere)
 			{
 				$("#form-variante").submit();
 			}
@@ -61,6 +63,28 @@ function controllaTaglie()
 	else
 	{
 		$(".taglie > span.errore").html("");
+	}
+	return result;
+}
+
+function controllaGenere()
+{
+	var result = false;
+	$("#genere input").each
+	(
+		function()
+		{
+			if(this.checked)
+				result = true;
+		}
+	)
+	if(result == false)
+	{
+		$("#genere span.errore").html("selezionare un genere");
+	}
+	else
+	{
+		$("#genere span.errore").html("");
 	}
 	return result;
 }

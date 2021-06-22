@@ -24,13 +24,13 @@
 		<%@ include file = "../fragments/admin/BarraNavigazionaleAdmin.jsp" %>
 		<div>
 			<div>
-				NOME:${modello.nome}</br>
-				INFORMAZIONI:${modello.informazioni}</br>
-				COLLEZIONE:${modello.collezione}</br>
-				CATEGORIA:${modello.categoria}</br>
+				NOME:${modello.nome}<br/>
+				INFORMAZIONI:${modello.informazioni}<br/>
+				COLLEZIONE:${modello.collezione}<br/>
+				CATEGORIA:${modello.categoria}<br/>
 			</div>
 			<div id = "varianti">
-				Varianti:</br>
+				Varianti:<br/>
 				<div>
 				<%for(TemplateColorVariantBean v : modello.getVariantiModello()) {
 					request.setAttribute("variante", v);
@@ -60,6 +60,12 @@
 			 		Prezzo:<br/>
 			 		<input name = "prezzo" type = "number" required><br/>
 			 		<span class = "errore"></span>
+		 		</div>
+		 		<div id = "genere">
+		 			Genere:<br/>
+		 			Uomo:<input name = "genere" type = "radio" value = "Uomo" required><br/>
+		 			Donna:<input name = "genere" type = "radio" value = "Donna" required><br/>
+		 			<span class = "errore"></span>
 		 		</div>
 		 		<div class = "taglie" >
 		 		<div>

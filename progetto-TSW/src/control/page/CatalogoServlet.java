@@ -35,6 +35,7 @@ public class CatalogoServlet extends HttpServlet
 	{
 		response.setContentType("text/html");
 		String categoria = request.getParameter("categoria");
+		String genere = request.getParameter("genere");
 		Collection<ProductTemplateBean> catalogo = null;
 		try
 		{
@@ -42,7 +43,7 @@ public class CatalogoServlet extends HttpServlet
 			catalogo = DAOS.getProductTemplateModel().doRetrieveByCategory(categoria);
 			for(ProductTemplateBean b : catalogo)
 			{
-				b.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsInVenditaForTemplate(b));
+				b.setVariantiModello(DAOS.getProductTemplateVariantModel().doRetriveVariantsInVenditaForTemplate(b,genere));
 				for(TemplateColorVariantBean d : b.getVariantiModello())
 				{
 					d.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(d));

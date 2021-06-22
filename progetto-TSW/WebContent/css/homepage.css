@@ -1,9 +1,8 @@
 @charset "ISO-8859-1"; 
 
-body{
+#homepage{
 	width: 100%;
 }
-
 #homepage .interna{
 	display: flex;
 	justify-content: space-between;
@@ -70,10 +69,13 @@ body{
 }
 
 #homepage .imgRec{
-	flex-direction: column;
-	justify-content: center;
-	height: auto;
+	display: flex;
+	justify-content: space-between;
 	width: 100%;
+}
+
+#hompage .immaginiRecensioni{
+	width: 30%;
 }
 
 @media screen and (max-width: 600px) {

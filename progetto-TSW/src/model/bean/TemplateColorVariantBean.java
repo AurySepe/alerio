@@ -44,6 +44,14 @@ public class TemplateColorVariantBean
 	{
 		this.inVendita = inVendita;
 	}
+	
+	public String getGenere() {
+		return genere;
+	}
+
+	public void setGenere(String genere) {
+		this.genere = genere;
+	}
 
 	public double getPrezzoAttuale() 
 	{
@@ -92,6 +100,8 @@ public class TemplateColorVariantBean
 	private String colore;
 	
 	private boolean inVendita;
+	
+	private String genere;
 	
 	private double prezzoAttuale;
 	

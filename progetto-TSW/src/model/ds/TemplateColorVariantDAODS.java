@@ -27,8 +27,8 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " +TABLE_NAME
-				+ " (MODELLO_PRODOTTO, COLORE,IN_VENDITA,PREZZO_ATTUALE,CODICE) "
-				+ "VALUES (?, ?, ?, ?, ?)";
+				+ " (MODELLO_PRODOTTO, COLORE,IN_VENDITA,PREZZO_ATTUALE,CODICE,GENERE) "
+				+ "VALUES (?, ?, ?, ?, ?,?)";
 
 		try 
 		{
@@ -39,6 +39,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			preparedStatement.setBoolean(3, productDetails.isInVendita());
 			preparedStatement.setDouble(4, productDetails.getPrezzoAttuale());
 			preparedStatement.setInt(5, productDetails.getCodice());
+			preparedStatement.setString(6, productDetails.getGenere());
 			preparedStatement.executeUpdate();
 
 		} 
@@ -66,7 +67,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 		int result = 0;
 
 		String updateSQL = "UPDATE " + TABLE_NAME + " "
-				+ "SET MODELLO_PRODOTTO = ? , COLORE = ?, IN_VENDITA = ? , PREZZO_ATTUALE = ?  "
+				+ "SET MODELLO_PRODOTTO = ? , COLORE = ?, IN_VENDITA = ? , PREZZO_ATTUALE = ?, GENERE = ?  "
 				+ "WHERE CODICE = ? ";
 
 		try 
@@ -78,6 +79,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			preparedStatement.setBoolean(3, productDetails.isInVendita());
 			preparedStatement.setDouble(4, productDetails.getPrezzoAttuale());
 			preparedStatement.setInt(5, productDetails.getCodice());
+			preparedStatement.setString(6, productDetails.getGenere());
 			result = preparedStatement.executeUpdate();
 
 		} finally 
@@ -154,6 +156,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 				bean.setPrezzoAttuale(rs.getDouble("PREZZO_ATTUALE"));
 				bean.setInVendita(rs.getBoolean("IN_VENDITA"));
 				bean.setCodiceModello(rs.getInt("MODELLO_PRODOTTO"));
+				bean.setGenere(rs.getString("GENERE"));
 			}
 		} 
 		finally 
@@ -199,6 +202,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 				bean.setPrezzoAttuale(rs.getDouble("PREZZO_ATTUALE"));
 				bean.setInVendita(rs.getBoolean("IN_VENDITA"));
 				bean.setCodiceModello(rs.getInt("MODELLO_PRODOTTO"));
+				bean.setGenere(rs.getString("GENERE"));
 				products.add(bean);
 			}
 
@@ -254,6 +258,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 				bean.setPrezzoAttuale(rs.getDouble("PREZZO_ATTUALE"));
 				bean.setInVendita(rs.getBoolean("IN_VENDITA"));
 				bean.setCodiceModello(rs.getInt("MODELLO_PRODOTTO"));
+				bean.setGenere(rs.getString("GENERE"));
 				bean.setModelloProdotto(template);
 				products.add(bean);
 			}
@@ -275,7 +280,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 		return products;
 	}
 	
-	public synchronized List<TemplateColorVariantBean> doRetriveVariantsInVenditaForTemplate(ProductTemplateBean template)
+	public synchronized List<TemplateColorVariantBean> doRetriveVariantsInVenditaForTemplate(ProductTemplateBean template ,String genere)
 	throws SQLException
 	{
 		Connection connection = null;
@@ -283,7 +288,12 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 
 		List<TemplateColorVariantBean> products = new LinkedList<TemplateColorVariantBean>();
 
-		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE MODELLO_PRODOTTO = ? AND IN_VENDITA = '1' "
+		String where = " WHERE MODELLO_PRODOTTO = ? AND IN_VENDITA = '1' ";
+		if(genere != null)
+		{
+			where += " and genere = ?";
+		}
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + where 
 				+ " ORDER BY PREZZO_ATTUALE";
 
 
@@ -291,6 +301,8 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, template.getCodice());
+			if(genere != null)
+				preparedStatement.setString(2, genere);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -302,6 +314,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 				bean.setPrezzoAttuale(rs.getDouble("PREZZO_ATTUALE"));
 				bean.setInVendita(rs.getBoolean("IN_VENDITA"));
 				bean.setCodiceModello(rs.getInt("MODELLO_PRODOTTO"));
+				bean.setGenere(rs.getString("GENERE"));
 				bean.setModelloProdotto(template);
 				products.add(bean);
 			}
@@ -386,6 +399,7 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 				bean.setPrezzoAttuale(rs.getDouble("PREZZO_ATTUALE"));
 				bean.setInVendita(rs.getBoolean("IN_VENDITA"));
 				bean.setCodiceModello(rs.getInt("MODELLO_PRODOTTO"));
+				bean.setGenere(rs.getString("GENERE"));
 				products.add(bean);
 			}
 

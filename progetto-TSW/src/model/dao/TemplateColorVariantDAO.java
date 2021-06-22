@@ -26,7 +26,7 @@ public interface TemplateColorVariantDAO
 	public List<TemplateColorVariantBean> doRetriveVariantsForTemplate(ProductTemplateBean template)
 	throws SQLException;
 	
-	public List<TemplateColorVariantBean> doRetriveVariantsInVenditaForTemplate(ProductTemplateBean template)
+	public List<TemplateColorVariantBean> doRetriveVariantsInVenditaForTemplate(ProductTemplateBean template,String genere)
 	throws SQLException;
 	
 	public int nextCode() throws SQLException;

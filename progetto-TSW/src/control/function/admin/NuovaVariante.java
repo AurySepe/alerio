@@ -57,6 +57,7 @@ public class NuovaVariante extends AdminServlet
 			variante.setPrezzoAttuale(prezzo);
 			variante.setCodiceModello(Integer.parseInt(request.getParameter("codice")));
 			variante.setInVendita(request.getParameter("inVendita") != null);
+			variante.setGenere(request.getParameter("genere"));
 			DAOS.getProductTemplateVariantModel().doSave(variante);
 			String[] taglie = request.getParameterValues("taglie");
 			if(taglie != null)
@@ -113,6 +114,6 @@ public class NuovaVariante extends AdminServlet
 	
 	private static final String[] PARAMETRI_NECESSARI = 
 		{
-			"colore","prezzo","codice"
+			"colore","prezzo","codice","genere"
 		};
 }
