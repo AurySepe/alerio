@@ -101,6 +101,13 @@
   	flex-direction: column;
   	margin: 0 1%;
   	padding: 0 1%;
+  	justify-content: center;
   }
+  
+  #homepage .paragrafoRecensioni{
+	align-self: center;
+}
+  
+  
   
 }

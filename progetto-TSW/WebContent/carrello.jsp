@@ -15,60 +15,70 @@
 %>
 <html>
 	<head>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
+		<link href ="css/carrello.css" rel="stylesheet" type="text/css"> 
 		<meta charset="UTF-8">
 		<title>Carrello</title>
 	</head>
 	<body>
-	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
-	<table>
-			<tr>
-				<th>NOME</th>
-				<th>PREZZO</th>
-				<th>TAGLIA</th>
-				<th>COLORE</th>
-				<th>QUANTITA</th>
-				<th>PREZZO TOTALE</th>
-				<th></th>
-				
-			</tr>
+	<!-- <%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>-->
+	<div id = "carrello">
+		<div id = "prodotti">
 		<%for(ItemCarrello item : cart.getElementi()) {
 			request.setAttribute("item", item);
 		%>
-			<tr id = "${item.prodotto.codice}">
-				<td><a href = "mostraProdotto?codiceModello=${item.prodotto.varianteProdotto.modelloProdotto.codice}
-				&codice=${item.prodotto.varianteProdotto.codice}">
-				${item.prodotto.varianteProdotto.modelloProdotto.nome}</a></td>
-				<td>${item.prodotto.varianteProdotto.prezzoAttuale * (1 + iva)}</td>
-				<td>${item.prodotto.taglia}</td>
-				<td>${item.prodotto.varianteProdotto.colore}</td>
-				<td class = "numero">${item.quantitaProdotto}</td>
-				<td class = "prezzo">${(item.prodotto.varianteProdotto.prezzoAttuale*(1 + iva) ) * item.quantitaProdotto}</td>
-				<td>
-					<div>
-						<input class = "quantita" type = "number" min = "1"   name = "quantita">
-						<Button class = "aggiorna" type = "submit" value = "${item.prodotto.codice}">modifica quantità</Button><br>
-						<span class = "errore"></span>
+			<div id = "${item.prodotto.codice}" class = "prodotto">
+				<div class = "immagine-prodotto">
+					<a href = "mostraProdotto?codiceModello=${item.prodotto.varianteProdotto.modelloProdotto.codice}
+						&codice=${item.prodotto.varianteProdotto.codice}">
+						<img class = "immagine" alt="immagine prodotto" src="/progetto-TSW/immagine?codice=${item.prodotto.varianteProdotto.immaginiVariante[0].codice}">
+					</a>
+				</div>
+				<div class = "informazioni-prodotto">
+					<a class = "nome-prodotto" href = "mostraProdotto?codiceModello=${item.prodotto.varianteProdotto.modelloProdotto.codice}
+						&codice=${item.prodotto.varianteProdotto.codice}">
+						<span>${item.prodotto.varianteProdotto.modelloProdotto.nome}</span>
+					</a>
+					<span>Taglia: ${item.prodotto.taglia}</span>
+					<span>Colore: ${item.prodotto.varianteProdotto.colore}</span>
+					<div class = "contenitore-quantita">
+						<select id = "${item.prodotto.codice}-select"  class = "quantita"  name = "quantita">
+							<option value = "1">1</option>
+							<option value = "2">2</option>
+							<option value = "3">3</option>
+							<option value = "4">4</option>
+							<option value = "5">5</option>
+						</select>
 					</div>
-					<div>
-						<Button class = "elimina" type = "submit" value = "${item.prodotto.codice}">elimina</Button>
-					</div>
-				</td>
+				</div>
+				<span class = "inserisci"></span>
 				
-			</tr>
+				<div id = "${item.prodotto.codice}-cont-elimina" class = "contenitore-elimina">
+					<img id = "${item.prodotto.codice}-elimina" class = "elimina" src="img/x.png">
+				</div>
+				
+				 <div class = "prezzo">
+					<span>${(item.prodotto.varianteProdotto.prezzoAttuale * (1 + iva)) * item.quantitaProdotto}€</span>
+				</div>
+			</div>
 		
 		<%} %>
-			
-		</table>
-			<form id = "checkout" name = "checkout" action="mostraCheckout" method = "post">
-				<p>Effettua il checkout</p>
-				<button type = "submit">Checkout</button>
-				<p id = "Costo">Costo:${carrello.costoTotale * (1 + iva)}</p>
-			</form>
+		</div>
+		<div id = "acquista">
+			<div id = "contenitore-acquista">
+				<span class = "titolo-riepilogo">Riepilogo dell'ordine</span>
+				<div class = "riepilogo">
+					<span>Prezzo Totale:</span><span class = "prezzo-totale">${carrello.costoTotale * (1 + iva) }</span>			
+				</div>
+				<div class = "contenitore-bottone-acquista"><a href = "mostraCheckout"><button class = "bottone-acquista">Procedi all'acquisto</button></a></div>
+			</div>
+		</div>
+	</div>
 		
-		<%@ include file = "fragments/footer.html" %>
+	<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
 		<script src = "javascript/addToCart.js"></script>
 		<script src = "javascript/validation.js"></script>
@@ -77,36 +87,68 @@
 			function successo(data)
 			{
 				var response = JSON.parse(data);
-				if(response.quantitaProdotto < 0)
+				if(response.quantita < 0)
 				{
-					$("#" + response.prodotto.codice).remove();
+					$("#" + response.codice).remove();
 				}
 				else
 				{
-					$("#" + response.prodotto.codice + " td.numero").html(response.quantitaProdotto);
-					$("#" + response.prodotto.codice + " td.prezzo").html( "" + (response.quantitaProdotto * (response.prodotto.varianteProdotto.prezzoAttuale * (${iva} + 1)))) ;
+					$("#" + response.codice + " .prezzo > span").html( "" + (response.quantita * (response.prezzo * (${iva} + 1))) + "€") ;
 				}
 				mostraCheckout();
 			}
 			
+			function resize()
+			{
+					if($(window).width() <= 767)
+					{ 
+				        $(".contenitore-elimina").each
+				        (
+				       	 	function()
+				        	{
+				        		var codice = parseInt($(this).attr("id"));
+				        		$(this).insertAfter($("#"+codice + " .contenitore-quantita"));
+					       	}
+				
+				        )
+				        
+				    }  
+					else
+					{
+						
+						 $(".contenitore-elimina").each
+						 (
+								 
+						     function()
+						     {
+						        	var codice = parseInt($(this).attr("id"));
+
+						        	$(this).insertAfter($("#"+codice + " .inserisci"));
+						     }
+						 )
+					}
+					
+			}
+			
 			function errore()
 			{
-				alert("errore");
+	
 			}
 			
 			function mostraCheckout()
 			{
 				var costoTotale = 0;
-				$("td.prezzo").each(function(){ costoTotale += parseInt($(this).html())});
-				if(costoTotale == 0)
+				var length = 0;
+				$(".prezzo > span").each(function(){ costoTotale += parseInt($(this).html()); length++});
+				if(length == 0)
 				{
-					$("#checkout").hide();	
+					$("#acquista").hide();	
 				}
 				else
 				{
-					$("#checkout").show();	
+					$("#acquista").show();	
 				}
-				$("#Costo").html("Costo: " + costoTotale);
+				$(".prezzo-totale").html(costoTotale + "€");
 			}
 		</script>
 		<script type="text/javascript">
@@ -116,33 +158,26 @@
 				{
 					mostraCheckout();
 					abbellimentiGenerali();
-					
-					$("button.aggiorna").click
+					resize();
+					$("select").change
 					(
 						function()
 						{
-							var request = { "codice" : $(this).val() };
-							request.quantita = $("#" + request.codice + " input.quantita").val();
-							if(regQuantita(request.quantita) && parseInt(request.quantita) > 0)
-							{
-								$("#" + request.codice + " span.errore").html("");
-								addToCart(request,successo,errore);
-							}
-							else
-							{
-								$("#" + request.codice + " span.errore").html("quantità non valida");
-							}
+							var request =  {"codice" : parseInt($(this).attr("id")), "quantita" : $(this).val()};
+							addToCart(request,successo,errore);
 						}
 					)
-					$("button.elimina").click
+					
+					$(".elimina").click
 					(
 						function()
 						{
-							var request = { "codice" : $(this).val() };
+							var request = { "codice" : parseInt($(this).attr("id")) };
 							request.quantita = "-1";
 							addToCart(request,successo,errore);
 						}
 					)
+					$(window).resize(resize)	
 				}
 			)
 		</script>

@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Carrello;
+import model.ItemCarrello;
+import model.bean.ProductBean;
+import model.ds.DAOS;
 
 @WebServlet("/carrello")
 public class MostraCarrello extends HttpServlet 
@@ -25,7 +28,24 @@ public class MostraCarrello extends HttpServlet
 			Carrello cart = (Carrello) session.getAttribute("carrello");
 			if(cart == null)
 			{
-				session.setAttribute("carrello", new Carrello());
+				cart = new Carrello();
+				session.setAttribute("carrello", cart);
+			}
+			for(ItemCarrello i : cart.getElementi())
+			{
+				try
+				{					
+					ProductBean p = i.getProdotto();
+					p.setVarianteProdotto(DAOS.getProductTemplateVariantModel().doRetrieveProductVariant(p));
+					p.getVarianteProdotto().setModelloProdotto(DAOS.getProductTemplateModel().doRetrieveVariantTemplate(p.getVarianteProdotto()));
+					p.getVarianteProdotto().setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(p.getVarianteProdotto()));
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+					response.sendError(403);
+				}
+				
 			}
 		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(response.encodeURL("/carrello.jsp"));

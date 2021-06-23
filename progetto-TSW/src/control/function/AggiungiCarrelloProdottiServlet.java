@@ -2,6 +2,8 @@ package control.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import com.google.gson.Gson;
 
 import model.Carrello;
 import model.ItemCarrello;
+import model.JsonParser;
 import model.bean.ProductBean;
 import model.bean.ProductTemplateBean;
 import model.bean.TemplateColorVariantBean;
@@ -84,8 +87,12 @@ public class AggiungiCarrelloProdottiServlet extends HttpServlet
 			{
 				i = new ItemCarrello(bean,-1);
 			}
+			Map<String, Object> resp = new HashMap<String, Object>();
+			resp.put("quantita", i.getQuantitaProdotto());
+			resp.put("codice", i.getProdotto().getCodice());
+			resp.put("prezzo", i.getProdotto().getVarianteProdotto().getPrezzoAttuale());
 			Gson g = new Gson();
-			response.getWriter().print(g.toJson(i));
+			response.getWriter().print(JsonParser.toJson(resp));
 			response.setStatus(HttpServletResponse.SC_OK);
 		}
 		catch(Exception e)
