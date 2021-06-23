@@ -1,16 +1,21 @@
 body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
     background-color: thistle;
     color: black;
-    align-content: center;
 }
  
 #loginPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
     width: 25%;
-    height: 58%;
+    height: 60%;
     background-color: orchid;
     color: black;
-    align-content: center;
-    text-align: center;
     padding: 0% 10%;
     margin: 5% 30%;
     border-radius: 8%;
@@ -34,3 +39,5 @@ body {
     align-content: center;
     text-align: center;
 }
+
+

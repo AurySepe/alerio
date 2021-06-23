@@ -26,6 +26,7 @@
                 <input type="password" name="password" placeholder="Enter password"><br> 
                 <span class = "errore"></span> 
                </div>
+               <br>
                <div>
  
                     <button id = "login-button" class="bottone" type="button"> Log in </button>              

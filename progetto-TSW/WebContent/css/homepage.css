@@ -87,6 +87,10 @@
     flex-direction: column;
   }
   
+  #homepage .esterna{
+  	font-size: 120%; 
+  }
+  
   #homepage div.tit{
   	width: 100%;
   	margin: 2% 0;
@@ -99,8 +103,13 @@
   
   #homepage .imgRec{
   	flex-direction: column;
-  	margin: 0 1%;
-  	padding: 0 1%;
+  	justify-content: center;
   }
+  
+  #homepage .paragrafoRecensioni{
+ 	width: 100%;
+ 	font-size: 120%;
+  }
+  
   
 }

@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+.domande{
+	display: flex;
+	flex-direction: column;
+	padding-top: 2%;
+	padding-left: 2%;
+	background-color: BlanchedAlmond;
+	
+}
+
+.risp1, .risp2, .risp3, .risp4, .risp5, .risp6, .risp7 {
+	padding-left: 4%;
+	font-size: 70%;
+	
+	
+}
+
+.domanda1, .domanda2, .domanda3, .domanda4, .domanda5, .domanda6, .domanda7, .domanda8, .domanda9, .domanda10, .domanda11{
+	font-size: 150%;
+}
