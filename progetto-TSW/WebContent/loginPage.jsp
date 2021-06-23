@@ -14,7 +14,7 @@
 <body>
 	<div id = "loginPage">
 			<form id = "form-login" action="/progetto-TSW/LoginServlet" method="post">
-               <h1> Log-in </h1>
+               <h1> Log-in </h1> <br>
                <div class = "input" id = "email">  
                 Email: <br>
                 <input type="text" name="email" placeholder="Enter email"><br>
@@ -22,10 +22,11 @@
                </div>
                
                <div class = "input" id = "password">
-                Password: <br>
+                <br>Password: <br>
                 <input type="password" name="password" placeholder="Enter password"><br> 
                 <span class = "errore"></span> 
                </div>
+               <br>
                <div>
  
                     <button id = "login-button" class="bottone" type="button"> Log in </button>              

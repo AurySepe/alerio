@@ -3,10 +3,12 @@ footer {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 100%;
+	width: 98%;
 	height: auto;
     background-color: black;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 footer div {
