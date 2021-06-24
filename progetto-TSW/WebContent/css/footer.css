@@ -3,7 +3,7 @@ footer {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 98%;
+	width: 100%;
 	height: auto;
     background-color: black;
     color: white;
