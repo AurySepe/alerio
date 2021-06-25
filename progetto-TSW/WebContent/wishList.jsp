@@ -39,7 +39,7 @@
 				<td><a href = "mostraProdotto?codiceModello=${variante.codiceModello}
 				&codice=${variante.codice}">
 				${variante.modelloProdotto.nome}</a></td>
-				<td>${variante.prezzoAttuale * (${iva} + 1)}</td>
+				<td>${variante.prezzoAttuale * (iva + 1)}</td>
 				<td>${variante.colore}</td>
 				<td><button type = "button" value="${variante.codice}"><img alt = "" src ="" width = 50 height = 50></button></td>
 			</tr>

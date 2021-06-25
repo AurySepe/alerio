@@ -56,7 +56,7 @@
 		<div class="domanda5">  
 			<p> 5. Emettete una ricevuta fiscale? <button class="bot5"> premi </button> </p>
 			
-			<p class="risp5"> Si, la ricevuta fiscale che emetteremo ti arriverà via mail non appena sarà conclus la procedura d'acquisto </p>
+			<p class="risp5"> Si, la ricevuta fiscale che emetteremo ti arriverà via mail non appena sarà conclusa la procedura d'acquisto </p>
 		</div>
 		
 		<div class="domanda6"> 

@@ -17,7 +17,7 @@
 	display: flex;
 	flex-direction: row;
 	border-style: solid;
-	border-width: thin;
+	border-width: medium;
 	border-color: black;
 	margin: 2% 0;
 	
@@ -75,7 +75,7 @@
 	flex-direction: column;
 	align-items: center;
 	border-style: solid;
-	border-width: thin;
+	border-width: medium;
 	border-color: black;
 }
 
