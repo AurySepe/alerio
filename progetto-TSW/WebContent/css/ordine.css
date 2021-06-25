@@ -1,0 +1,141 @@
+@charset "ISO-8859-1";
+
+#ordine{
+	width: 94%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 3%;
+}
+
+#ordine > *{
+	margin: 2% 0;
+}
+
+#ordine .contenitore-indirizzo{
+	width: 99.4%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black; 
+}
+
+#ordine .consegna{
+	width: 100%;
+	text-align: center;
+	font-size:5vw;
+}
+
+#ordine .indirizzo{
+	width: 98%;
+	margin-left:2%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 3vw;
+}
+
+#ordine .contenitore-carta{
+	width: 99.4%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black; 
+}
+
+#ordine .contenuto-carta{
+	width: 98%;
+	margin-left: 2%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 3vw;
+	
+}
+
+#ordine .nome-carta{
+	width: 100%;
+	text-align: center;
+	font-size:5vw;
+}
+
+#ordine .numero-immagine{
+	width: 40%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#ordine .contenitore-immagine-carta{
+	width: 20%;
+	display: flex;
+	flex-direction: row;
+}
+
+#ordine .immagine-carta{
+	width: 100%;
+	object-fit: contain;
+}
+
+#ordine .numero-carta{
+	width: 80%;
+	
+}
+
+#ordine #prodotti{
+	width: 99.4%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black; 
+	text-align: center;
+	
+	
+}
+
+#ordine .prodotto{
+	width: 96%;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	padding: 0 2%;
+	margin:1% 0;
+	font-size: 3vw;
+	
+}
+
+
+#ordine #prodotti > h1{
+	font-size: 5vw;
+	
+}
+
+#ordine .immagine-prodotto{
+	width: 20%;
+	
+}
+
+
+#ordine .immagine{
+	width: 100%;
+	object-fit: contain;
+}
+
+#ordine .informazioni-prodotto{
+	width: 70%;
+	margin-left:auto;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+	
+}
+
+#ordine .nome-prodotto{
+	text-decoration: none;
+}
+
+

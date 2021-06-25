@@ -16,35 +16,42 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<title>Ordini</title>
 		<link rel = "stylesheet" href = "css/stileGenerale.css" type = "text/css">
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
+		<link href ="css/ordini.css" rel="stylesheet" type="text/css"> 
 	</head>
 	
 	<body>
 		<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
-		<table>
-			<tr>
-				<th>Data di acquisto</th>
-				<th>Iva</th>
-				<th>Costo Totale</th>
-				<th>Dettagli</th>
-			</tr>
+		<div id = "ordini">
+			<h1>I tuoi ordini</h1>
+			<div id = "riepilogo-ordini">
+			
+			<div id = "titoli">
+				<span>Data di acquisto</span>
+				<span>Iva</span>
+				<span>Costo totale</span>
+				<span>Dettagli</span>
+			</div>
 			<%for(OrdineBean ordine : utente.getOrdini()) 
 			{
 				request.setAttribute("ordine", ordine);
+				String costoTotale = String.format("%.2f", ordine.getCosto()* (1 + ordine.getIva()));
 			%>
 			
-			<tr>
-				<td>${ordine.data}</td>
-				<td>${ordine.iva}</td>
-				<td>${ordine.costo * (ordine.iva + 1)}</td>
-				<td><a href = "ordine?codice=${ordine.codiceOrdine}">dettagli ordine</a></td>
-			</tr>
+			<div class = "ordine">
+				<span>${ordine.data}</span>
+				<span>${ordine.iva}</span>
+				<span><%= costoTotale %>€</span>
+				<span><a href = "ordine?codice=${ordine.codiceOrdine}">dettagli ordine</a></span>
+			</div>
 			
 			<%} %>
-		</table>
+			</div>
+		</div>
 		<%@ include file = "fragments/footer.html" %>
 	</body>
 </html>

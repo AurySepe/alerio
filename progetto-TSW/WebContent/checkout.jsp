@@ -173,7 +173,7 @@
 					<span>${item.prodotto.taglia}</span>
 					<span>${item.prodotto.varianteProdotto.colore}</span>
 					<span>${item.quantitaProdotto}</span>
-					<span>${(item.prodotto.varianteProdotto.prezzoAttuale * (1 + iva)) * item.quantitaProdotto}€</span>
+					<span class = "prezzo-elementi">${(item.prodotto.varianteProdotto.prezzoAttuale * (1 + iva)) * item.quantitaProdotto}€</span>
 				</div>
 			</div>
 		
@@ -185,7 +185,7 @@
 				<div id = "contenitore-acquista">
 					<span class = "titolo-riepilogo">Acquista Ora</span>
 					<div class = "riepilogo">
-						<span>Prezzo Totale:</span><span class = "prezzo-totale">${carrello.costoTotale * (1 + iva) }</span>			
+						<span>Prezzo Totale:</span><span class = "prezzo-totale">${carrello.costoTotale * (iva + 1) }</span>			
 					</div>
 					<div class = "contenitore-bottone-acquista"><button class = "bottone-acquista">Acquista</button></div>
 				</div>
@@ -253,11 +253,9 @@
 			(
 				function()
 				{
-					validazionePagamenti(successCarta);
-					validazioneIndirizzi(successIndirizzo);
-					validazioneCheckout();
-					abbellimentiGenerali();
-					$("#bottone-aggiungi-indirizzo").click
+					var prezzo = 0;
+					$(".prezzo-elementi").each(function(){prezzo += parseFloat($(this).html())});
+					$(".prezzo-totale").html("" + prezzo + "€");
 					(
 						function()
 						{

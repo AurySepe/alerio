@@ -1,0 +1,57 @@
+@charset "ISO-8859-1";
+
+#ordini{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#ordini h1{
+	font-size: 5vw;
+	text-align: center;
+}
+
+#ordini #riepilogo-ordini{
+	width: 99%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black; 
+	margin: 2% 0; 
+}
+
+#ordini #titoli{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	align-items: center;
+	font-size: 3.5vw;
+}
+
+#ordini #titoli > *{
+	width: 25%;
+	display: flex;
+	justify-content: center;
+}
+
+#ordini .ordine{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	align-items: center;
+	margin: 2% 0;
+	font-size: 2.5vw;
+}
+
+#ordini .ordine > *{
+	width: 25%;
+	display: flex;
+	justify-content: center;
+}
+
+
+
