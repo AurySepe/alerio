@@ -1,0 +1,774 @@
+@charset "ISO-8859-1";
+
+#checkout{
+	width: 100%;
+	display: flex;
+}
+
+#checkout form{
+	width: 100%;
+	display: flex;
+}
+
+#checkout h1{
+	text-align: center;
+}
+
+#checkout input{
+	padding: 0;
+	margin: 0;
+}
+
+#checkout #aggiungi-indirizzo, #checkout #aggiungi-carta{
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  justify-content: center;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+#checkout #aggiungi-indirizzo-contenuto, #checkout #aggiungi-carta-contenuto{
+  display: flex;
+  text-align:center;
+  flex-direction: column;
+  background-color: white; 
+  border-radius: 5px;
+}
+
+#checkout #aggiungi-carta-contenuto > *{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 25%;
+}
+
+#checkout .input > input{
+	width: 100%;
+	display: flex;
+	font-size: 2.5vw;
+	
+}
+
+#checkout .input > div{
+	width: 100%;
+	
+}
+
+#checkout .input > div.contenitore-errore{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	
+}
+
+#checkout div.contenitore-errore > span.errore{
+	align-self: flex-start;
+	
+}
+
+
+#checkout #nuovaCarta{
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	
+}
+
+#checkout #aggiungi-indirizzo-contenuto > *{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+#checkout #nuovoIndirizzo{
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	
+}
+
+
+#checkout #checkout-form{
+	width: 100%;
+	display: flex;
+}
+
+#checkout #indirizzi-carte-riepilogo{
+	display: flex;
+	flex-direction: column;
+}
+
+#checkout #indirizzo{
+	width: 90%;
+	margin: 5% 0;
+	padding: 0 5%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+#checkout .indirizzi{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#checkout .contenitore-indirizzo{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 1% 0;
+}
+
+#checkout .indirizzo-radio{
+	width: 4%;
+}
+
+#checkout .indirizzo{
+	width: 96%;
+	display: flex;
+	flex-direction: row;
+}
+
+
+#checkout #bottone-aggiungi-indirizzo{
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+}
+
+
+#checkout #pagamento{
+	width: 90%;
+	margin: 5% 0;
+	padding: 0 5%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+#checkout #carte{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#checkout .titolo-carta{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+
+#checkout #titolo-le-tue-carte{
+	width: 40%;
+	display: flex;
+	justify-content: center;
+}
+
+
+#checkout #titolo-nominativo{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+}
+
+#checkout #titolo-scadenza{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+}
+
+#checkout .contenitore-carta{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	
+}
+
+#checkout .radio-immagine{
+	width: 40%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#checkout .carta-radio{
+	width: 10%;
+	
+}
+
+#checkout .contenitore-immagine-carta{
+	width: 20%;
+	
+}
+
+#checkout .numero-carta{
+	display: flex;
+	width: 80%;
+	justify-content: center;
+}
+
+#checkout .immagine-carta{
+	width:100%;
+	object-fit: contain;
+	
+}
+
+#checkout .nominativo-carta{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	
+}
+
+#checkout .scadenza-carta{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	
+}
+
+#checkout #contenitore-bottone-aggiungi-carta{
+	margin: 2% 0;
+	width: 40%;
+}
+
+#checkout #bottone-aggiungi-carta{
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+}
+
+#checkout #riepilogo-ordine{
+	width: 90%;
+	margin: 5% 0;
+	padding: 0 5%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+
+#checkout #prodotti{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	
+}
+
+#checkout .prodotto{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	margin:1% 0;
+	
+}
+
+#checkout .immagine-prodotto{
+	width: 20%;
+	
+}
+
+
+#checkout .immagine{
+	width: 100%;
+	object-fit: contain;
+}
+
+#checkout .informazioni-prodotto{
+	width: 70%;
+	margin-left:auto;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+	
+}
+
+#checkout .nome-prodotto{
+	text-decoration: none;
+}
+
+
+#checkout #contenitore-acquista{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	width: 100%;
+}
+
+#checkout #contenitore-acquista > *{
+	height: 33.3333%;
+}
+
+#checkout .titolo-riepilogo{
+	font-weight: bold;
+}
+
+#checkout .riepilogo{
+	width:100%;
+	display: flex;
+	flex-direction: row;
+}
+
+
+#checkout .prezzo-totale{
+	margin-left:auto; 
+}
+
+#checkout .contenitore-bottone-acquista{
+	width: 100%; 
+}
+
+#checkout .bottone-acquista{	
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	height: 100%;
+}
+
+@media screen and (min-width : 1024px) {
+	
+	#checkout form{
+		flex-direction: row;
+	}
+	
+	#checkout h1{
+		font-size: 3.5vw;
+	}
+	
+	#checkout #aggiungi-indirizzo-contenuto, #checkout #aggiungi-carta-contenuto{
+ 		font-size: 2.5vw;
+ 		width: 40%;
+  		padding: 0 5%;
+ 		margin: 2% 0;
+	}	
+	
+	#checkout .input > input{
+		height: 30%;
+		font-size: 2.5vw;
+	
+	}
+
+	#checkout .input > div{
+		height: 35%;	
+	}
+	
+	#checkout .input > div.contenitore-errore{
+		font-size: 1.5vw;
+	
+	}
+	
+	#checkout #nuovaCarta{
+		padding:5% 0;
+		font-size: 3.5vw;
+	
+	}
+	
+	#checkout #aggiungi-indirizzo-contenuto > *{
+		height: 14%;
+		font-size: 2.5vw;
+	}
+	
+	#checkout #aggiungi-carta-contenuto > *{
+		font-size: 3.5vw;
+	}
+	
+	#checkout #nuovoIndirizzo{
+		padding:5% 0;
+		font-size: 2.5vw;
+	
+	}
+	
+	#checkout #indirizzi-carte-riepilogo{
+		width: 68%;
+	}
+	
+	#checkout .indirizzi{
+		font-size: 1.7vw;
+	}
+	
+	
+	#checkout #contenitore-bottone-aggiungi-indirizzo{
+		margin: 2% 0;
+		width: 40%;
+	}
+	
+	#checkout #bottone-aggiungi-indirizzo{
+		padding:5% 0;
+		font-size: 1.7vw;
+	}
+	
+	#checkout #errore-indirizzo{
+		font-size: 2.5vw;
+	}
+	
+	#checkout .titolo-carta{
+		font-size: 2vw;
+	}
+	
+	#checkout #titolo-le-tue-carte{
+		font-size: 2.5vw;
+	}
+	
+	#checkout .contenitore-carta{
+		font-size: 1.7vw;
+	
+	}
+	
+	#checkout #bottone-aggiungi-carta{
+		padding:5% 0;
+		font-size: 1.7vw;
+	}
+	
+	#checkout #errore-carta{
+		font-size: 2.5vw;
+	}
+	
+	#checkout .informazioni-prodotto{
+		font-size: 2vw;
+	
+	}
+	
+	#checkout .nome-prodotto{
+		font-size: 3vw;
+	}
+	
+	#checkout #acquista{
+		width: 25%;
+		position: fixed;
+		height: 90%;
+		margin-left: 70.4%;
+		margin-top: 3.3%;
+	}
+	
+	#checkout #contenitore-acquista{
+		height: 30%;
+	}
+	
+	#checkout .titolo-riepilogo{
+		font-size: 2.5vw;
+	}
+	
+	#checkout .riepilogo{
+		font-size: 2vw;
+	}
+	
+	#checkout .bottone-acquista{	
+		font-size: 2.5vw;
+	}
+	
+}
+
+@media screen and (min-width : 768px) and (max-width : 1023.9px) {
+	
+	#checkout form{
+		flex-direction: column;
+	}
+	
+	#checkout h1{
+		font-size: 3.5vw;
+	}
+	
+	#checkout #aggiungi-indirizzo-contenuto, #checkout #aggiungi-carta-contenuto{
+ 		font-size: 2.5vw;
+ 		width: 40%;
+  		padding: 0 5%;
+ 		margin: 2% 0;
+	}	
+	
+	#checkout .input > input{
+		height: 30%;
+		font-size: 3.5vw;
+	
+	}
+
+	#checkout .input > div{
+		height: 35%;	
+	}
+	
+	#checkout .input > div.contenitore-errore{
+		font-size: 2.5vw;
+	
+	}
+	
+	#checkout #nuovaCarta{
+		padding:5% 0;
+		font-size: 4.5vw;
+	
+	}
+	
+	#checkout #aggiungi-indirizzo-contenuto > *{
+		height: 14%;
+		font-size: 4vw;
+	}
+	
+	#checkout #aggiungi-carta-contenuto > *{
+		font-size: 4.5vw;
+	}
+	
+	#checkout #nuovoIndirizzo{
+		padding:5% 0;
+		font-size: 4vw;
+	
+	}
+	
+	#checkout #indirizzi-carte-riepilogo{
+		width: 99.2%;
+	}
+	
+	#checkout .indirizzi{
+		font-size: 2.5vw;
+	}
+	
+	
+	#checkout #contenitore-bottone-aggiungi-indirizzo{
+		margin: 2% 0;
+		width: 40%;
+	}
+	
+	#checkout #bottone-aggiungi-indirizzo{
+		padding:5% 0;
+		font-size: 2.5vw;
+	}
+	
+	#checkout #errore-indirizzo{
+		font-size: 2.5vw;
+	}
+	
+	#checkout .titolo-carta{
+		font-size: 2.5vw;
+	}
+	
+	#checkout #titolo-le-tue-carte{
+		font-size: 3.5vw;
+	}
+	
+	#checkout .contenitore-carta{
+		font-size: 2.5vw;
+	
+	}
+	
+	#checkout #bottone-aggiungi-carta{
+		padding:5% 0;
+		font-size: 2.5vw;
+	}
+	
+	#checkout #errore-carta{
+		font-size: 2.5vw;
+	}
+	
+	#checkout .informazioni-prodotto{
+		font-size: 2.5vw;
+	
+	}
+	
+	#checkout .nome-prodotto{
+		font-size: 3.5vw;
+	}
+	
+	#checkout #acquista{
+		width: 99.2%;
+		margin: 5% 0;
+	}
+	
+	#checkout #contenitore-acquista{
+		width: 100%; 
+		display: flex;
+	}
+	
+	#checkout #contenitore-acquista > *{
+		margin: 2% 0;
+	}
+	
+	#checkout .titolo-riepilogo{
+		font-size: 5vw;
+	}
+	
+	#checkout .riepilogo{
+		font-size: 4vw;
+	}
+	
+	#checkout .contenitore-bottone-acquista{
+		display: flex;
+		justify-content: center;
+	}
+	
+	#checkout .bottone-acquista{	
+		font-size: 4vw;
+		width: 50%;
+		
+	}
+	
+}
+
+@media screen and  (max-width : 767.9px) {
+	
+	#checkout form{
+		flex-direction: column;
+	}
+	
+	#checkout h1{
+		font-size: 3.5vw;
+	}
+	
+	#checkout #aggiungi-indirizzo-contenuto, #checkout #aggiungi-carta-contenuto{
+ 		font-size: 2.5vw;
+ 		width: 40%;
+  		padding: 0 5%;
+ 		margin: 5% 0;
+	}	
+	
+	#checkout .input > input{
+		height: 30%;
+		font-size: 5vw;
+	
+	}
+
+	#checkout .input > div{
+		height: 35%;	
+	}
+	
+	#checkout .input > div.contenitore-errore{
+		font-size: 4vw;
+	
+	}
+	
+	#checkout #nuovaCarta{
+		padding:5% 0;
+		font-size: 6vw;
+	
+	}
+	
+	#checkout #aggiungi-indirizzo-contenuto > *{
+		height: 14%;
+		font-size: 5.4vw;
+	}
+	
+	#checkout #aggiungi-carta-contenuto > *{
+		font-size: 5.6vw;
+	}
+	
+	#checkout #nuovoIndirizzo{
+		padding:5% 0;
+		font-size: 6vw;
+	
+	}
+	
+	#checkout #indirizzi-carte-riepilogo{
+		width: 99.2%;
+	}
+	
+	#checkout .indirizzi{
+		font-size: 2.5vw;
+	}
+	
+	
+	#checkout #contenitore-bottone-aggiungi-indirizzo{
+		margin: 2% 0;
+		width: 40%;
+	}
+	
+	#checkout #bottone-aggiungi-indirizzo{
+		padding:5% 0;
+		font-size: 2.5vw;
+	}
+	
+	#checkout #errore-indirizzo{
+		font-size: 2.5vw;
+	}
+	
+	#checkout .titolo-carta{
+		font-size: 2.5vw;
+	}
+	
+	#checkout #titolo-le-tue-carte{
+		font-size: 3.5vw;
+	}
+	
+	#checkout .contenitore-carta{
+		font-size: 2.5vw;
+	
+	}
+	
+	#checkout #bottone-aggiungi-carta{
+		padding:5% 0;
+		font-size: 2.5vw;
+	}
+	
+	#checkout #errore-carta{
+		font-size: 2.5vw;
+	}
+	
+	#checkout .informazioni-prodotto{
+		font-size: 2.5vw;
+	
+	}
+	
+	#checkout .nome-prodotto{
+		font-size: 3.5vw;
+	}
+	
+	#checkout #acquista{
+		width: 99.2%;
+		margin: 5% 0;
+	}
+	
+	#checkout #contenitore-acquista{
+		width: 100%; 
+		display: flex;
+	}
+	
+	#checkout #contenitore-acquista > *{
+		margin: 2% 0;
+	}
+	
+	#checkout .titolo-riepilogo{
+		font-size: 5vw;
+	}
+	
+	#checkout .riepilogo{
+		font-size: 4vw;
+	}
+	
+	#checkout .contenitore-bottone-acquista{
+		display: flex;
+		justify-content: center;
+	}
+	
+	#checkout .bottone-acquista{	
+		font-size: 4vw;
+		width: 50%;
+		
+	}
+	
+}

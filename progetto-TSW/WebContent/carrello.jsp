@@ -24,7 +24,7 @@
 		<title>Carrello</title>
 	</head>
 	<body>
-	<!-- <%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>-->
+	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 	<div id = "carrello">
 		<div id = "prodotti">
 		<%for(ItemCarrello item : cart.getElementi()) {
