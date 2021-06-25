@@ -32,23 +32,32 @@
 			
 			<fieldset>
 				<legend> Ordini </legend>
-				<img src="/progetto-TSW/img/ordini.jpg" alt="immagine non visualizzabile">
-				<br>
-				<a href = "/progetto-TSW/ordini"> <button> vai ai miei ordini </button></a>
+				<div class = "contenitore-immagine">
+					<img src="/progetto-TSW/img/ordini.jpg" alt="immagine non visualizzabile">
+				</div>
+				<div class = "contenitore-bottone">
+					<a href = "/progetto-TSW/ordini"> <button class = "bottoni"> i miei ordini </button></a>
+				</div>
 			</fieldset>
 			
 			<fieldset>
 				<legend> Pagamento </legend>
-				<img src="/progetto-TSW/img/metodiPagamento.png" alt="immagine non visualizzabile">
-				<br>
-				<a href = "/progetto-TSW/carte"> <button> vai ai miei metodi di pagamento </button></a>
+				<div class = "contenitore-immagine">
+					<img src="/progetto-TSW/img/metodiPagamento.png" alt="immagine non visualizzabile">
+				</div>
+				<div class = "contenitore-bottone">
+					<a href = "/progetto-TSW/carte"> <button class = "bottoni"> i miei metodi di pagamento </button></a>
+				</div>
 			</fieldset>
 			
 			<fieldset>
 				<legend> Spedizione </legend>
-				<img src="/progetto-TSW/img/spedizione.jpg" alt="immagine non visualizzabile">
-				<br>
-				<a href = "/progetto-TSW/indirizzi"><button> vai alle informazioni di consegna </button></a>
+				<div class = "contenitore-immagine">
+					<img src="/progetto-TSW/img/spedizione.jpg" alt="immagine non visualizzabile">
+				</div>
+				<div class = "contenitore-bottone">
+					<a href = "/progetto-TSW/indirizzi"><button class = "bottoni">informazioni di consegna </button></a>
+				</div>
 			</fieldset>
 			
 		  </div>

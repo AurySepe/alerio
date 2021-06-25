@@ -4,15 +4,22 @@
 	display:flex;
 	flex-direction: column;
 	width: 100%;
-	height: 100%;
 	margin-bottom:2%;
+}
+
+.utente a{
+	text-decoration: none;
+}
+
+.utente h1{
+	font-size: 5vw;
+	text-align: center;
 }
 
 .utente .quadrati{
 	display:flex;
 	flex-direction: row;
 	justify-content: space-between;
-	height: 65%;
 	width: 100%;
 	margin-bottom: 4%;
 }
@@ -20,49 +27,96 @@
 .utente #uscita{
 	font-size: 130%;
 	width: 30%;
-    height: 160%;
 }
 
 .utente button{
-	cursor: pointer;
-	border-radius: 40%;
-	-moz-border-radius: 40%; /* firefox */ 
-    -webkit-border-radius: 40%; /* safari, chrome */
-    background: DarkOrange;
-	border-color: DarkOrange;
-	text-align: center;
-    border-style: hidden;
-    width: 40%;
-    height: 100%
+	width: 100%; 
+	background-color:DarkOrange;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	padding: 2% 5%;
+}
+
+.utente .contenitore-immagine{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2%;
 }
 
 .utente img{
-	width: 90%;
-	height: 40%;
+	width: 100%;
+	object-fit: contain;
 }
 
 .utente fieldset{
+	margin: 0;
+	padding: 0;
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 100%;
-	height: 100%;
+	width: 30%;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
 }
 
 .utente legend{
 	font-weight: bold;
-	font-size: 120%;
+	font-size: 3vw;
 }
+
+.utente a{
+	display: flex;
+	justify-content: center;
+}
+
+.utente .contenitore-bottone{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: auto;
+}
+
+.utente .bottoni{
+	font-size: 1.7vw;
+}
+
+.utente .contenitore-bottone > a{
+	width: 80%;
+}
+
+.utente #uscita{
+	font-size: 4vw;
+}
+
 
 @media screen and (max-width: 600px) {
 	
 	.utente .quadrati{
 		flex-direction: column;
-		height: auto;
 	}
 	
+	.utente fieldset{
+		
+		width: 98.8%;
+	}	
+	
 	.utente img{
-		width: 50%;
+		width: 80%;
+	}
+	
+	.utente .contenitore-bottone{
+		margin-top: 5%;
+	}
+	
+	.utente .bottoni{
+	font-size: 4vw;
+}
+	
+	.utente .contenitore-immagine{
+		margin-bottom: 0;
 	}
 	
 }

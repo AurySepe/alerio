@@ -106,7 +106,7 @@
 	border-radius: 5px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767.9px){
 	
 	#carrello{
 	flex-direction: column;
@@ -132,7 +132,7 @@
 	}
 	
 	#carrello .nome-prodotto{
-	font-size: 1em;
+	font-size: 3.5vw;
 	}
 	
 	#carrello .elimina{
@@ -141,11 +141,12 @@
 	
 	#carrello .contenitore-elimina{
 	width: 10%;
+	justify-content: flex-end;
 	
 	}
 	
 	#carrello .prezzo{
-	font-size: 1em;
+	font-size: 4vw;
 	width: 15%;
 	}
 	
@@ -157,6 +158,10 @@
 	#carrello .titolo-riepilogo{
 	font-size: 3vw;  
 	margin: 5% 0%
+	}
+	
+	#carrello .riepilogo{
+		font-size: 2.5vw;
 	}
 	
 	#carrello .bottone-acquista{	
@@ -179,7 +184,7 @@
 	
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px){
+@media screen and (min-width: 768px) and (max-width: 1023.9px){
 	
 	#carrello{
 	flex-direction: column;
@@ -213,7 +218,7 @@
 	}
 	
 	#carrello .prezzo{
-	font-size: 1.5em;
+	font-size: 4vw;
 	
 	}
 	
@@ -225,6 +230,10 @@
 	#carrello .titolo-riepilogo{
 	font-size: 3vw;  
 	margin: 5% 0%
+	}
+	
+	#carrello .riepilogo{
+		font-size: 2.5vw;
 	}
 	
 	#carrello .bottone-acquista{	
@@ -248,7 +257,7 @@
 	flex-direction: row;
 	}
 	
-	#carrello .prodotti{
+	#carrello #prodotti{
 	width: 58.5%;
 	
 	}
@@ -276,18 +285,24 @@
 	}
 	
 	#carrello .prezzo{
-	font-size: 1.5em;
+	font-size: 2.5vw;
 	
 	}
 	
 	#carrello #acquista{
-	width: 38.5%;
-	margin: 2% 0 0 3%;
+	position: fixed;
+	width: 35.8%;
+	margin-left: 60%;
+	margin-top: 1.1%
 	}
 	
 	#carrello .titolo-riepilogo{
-	font-size: 1.6vw;  
+	font-size: 2vw;  
 	margin: 5% 0%
+	}
+	
+	#carrello .riepilogo{
+		font-size: 1.5vw;
 	}
 	
 	#carrello .bottone-acquista{	
