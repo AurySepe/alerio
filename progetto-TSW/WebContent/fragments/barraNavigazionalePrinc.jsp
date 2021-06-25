@@ -24,8 +24,9 @@
      		<td> <a href="/progetto-TSW/catalogo?categoria=bracciale"> bracciali </a> </td>
      		<td> <a href="/progetto-TSW/catalogo?categoria=collana"> collane </a></td>
      		<td> <a href="/progetto-TSW/catalogo?categoria=fede"> fedi nunziali </a></td>
-     		<td> <a href="/progetto-TSW/catalogo?categoria=coordinati"> coordinati </a></td>
+     		<td> <a href="/progetto-TSW/catalogo?categoria=coordinato"> coordinati </a></td>
      		<td> <a href="/progetto-TSW/catalogo?categoria=orecchini"> orecchini </a></td>
+     		<td> <a href="/progetto-TSW/catalogo?categoria=ciondolo"> ciondoli </a> </td>
      	</tr>
      </table> 
 </header>

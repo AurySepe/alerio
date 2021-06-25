@@ -10,6 +10,8 @@
 		return;
 	}
     %>
+    
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -27,7 +29,11 @@
 		<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
 		<div class="utente">
 		
-			<h1> BENVENUTO NEL TUO PROFILO! </h1>
+			<% if(utente.getGenere().equals("f")) { %>
+			<h1> Benvenuta ${utente.nome} </h1>
+			<% } else { %>
+			<h1> Benvenuto ${utente.nome} </h1>
+			<% } %>
 		  <div class="quadrati"> 
 			
 			<fieldset>

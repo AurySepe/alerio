@@ -132,47 +132,5 @@ create table composizione
 	foreign key (codice_ordine) references ordine(codice)
 		on update cascade
         on delete cascade
-);
-
-create table codice_sconto
-(
-	codice varchar(10) primary key,
-    valore double not null,
-    prezzo_minimo double not null,
-    riutilizzbile boolean not null,
-    scadenza date
-);
-
-create table sconto
-(
-	codice_ordine int,
-    codice_sconto varchar(10),
-    primary key(codice_ordine, codice_sconto),
-    foreign key (codice_ordine) references ordine(codice)
-		on update cascade
-        on delete cascade,
-	foreign key (codice_sconto) references codice_sconto(codice)
-		on update cascade
-        on delete no action
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+);   
     

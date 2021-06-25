@@ -30,9 +30,9 @@
                 <div class="tit">
                    <span> Donna </span>  
                    <div class="interna">
-                        <div> <a href=""> <img src="/progetto-TSW/img/anello-donna.JPG" alt="anelli non visualizzabili" width="50" height="50"> </a> <div> anelli </div></div>
-                        <div> <a href=""> <img src="/progetto-TSW/img/collana-donna.jpg" alt="collana non visualizzabile" width="50" height="50"> </a> <div> anelli </div> </div>
-                        <div> <a href=""> <img src="/progetto-TSW/img/orecchini-donna.jpg" alt="orecchini non visualizzabili" width="50" height="50"> </a> <div> anelli </div> </div>
+                        <div> <a href="/progetto-TSW/catalogo?categoria=anello"> <img src="/progetto-TSW/img/anello-donna.JPG" alt="anelli non visualizzabili" width="50" height="50"> </a> <div> anelli </div></div>
+                        <div> <a href="/progetto-TSW/catalogo?categoria=anello"> <img src="/progetto-TSW/img/collana-donna.jpg" alt="collana non visualizzabile" width="50" height="50"> </a> <div> anelli </div> </div>
+                        <div> <a href="/progetto-TSW/catalogo?categoria=anello"> <img src="/progetto-TSW/img/orecchini-donna.jpg" alt="orecchini non visualizzabili" width="50" height="50"> </a> <div> anelli </div> </div>
                    </div>
             	</div>
         </div>
@@ -42,9 +42,9 @@
             		<span> Uomo </span> 
 
                     <div class="interna">
-                        <div> <a href=""> <img src="/progetto-TSW/img/anello-donna.JPG" alt="anelli non visualizzabili" width="50" height="50"> </a> <div> anelli </div></div>
-                        <div> <a href=""> <img src="/progetto-TSW/img/collana-donna.jpg" alt="collana non visualizzabile" width="50" height="50"> </a> <div> anelli </div> </div>
-                        <div> <a href=""> <img src="/progetto-TSW/img/orecchini-donna.jpg" alt="orecchini non visualizzabili" width="50" height="50"> </a> <div> anelli </div> </div>
+                        <div> <a href="/progetto-TSW/catalogo?categoria=anello&genere=Donna"> <img src="/progetto-TSW/img/anello-donna.JPG" alt="anelli non visualizzabili" width="50" height="50"> </a> <div> anelli </div></div>
+                        <div> <a href="/progetto-TSW/catalogo?categoria=collana&genere=Donna"> <img src="/progetto-TSW/img/collana-donna.jpg" alt="collana non visualizzabile" width="50" height="50"> </a> <div> anelli </div> </div>
+                        <div> <a href="/progetto-TSW/catalogo?categoria=orecchini"> <img src="/progetto-TSW/img/orecchini-donna.jpg" alt="orecchini non visualizzabili" width="50" height="50"> </a> <div> anelli </div> </div>
                     </div>
                  </div>
                 
