@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+.utente{
+	display:flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	margin-bottom:2%;
+}
+
+.utente .quadrati{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 65%;
+	width: 100%;
+	margin-bottom: 4%;
+}
+
+.utente #uscita{
+	font-size: 130%;
+	width: 30%;
+    height: 160%;
+}
+
+.utente button{
+	cursor: pointer;
+	border-radius: 40%;
+	-moz-border-radius: 40%; /* firefox */ 
+    -webkit-border-radius: 40%; /* safari, chrome */
+    background: DarkOrange;
+	border-color: DarkOrange;
+	text-align: center;
+    border-style: hidden;
+    width: 40%;
+    height: 100%
+}
+
+.utente img{
+	width: 90%;
+	height: 40%;
+}
+
+.utente fieldset{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.utente legend{
+	font-weight: bold;
+	font-size: 120%;
+}
+
+@media screen and (max-width: 600px) {
+	
+	.utente .quadrati{
+		flex-direction: column;
+		height: auto;
+	}
+	
+	.utente img{
+		width: 50%;
+	}
+	
+}
+	

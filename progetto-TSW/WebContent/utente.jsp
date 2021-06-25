@@ -13,28 +13,52 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<meta charset="UTF-8">
 		<title>Pagina Utente</title>
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
+		<link href="css/utente.css" rel="stylesheet" type="text/css">
 	</head>
 	
 	<body>
 	
 		<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
-		<div>
-			<a href = "/progetto-TSW/ordini">i tuoi ordini</a>
+		<div class="utente">
+		
+			<h1> BENVENUTO NEL TUO PROFILO! </h1>
+		  <div class="quadrati"> 
+			
+			<fieldset>
+				<legend> Ordini </legend>
+				<img src="/progetto-TSW/img/ordini.jpg" alt="immagine non visualizzabile">
+				<br>
+				<a href = "/progetto-TSW/ordini"> <button> vai ai miei ordini </button></a>
+			</fieldset>
+			
+			<fieldset>
+				<legend> Pagamento </legend>
+				<img src="/progetto-TSW/img/metodiPagamento.png" alt="immagine non visualizzabile">
+				<br>
+				<a href = "/progetto-TSW/carte"> <button> vai ai miei metodi di pagamento </button></a>
+			</fieldset>
+			
+			<fieldset>
+				<legend> Spedizione </legend>
+				<img src="/progetto-TSW/img/spedizione.jpg" alt="immagine non visualizzabile">
+				<br>
+				<a href = "/progetto-TSW/indirizzi"><button> vai alle informazioni di consegna </button></a>
+			</fieldset>
+			
+		  </div>
+				<a href = "/progetto-TSW/logout"><button id="uscita"> log-out </button></a>
+		  
+			
 		</div>
-		<div>
-			<a href = "/progetto-TSW/carte">i tuoi metodi di pagamento</a>
-		</div>
-		<div>
-			<a href = "/progetto-TSW/indirizzi">i tuoi indirizzi di spedizione</a>
-		</div>
-		<div>
-			<a href = "/progetto-TSW/logout">esci</a>
-		</div>
+		
+		
+		
 		<%@ include file = "fragments/footer.html" %>
 	
 	</body>
