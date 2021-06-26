@@ -12,41 +12,49 @@
     	response.sendRedirect("catalogo");
     	return;
     }
+    double iva =Double.parseDouble(application.getInitParameter("iva"));
+    application.setAttribute("iva", iva);
     %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<title>Catalogo</title>
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
+		<link href ="css/catalogo.css" rel="stylesheet" type="text/css"> 
 	</head>
 	<body>
 	<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
-		<table>
-			<tr>
-				<th><a href = "catalogo?ordine=nome">NOME</a></th>
-				<th>COLORE</th>
-				<th>Immagine</th>
-				<th></th>
-			</tr>
+	<div id = "catalogo">
+		<div id = "prodotti">
 		<%
 		for(ProductTemplateBean modello : catalogo) {
 			for(TemplateColorVariantBean bean : modello.getVariantiModello()){
 				request.setAttribute("bean", bean);
 		%>
-			<tr id = "variante-${bean.codice}" class = "variante">
-				<td><a href = "mostraProdotto?codiceModello=${bean.modelloProdotto.codice}&codice=${bean.codice}">
-				${bean.modelloProdotto.nome}</a></td>
-				<td>${bean.colore}</td>
-				<td><img class = "evidenziate" alt="immagine prodotto" src="immagine?codice=${bean.immaginiVariante[0].codice}" width = 100 height = 100></td>	
-				<td><button type = "button" value="${bean.codice}"><img alt = "" src ="" width = 50 height = 50></button></td>
-			</tr>
+			<div class = "variante" id = "variante-${bean.codice}">
+				<div class = "wishlist-container">
+					<div class = "contenitore-immagine-wishlist">
+						<button class = "bottone-immagine-wishlist" type = "button" value = "${bean.codice}"><img class = "immagine-wishlist"></button>
+					</div>
+				</div>
+				<div class = "contenitore-immagine">
+					<img class = "immagine evidenziate" src = "immagine?codice=${bean.immaginiVariante[0].codice}" alt = "immagine variante">
+				</div>
+				<div class = "contenitore-nome">
+					<span class = "nome">${bean.modelloProdotto.nome}</span>
+				</div>
+				<div class = "contenitore-prezzo">
+					<span class = "prezzo"><%= String.format("%.2f",bean.getPrezzoAttuale() * (1 + iva)) %>€</span>
+				</div>
+			</div>
 		
 		<%}} %>
-			
-		</table>
+		</div>	
+	</div>
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
         <script type="text/javascript" src = "javascript/wish_list.js"></script>
@@ -58,6 +66,17 @@
         		function()
         		{
         			attivaWishList();
+        			var enter = 
+        			function()
+        			{
+        				$(this).find(".contenitore-immagine-wishlist").css("visibility","visible");
+        			}
+        			var exit = 
+        			function()
+        			{
+        				$(this).find(".contenitore-immagine-wishlist").css("visibility","hidden");
+        			}
+        			$(".variante").hover(enter,exit);
         		}
         	)
         </script>

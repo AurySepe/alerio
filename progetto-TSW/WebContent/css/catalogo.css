@@ -1,0 +1,147 @@
+@charset "ISO-8859-1";
+
+#catalogo{
+	width: 100%;
+	display: flex;
+	
+}
+
+#catalogo #prodotti{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#catalogo .variante{
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+#catalogo .wishlist-container{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+#catalogo .contenitore-immagine-wishlist{
+	width: 10%;
+	margin-left: auto;
+	visibility: hidden;
+}
+
+#catalogo .bottone-immagine-wishlist{
+	width: 100%;
+	background-color: rgb(0,0,0,0);
+	border-width: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#catalogo .immagine-wishlist{
+	width: 100%;
+	object-fit: contain;
+}
+
+#catalogo .contenitore-immagine{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+#catalogo .immagine{
+	width:50%;
+}
+
+#catalogo .contenitore-nome{
+	width: 100%;
+	text-align: center;
+	margin-top: auto;
+}
+
+#catalogo .contenitore-prezzo{
+	width: 100%;
+	text-align: center;
+}
+
+@Media screen and (min-width : 1024px){
+	
+	#catalogo .variante{
+		width: 23.1%;
+		margin: 2% 0 2% 1.25%; 
+	}
+	
+	#catalogo .contenitore-immagine{
+		width: 100%;
+		height: 70%;
+	}
+	
+	#catalogo .immagine{
+		width:50%;
+	}
+	
+	#catalogo .contenitore-nome{
+		font-size: 3vw;
+	}
+	
+	#catalogo .contenitore-prezzo{
+		font-size: 3vw;
+	}
+	
+}
+
+@Media screen and (min-width : 768px) and (max-width : 1023.9px){
+	
+	#catalogo .variante{
+		width: 48%;
+		margin: 2% 0 2% 1%; 
+	}
+	
+	#catalogo .contenitore-immagine{
+		width: 100%;
+		height: 70%;
+	}
+	
+	#catalogo .immagine{
+		width:50%;
+	}
+	
+	#catalogo .contenitore-nome{
+		font-size: 4vw;
+	}
+	
+	#catalogo .contenitore-prezzo{
+		font-size: 4vw;
+	}
+	
+}
+
+@Media screen and (max-width : 767.9px){
+	
+	#catalogo .variante{
+		width: 100%;
+		margin: 2% 0 2% 0; 
+	}
+	
+	#catalogo .contenitore-immagine{
+		width: 100%;
+		height: 70%;
+	}
+	
+	#catalogo .immagine{
+		width:50%;
+	}
+	
+	#catalogo .contenitore-nome{
+		font-size: 5vw;
+	}
+	
+	#catalogo .contenitore-prezzo{
+		font-size: 5vw;
+	}
+	
+}
