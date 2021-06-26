@@ -41,6 +41,7 @@
 						<button class = "bottone-immagine-wishlist" type = "button" value = "${bean.codice}"><img class = "immagine-wishlist"></button>
 					</div>
 				</div>
+				<a href = "mostraProdotto?codiceModello=${bean.modelloProdotto.codice }&codice=${bean.codice}">
 				<div class = "contenitore-immagine">
 					<img class = "immagine evidenziate" src = "immagine?codice=${bean.immaginiVariante[0].codice}" alt = "immagine variante">
 				</div>
@@ -50,6 +51,7 @@
 				<div class = "contenitore-prezzo">
 					<span class = "prezzo"><%= String.format("%.2f",bean.getPrezzoAttuale() * (1 + iva)) %>€</span>
 				</div>
+				</a>
 			</div>
 		
 		<%}} %>
