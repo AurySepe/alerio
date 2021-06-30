@@ -67,7 +67,7 @@
         	(
         		function()
         		{
-        			attivaWishList();
+        			attivaWishList("variante",WishListSuccess);
         			var enter = 
         			function()
         			{
