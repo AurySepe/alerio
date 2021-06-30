@@ -1,0 +1,303 @@
+@charset "ISO-8859-1";
+
+#indirizzi{
+	width: 100%;
+	display: flex;
+	
+}
+
+#indirizzi h1{
+	text-align: center;
+}
+
+#indirizzi input{
+	padding: 0;
+	margin: 0;
+}
+
+#indirizzi #aggiungi-indirizzo, #indirizzi #aggiungi-carta{
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  justify-content: center;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+#indirizzi #aggiungi-indirizzo-contenuto, #indirizzi #aggiungi-carta-contenuto{
+  display: flex;
+  text-align:center;
+  flex-direction: column;
+  background-color: white; 
+  border-radius: 5px;
+}
+
+#indirizzi .input > input{
+	width: 100%;
+	display: flex;
+	font-size: 2.5vw;
+	
+}
+
+#indirizzi .input > div{
+	width: 100%;
+	
+}
+
+#indirizzi .input > div.contenitore-errore{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	
+}
+
+#indirizzi div.contenitore-errore > span.errore{
+	align-self: flex-start;
+	
+}
+
+
+#indirizzi #aggiungi-indirizzo-contenuto > *{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+#indirizzi #nuovoIndirizzo{
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	
+}
+
+#indirizzi #indirizzo{
+	width: 90%;
+	margin: 5% 0;
+	padding: 0 5%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+#indirizzi .indirizzi{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#indirizzi .contenitore-indirizzo{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 1% 0;
+}
+
+#indirizzi .indirizzo-radio{
+	width: 4%;
+}
+
+#indirizzi .indirizzo{
+	width: 96%;
+	display: flex;
+	flex-direction: row;
+}
+
+
+#indirizzi #bottone-aggiungi-indirizzo{
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+}
+
+@media screen and (min-width : 1024px) {
+	#indirizzi h1{
+		font-size: 3.5vw;
+	}
+	
+	#indirizzi #aggiungi-indirizzo-contenuto{
+ 		font-size: 2.5vw;
+ 		width: 40%;
+  		padding: 0 5%;
+ 		margin: 2% 0;
+	}	
+	
+	#indirizzi .input > input{
+		height: 30%;
+		font-size: 2.5vw;
+	
+	}
+
+	#indirizzi .input > div{
+		height: 35%;	
+	}
+	
+	#indirizzi .input > div.contenitore-errore{
+		font-size: 1.5vw;
+	
+	}
+	
+	#indirizzi #aggiungi-indirizzo-contenuto > *{
+		height: 14%;
+		font-size: 2vw;
+	}
+	
+	#indirizzi #nuovoIndirizzo{
+		padding:5% 0;
+		font-size: 2.5vw;
+	
+	}
+	
+	#indirizzi .indirizzi{
+		font-size: 1.7vw;
+	}
+	
+	
+	#indirizzi #contenitore-bottone-aggiungi-indirizzo{
+		margin: 2% 0;
+		width: 40%;
+	}
+	
+	#indirizzi #bottone-aggiungi-indirizzo{
+		padding:5% 0;
+		font-size: 1.7vw;
+	}
+	
+	#indirizzi #errore-indirizzo{
+		font-size: 2.5vw;
+	}
+}
+
+@media screen and (min-width : 768px) and (max-width : 1023.9px) {
+	
+	#indirizzi form{
+		flex-direction: column;
+	}
+	
+	#indirizzi h1{
+		font-size: 3.5vw;
+	}
+	
+	#indirizzi #aggiungi-indirizzo-contenuto{
+ 		font-size: 2.5vw;
+ 		width: 40%;
+  		padding: 0 5%;
+ 		margin: 2% 0;
+	}	
+	
+	#indirizzi .input > input{
+		height: 30%;
+		font-size: 3.5vw;
+	
+	}
+
+	#indirizzi .input > div{
+		height: 35%;	
+	}
+	
+	#indirizzi .input > div.contenitore-errore{
+		font-size: 2.5vw;
+	
+	}
+	
+	#indirizzi #aggiungi-indirizzo-contenuto > *{
+		height: 14%;
+		font-size: 3vw;
+	}
+	
+	
+	#indirizzi #nuovoIndirizzo{
+		padding:5% 0;
+		font-size: 4vw;
+	
+	}
+	
+	#indirizzi .indirizzi{
+		font-size: 2.5vw;
+	}
+	
+	
+	#indirizzi #contenitore-bottone-aggiungi-indirizzo{
+		margin: 2% 0;
+		width: 40%;
+	}
+	
+	#indirizzi #bottone-aggiungi-indirizzo{
+		padding:5% 0;
+		font-size: 2.5vw;
+	}
+	
+	#indirizzi #errore-indirizzo{
+		font-size: 2.5vw;
+	}
+}
+
+@media screen and  (max-width : 767.9px) {
+	#indirizzi h1{
+		font-size: 3.5vw;
+	}
+	
+	#indirizzi #aggiungi-indirizzo-contenuto{
+ 		font-size: 2.5vw;
+ 		width: 40%;
+  		padding: 0 5%;
+ 		margin: 5% 0;
+	}	
+	
+	#indirizzi .input > input{
+		height: 30%;
+		font-size: 5vw;
+	
+	}
+
+	#indirizzi .input > div{
+		height: 35%;	
+	}
+	
+	#indirizzi .input > div.contenitore-errore{
+		font-size: 4vw;
+	
+	}
+	
+	
+	#indirizzi #aggiungi-indirizzo-contenuto > *{
+		height: 14%;
+		font-size: 4vw;
+	}
+	
+	
+	#indirizzi #nuovoIndirizzo{
+		padding:5% 0;
+		font-size: 6vw;
+	
+	}
+	
+	#indirizzi .indirizzi{
+		font-size: 2.5vw;
+	}
+	
+	
+	#indirizzi #contenitore-bottone-aggiungi-indirizzo{
+		margin: 2% 0;
+		width: 40%;
+	}
+	
+	#indirizzi #bottone-aggiungi-indirizzo{
+		padding:5% 0;
+		font-size: 2.5vw;
+	}
+	
+	#indirizzi #errore-indirizzo{
+		font-size: 2.5vw;
+	}	
+}

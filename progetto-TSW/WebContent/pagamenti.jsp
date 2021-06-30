@@ -21,50 +21,65 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>metodi di pagamento</title>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
+		<link href ="css/pagamenti.css" rel="stylesheet" type="text/css"> 
 	</head>
 	<body>
 		<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
-		<div>
-			<div><h1>I tuoi metodi di pagamento:</h1></div>
-			<% for(CreditCardBean creditCard : carte ) {
-				request.setAttribute("carta", creditCard);
-			%>
-				<div class = "carta">
-					<div>${carta.numeroCarta}</div>
-					<div><span><%= format.format(creditCard.getDataScadenza()) %></span>  <span>${carta.nominativo}</span></div>
+		<div id = "pagamenti">
+			<div id = "aggiungi-carta">	
+			<div id = "aggiungi-carta-contenuto">
+				<div class = "input" id = "numeroCarta">
+					<div><span>Numero Carta:</span></div>
+					<input type = "text" maxlength="20" name = "numeroCarta">
+					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
-			
-			<%} %>
-			<div id = "aggiungi-carta">
-				<form name = "aggiungi-carta">
-				<div>
-					<div class = "input" id = "numeroCarta">
-						Numero Carta:<br/>
-						<input type = "text" maxlength="20" name = "numeroCarta"><br/>
-						<span class = "errore"></span>
-					</div>
-					<div>
-						<div class = "input" id = "dataScadenza">					
-							<span>Data di scadenza:</span><br/>
-							<input type = "date"  name = "dataScadenza"><br/>
-							<span class = "errore"></span> 
-						</div>
-						<div class = "input" id = "nominativoCarta">
-							<span>Nominativo: </span><br/>
-							<input type = "text"  name = "nominativo"><br/>
-							<span class = "errore"></span> 
-						</div>
-						<input type = "hidden" value = "${utente.email}" name = "emailCliente">
-					</div>
+				<div class = "input" id = "dataScadenza">					
+					<div><span>Data di scadenza:</span></div>
+					<input type = "date"  name = "dataScadenza">
+					<div class = "contenitore-errore"><span class = "errore"></span></div> 
 				</div>
-				<div>
-						<button id = "nuovaCarta" type = "button">aggiungi</button>
+				<div class = "input" id = "nominativoCarta">
+					<div><span>Nominativo: </span></div>
+					<input type = "text"  name = "nominativo">
+					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
-				</form>
+				<input type = "hidden" value = "${utente.email}" name = "emailCliente">
+			<div>
+				<button id = "nuovaCarta" type = "button">aggiungi</button>
 			</div>
+			</div>
+			</div>
+			<div id = "pagamento">
+					<h1>Metodo di pagamento</h1>
+					<div id = "carte">
+						<div class = "titolo-carta">
+							<div id = "titolo-le-tue-carte">Le tue carte</div>
+							<div id = "titolo-nominativo">Nominativo</div>
+							<div id = "titolo-scadenza">Scadenza</div>
+						</div>
+						<% for(CreditCardBean creditCard : carte ) {
+							request.setAttribute("carta", creditCard);
+						%>
+						<div class = "contenitore-carta">
+							<div class = "radio-immagine">
+								<div class  = "contenitore-immagine-carta" >
+									<img class = "immagine-carta" alt = "immagine carta" src = "img/card.png">
+								</div>							
+								<div class = "numero-carta">${carta.numeroCarta}</div>
+							</div>
+							<div class = "nominativo-carta">${carta.nominativo}</div>
+							<div class = "scadenza-carta"><%= format.format(creditCard.getDataScadenza()) %></div>
+						</div>
+						<%} %>
+						<div id = "contenitore-bottone-aggiungi-carta">
+							<button id = "bottone-aggiungi-carta" type = "button">Aggiungi una nuova carta</button>
+						</div>
+					</div>
+				</div>
 		</div>
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>
@@ -76,12 +91,23 @@
        	function success(data)
        	{
        		data = JSON.parse(data);
-       		var date = new Date(data.dataScadenza);
-       		data.dataScadenza = "" + (date.getMonth() + 1).toLocaleString('en-US', { minimumIntegerDigits: 2,useGrouping: false})
-       		    + "/" + (date.getFullYear()) 
-       		var s = "<div class = 'carta'><div>" + data.numeroCarta + "</div>\n " +
-       		"<div><span>" + data.dataScadenza + "</span>  <span>" + data.nominativo + "</span></div></div>"
-       		$(s).insertBefore( $( "#aggiungi-carta" ) );
+			var date = new Date(data.dataScadenza);
+			data.dataScadenza = "" + (date.getMonth() + 1).toLocaleString('en-US', { minimumIntegerDigits: 2,useGrouping: false})
+			    + "/" + (date.getFullYear()) 
+			var id = "carta-"+data.codice;
+			var s = 
+			'<div class = "contenitore-carta">\n' +
+				'<div class = "radio-immagine">\n' +
+					'<div class  = "contenitore-immagine-carta" >\n' +
+						'<img class = "immagine-carta" alt = "immagine carta" src = "img/card.png">\n' +
+					'</div>\n' +							
+					'<div class = "numero-carta">' + data.numeroCarta +'</div>\n'+
+				'</div>\n' +
+				'<div class = "nominativo-carta">'+ data.nominativo +'</div>\n' +
+				'<div class = "scadenza-carta">'+ data.dataScadenza +'</div>\n' +
+			'</div>\n'
+			$(s).insertBefore( $( "#contenitore-bottone-aggiungi-carta" ) );
+			$("#aggiungi-carta").css("display","none");
        				
        	};
        	</script>
@@ -92,6 +118,21 @@
 				{
 					validazionePagamenti(success);
 					abbellimentiGenerali();
+					$("#bottone-aggiungi-carta").click
+					(
+						function()
+						{
+							$("#aggiungi-carta").css("display","flex");
+						}
+					)
+					
+					window.onclick = function(event) 
+					{
+  						if(event.target == document.getElementById("aggiungi-carta"))
+  						{
+  							$("#aggiungi-carta").css("display","none");
+  						}
+  					}
 				}
 			)
 		</script>
