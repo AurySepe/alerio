@@ -5,16 +5,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Sign-in page </title>
-	
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 	<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 	<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
-	<link href="css/loginPage.css" rel="stylesheet" type="text/css" >
+	<link href="css/SigninPage.css" rel="stylesheet" type="text/css" >
 	
 </head>
 <body>
 	
-	<div id = "loginPage"> 
+	<div id = "signinPage"> 
      <form id = "sigin-form" action="/progetto-TSW/SigninServlet" method="post">
         <h1> Sign-in </h1>  
         <div class = "input" id = "email">
@@ -37,13 +37,13 @@
           <input type="password" name="password" placeholder="almeno 5 caratteri"><br>
           <span class = "errore"></span>  
         </div>
-        <div>
+        <div class="genere">
             Genere:<br>
              <input type="radio" name="genere" value="f" required> f
              <input type="radio" name="genere" value="m" required> m
         </div>
 
-        <div>
+        <div class="contenitoreBottone">
              <button id = "sigin-button" class="bottone" type="button"> Sign in </button>
              <button id = "reset-button"class="bottone" type="button"> Reset </button>
         </div>

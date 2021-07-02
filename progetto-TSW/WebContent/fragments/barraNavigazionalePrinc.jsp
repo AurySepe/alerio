@@ -1,32 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<div id = "placeholder"></div>
+
+
+  	<div id = "placeholder"></div>
 <header>
 	<div class="primo">
-		<a href = "/progetto-TSW/"><img id = "logo" src="/progetto-TSW/img/logo.jpg" alt="immagine principale non visualizzabile" width="50" height="50"></a>
-        <h1 id = "titolo"><a href = "/progetto-TSW/">ALERIO</a></h1>
+		<div class="contenitoreLogo"> <a href = "/progetto-TSW/"><img id = "logo" src="/progetto-TSW/img/logo.jpg" alt="immagine principale non visualizzabile"></a></div>
+        <div class="contenitoreTitolo"> <h1 id = "titolo"> <a href = "/progetto-TSW/">ALERIO</a> </h1> </div>
    		<nav>
-        
-        	<ul>
-                
-                <li> <a href="carrello"><img src="/progetto-TSW/img/carrello.png" alt="icona carrello non visualizzabile" width="20" height="20"></a></li>
-                <li> <a href = "/progetto-TSW/wishList"><img src="/progetto-TSW/img/wish_list.png" alt="icona wish list non visualizzabile" width="20" height="20"></a></li>
-  
-                <li> <img src="/progetto-TSW/img/lente_di_ricerca.jpg" alt="icona lente non visualizzabile" width="20" height="20"> </li>
-                <li> <a href="/progetto-TSW/utente"> <img src="/progetto-TSW\img\profilo.jpg" alt="icona profilo non visualizzabile" width="20" height="20"> </a></li>
-            </ul>
+                <div> <a href="carrello"><img src="/progetto-TSW/img/carrello.png" alt="icona carrello non visualizzabile"></a></div>
+                <div> <a href = "/progetto-TSW/wishList"><img src="/progetto-TSW/img/wish_list.png" alt="icona wish list non visualizzabile"></a></div>
+                <div> <a href = "/progetto-TSW/catalogo"><img src="/progetto-TSW/img/lente_di_ricerca.jpg" alt="icona lente non visualizzabile"></a></div>
+                <div> <a href="/progetto-TSW/utente"> <img src="/progetto-TSW\img\profilo.jpg" alt="icona profilo non visualizzabile"> </a></div>
         </nav>
 	</div>
-	<table>
-     	<tr>
-     		<td> <a href="/progetto-TSW/catalogo?categoria=anello"> anelli </a></td>
-     		<td> <a href="/progetto-TSW/catalogo?categoria=bracciale"> bracciali </a> </td>
-     		<td> <a href="/progetto-TSW/catalogo?categoria=collana"> collane </a></td>
-     		<td> <a href="/progetto-TSW/catalogo?categoria=fede"> fedi nunziali </a></td>
-     		<td> <a href="/progetto-TSW/catalogo?categoria=coordinato"> coordinati </a></td>
-     		<td> <a href="/progetto-TSW/catalogo?categoria=orecchini"> orecchini </a></td>
-     		<td> <a href="/progetto-TSW/catalogo?categoria=ciondolo"> ciondoli </a> </td>
-     	</tr>
-     </table> 
+	<div class="secondo">
+		<a href="/progetto-TSW/catalogo?categoria=anello"> anelli </a>
+		<a href="/progetto-TSW/catalogo?categoria=bracciale"> bracciali </a>
+		<a href="/progetto-TSW/catalogo?categoria=collana"> collane </a>
+		<a href="/progetto-TSW/catalogo?categoria=fede"> fedi nunziali </a>
+		<a href="/progetto-TSW/catalogo?categoria=coordinato"> coordinati </a>
+		<a href="/progetto-TSW/catalogo?categoria=orecchini"> orecchini </a>
+		<a href="/progetto-TSW/catalogo?categoria=ciondolo"> ciondoli </a>
+	</div>
 </header>

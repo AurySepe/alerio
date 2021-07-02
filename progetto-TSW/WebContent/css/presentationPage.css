@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+#presentazione{
+	display: flex;
+	flex-direction: column;
+	padding: 2%;
+	background-color: BlanchedAlmond;
+}
+
+#presentazione img{
+	width: 98%;
+	height: 30%
+}
+
+#presentazione h1{
+	text-align: center;
+	font-size: xx-large;
+	font-family: "lucida calligraphy";
+}
+
+
+
+
+
+	

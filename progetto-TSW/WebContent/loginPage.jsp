@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Log-in page </title>
-	
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 	<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 	<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
@@ -27,7 +27,7 @@
                 <span class = "errore"></span> 
                </div>
                <br>
-               <div>
+               <div class="contenitoreBottone">
  
                     <button id = "login-button" class="bottone" type="button"> Log in </button>              
                     <a href="signinPage.jsp"> Sign in </a>

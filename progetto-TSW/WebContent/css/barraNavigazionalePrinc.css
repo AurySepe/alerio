@@ -1,5 +1,5 @@
 header{
-    height: 15%;
+	height: 15%;
     width: 96%;
     background-color: white;
     padding: 0;
@@ -7,65 +7,85 @@ header{
     border: 0;
     top: 0%;
     position: fixed;
-    text-align: center;
 }
 
-header h1{
-	text-align: center;
+header #titolo{
+	justify-content: center;
 	color: black;
 	font-family: "lucida calligraphy";
-	font-size: xx-large;
-	display: inline-block;
+	font-size: 4vw;
+	text-decoration: none;
 }
 
+header .contenitoreTitolo{
+	width: 30%;	
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
-header nav{
+header .contenitoreLogo{
+	width: 30%;
+}
+
+header nav {
+	display: flex;
+	justify-content: space-between;
     background-color:white;
-    height: 50%;
-    display: block;
-    float: right;
-    margin-top: 16px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: auto;
+    width: 30%;
 }
 
+header nav div{
+	display: flex;
+	width: 25%;
+	justify-content: center;
+	align-items: center;
+}
+
+header nav div a{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 header img{
-    margin: 5px 5px;
-    padding: 5px 5px; 
+	width: 30%;
+    object-fit: contain;
 }
 
 header #logo{
-	float: left;
-	margin: 0;
+	width: 15%;
+	height: 90%;
 }
 
-header li{
-    display: inline;
-}
-
-header div.primo{
-	text-align: center;
+header .primo{
+	display: flex;
 	width: 100%;
 	height: 70%;
 	background-color: white;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
-header table{
+header .secondo{
+	display: flex;
+	justify-content: space-between;
 	width: 100%;
 	height: 30%;
 	background-color: indianRed;
-	margin:0;
-	padding:0;
-	
-}
-
-header ul{
 	margin: 0;
+	padding: 0;
+	text-align: center;
+	align-items: center;
+	font-size: 1.9vw;
 }
 
-header #titolo {
-	color: black;
-	text-decoration: none;
-	font-weight: bold;
+header .secondo a{
+	align-items: center;
 }
 
 header a:link{
@@ -94,8 +114,29 @@ header a:visited{
 
 #placeholder 
 {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 	height: 15%;
     width: 100%;
     background-color: white;
     visibility: hidden;
+}
+
+@media screen and (max-width: 600px){
+	header #titolo{
+		font-size: 6vw;
+	}
+	
+	header #logo{
+		width: 40%;
+	}
+	
+	header img{
+		width: 50%;
+	}
+	
+	header .secondo{
+		font-size: 2.8vw;
+	}
 }

@@ -65,6 +65,7 @@
 		 			Genere:<br/>
 		 			Uomo:<input name = "genere" type = "radio" value = "Uomo" required><br/>
 		 			Donna:<input name = "genere" type = "radio" value = "Donna" required><br/>
+		 			Unisex:<input name = "genere" type = "radio" value = "Unisex" required><br/>
 		 			<span class = "errore"></span>
 		 		</div>
 		 		<div class = "taglie" >
