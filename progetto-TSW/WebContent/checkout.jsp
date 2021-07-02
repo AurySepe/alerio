@@ -245,6 +245,7 @@
 			'</div>\n'
 			$(s).insertBefore( $( "#contenitore-bottone-aggiungi-carta" ) );
 			$("#" + id).attr('checked', true);
+			$("#aggiungi-indirizzo").css("display","none");
 			
 		};
 		</script>
@@ -256,6 +257,7 @@
 					var prezzo = 0;
 					$(".prezzo-elementi").each(function(){prezzo += parseFloat($(this).html())});
 					$(".prezzo-totale").html("" + prezzo + "€");
+					$("#bottone-aggiungi-indirizzo").click
 					(
 						function()
 						{
@@ -281,6 +283,8 @@
   							$("#aggiungi-carta").css("display","none");
   						}
   					}
+					validazioneIndirizzi(successIndirizzo);
+					validazionePagamenti(successCarta);
   						
 				}	
 			)

@@ -1,0 +1,158 @@
+@charset "ISO-8859-1";
+
+#ordini{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+#ordini #informazioni-ricerca{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	margin: 2% 0;
+}
+
+#ordini #utente-selezionato , #ordini #data-partenza , #ordini #data-fine{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	width: 30%;
+	margin: 0 1.5%;
+	font-size: 3vw;
+}
+
+#ordini #ordini-selezionati{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black; 
+}
+
+#ordini #ordini-selezionati > *{
+	margin: 2% 0;
+}
+
+#ordini #titoli-informazioni{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+	justify-content: space-between;
+}
+
+#ordini #titoli-informazioni > *{
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 2vw;
+}
+
+#ordini .ordine{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+	justify-content: space-between;
+}
+
+#ordini .ordine > *{
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 1.5vw;
+}
+
+#ordini #nessun-ordine{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	font-size: 3vw;
+}
+
+#ordini #parametri-ricerca{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#ordini #titolo-parametri{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: 3vw;
+	margin : 2% 0;
+}
+
+#ordini #parametri{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin : 2% 0;
+}
+
+#ordini #scelta-utente, #ordini #scelta-data-inizio , #ordini #scelta-data-fine{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5vw;
+}
+
+#ordini #scelta-utente > *, #ordini #scelta-data-inizio > * , #ordini #scelta-data-fine > *{
+	width: 50%;
+	text-align: center;
+}
+
+@Media screen and (max-width : 600px)
+{
+	#ordini #informazioni-ricerca{
+		flex-direction: column;
+	}
+	
+	#ordini #utente-selezionato , #ordini #data-partenza , #ordini #data-fine{
+		font-size: 5vw;
+		width: 100%;
+		margin: 2% 0;
+	}
+	
+	#ordini #titoli-informazioni > *{
+		font-size: 2.8vw;
+	}
+	
+	#ordini .ordine > *{
+		font-size: 2vw;
+	}
+	
+	#ordini #nessun-ordine{
+		font-size: 5vw;
+	}
+	
+	#ordini #titolo-parametri{
+		font-size: 5vw;
+	}
+	
+	#ordini #scelta-utente, #ordini #scelta-data-inizio , #ordini #scelta-data-fine{
+		font-size: 3vw;
+	}
+}
+
+
+

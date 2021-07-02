@@ -56,7 +56,7 @@
     	(
     		function()
     		{
-    			attivaWishList();
+    			attivaWishList("variante",WishListSuccess);
     		}
     	)
         </script>

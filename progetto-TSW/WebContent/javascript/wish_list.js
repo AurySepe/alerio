@@ -2,29 +2,30 @@
  * 
  */
 
-function attivaWishList()
+function attivaWishList(cssClass,success)
 {
-	$(".variante button").each
+
+	$("."+ cssClass + " button").each
      (
      	function()
         {
-       		inWishList($(this).val());
+       		inWishList($(this).val(),success);
         }
      )
-    $(".variante button").click
+    $("."+ cssClass + " button").click
     (
     	function()
         {
-       		toggleWishList($(this).val());
+       		toggleWishList($(this).val(),success);
         }
     )
 }
 
 
-function toggleWishList(codice)
+function toggleWishList(codice,success)
 {
 	var request = {"codice" : codice};
-	$.get("/progetto-TSW/toggleWishList",request,WishListSuccess);
+	$.get("/progetto-TSW/toggleWishList",request,success);
 }
 
 function WishListSuccess(response)
@@ -40,8 +41,8 @@ function WishListSuccess(response)
 	}
 }
 
-function inWishList(codice)
+function inWishList(codice,success)
 {
 	var request = {"codice" : codice};
-	$.get("/progetto-TSW/inWishList",request,WishListSuccess);
+	$.get("/progetto-TSW/inWishList",request,success);
 }

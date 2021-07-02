@@ -396,7 +396,7 @@
 	
 	#checkout #aggiungi-indirizzo-contenuto > *{
 		height: 14%;
-		font-size: 2.5vw;
+		font-size: 2vw;
 	}
 	
 	#checkout #aggiungi-carta-contenuto > *{
@@ -529,7 +529,7 @@
 	
 	#checkout #aggiungi-indirizzo-contenuto > *{
 		height: 14%;
-		font-size: 4vw;
+		font-size: 3vw;
 	}
 	
 	#checkout #aggiungi-carta-contenuto > *{
@@ -648,9 +648,17 @@
  		margin: 5% 0;
 	}	
 	
+	#checkout #aggiungi-carta-contenuto{
+ 		width: 40%;
+ 		height: 60%;
+  		padding: 0 5%;
+ 		margin: 5% 0;
+	}
+	
+	
 	#checkout .input > input{
 		height: 30%;
-		font-size: 5vw;
+		font-size: 4.5vw;
 	
 	}
 
@@ -671,11 +679,11 @@
 	
 	#checkout #aggiungi-indirizzo-contenuto > *{
 		height: 14%;
-		font-size: 5.4vw;
+		font-size: 4vw;
 	}
 	
 	#checkout #aggiungi-carta-contenuto > *{
-		font-size: 5.6vw;
+		font-size: 4.6vw;
 	}
 	
 	#checkout #nuovoIndirizzo{

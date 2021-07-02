@@ -2,39 +2,28 @@
  * 
  */
 
+
+var taglia = {"bottone" : null};
 function inizializzaCart()
 {
-	setCartValue();
-	$("input.taglia").click(setCartValue);
-	$("#bottone").click(toggleCart);
 	
-	
+	$(".bottone-taglia").click(function(){setTaglia($(this))});
+	$("#bottone-carrello").click(toggleCart);
 }
 
-
-function setCartValue()
+function setTaglia(bottone)
 {
-	var codice = null;
-	$("input.taglia").each
-	(
-		function()
-		{
-			if(this.checked)
-			{
-				codice = $(this).val();
-			}
-		}
-	)
-	if(codice == null)
+	if(taglia.bottone != null)
 	{
-		$("#bottone").hide();
+		taglia.bottone.hover(function(){$(this).css("background-color","#ff92a8")},function(){$(this).css("background-color","#ffbfcc")});
+		taglia.bottone.css("background-color","#ffbfcc");
 	}
-	else
-	{
-		$("#bottone").show();
-		$("#bottone").attr("value",codice);
-		inCart(codice);
-	}
+	taglia.bottone = bottone;
+	bottone.css("background-color","#ff92a8")
+	bottone.hover(function(){$(this).css("background-color","#ff92a8")},function(){$(this).css("background-color","#ff92a8")});	
+	$("#bottone-carrello").val(bottone.val());
+	inCart(bottone.val());
+	
 }
 
 
@@ -49,17 +38,23 @@ function inCartSuccess(response)
 	response = JSON.parse(response);
 	if(response.inCart)
 	{
-		$("#bottone img").attr("src","/progetto-TSW/img/carrello_attivo.png");
+		$("#bottone-carrello").html("elimina dal carrello");
+		$("#bottone-carrello").css("background-color","#ff92a8");
 	}
 	else
 	{
-		$("#bottone img").attr("src","/progetto-TSW/img/carrello.png");
+		$("#bottone-carrello").html("aggiungi al carrello");
+		$("#bottone-carrello").css("background-color","#ffbfcc");
 	}
 }
 
 function toggleCart()
 {
-	var codice = $("#bottone").val();
+	if(taglia.bottone == null)
+	{
+		$("#taglie").focus();
+	}
+	var codice = $("#bottone-carrello").val();
 	var request = {"codice" : codice};
 	$.get("/progetto-TSW/toggleCart",request,inCartSuccess);
 }

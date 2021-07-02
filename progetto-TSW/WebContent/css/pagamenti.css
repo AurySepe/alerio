@@ -1,0 +1,354 @@
+@charset "ISO-8859-1";
+
+#pagamenti{
+	width: 100%;
+	display: flex;
+}
+
+#pagamenti h1{
+	text-align: center;
+}
+
+#pagamenti input{
+	padding: 0;
+	margin: 0;
+}
+
+#pagamenti #aggiungi-carta{
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  justify-content: center;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+#pagamenti #aggiungi-carta-contenuto{
+  display: flex;
+  text-align:center;
+  flex-direction: column;
+  background-color: white; 
+  border-radius: 5px;
+}
+
+#pagamenti #aggiungi-carta-contenuto > *{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 25%;
+}
+
+#pagamenti .input > input{
+	width: 100%;
+	display: flex;
+	font-size: 2.5vw;
+	
+}
+
+#pagamenti .input > div{
+	width: 100%;
+	
+}
+
+#pagamenti .input > div.contenitore-errore{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	
+}
+
+#pagamenti div.contenitore-errore > span.errore{
+	align-self: flex-start;
+	
+}
+
+
+#pagamenti #nuovaCarta{
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	
+}
+
+#pagamenti #pagamento{
+	width: 90%;
+	margin: 5% 0;
+	padding: 0 5%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+#pagamenti #carte{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#pagamenti .titolo-carta{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+
+#pagamenti #titolo-le-tue-carte{
+	width: 40%;
+	display: flex;
+	justify-content: center;
+}
+
+
+#pagamenti #titolo-nominativo{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+}
+
+#pagamenti #titolo-scadenza{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+}
+
+#pagamenti .contenitore-carta{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	
+}
+
+#pagamenti .radio-immagine{
+	width: 40%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#pagamenti .carta-radio{
+	width: 10%;
+	
+}
+
+#pagamenti .contenitore-immagine-carta{
+	width: 20%;
+	
+}
+
+#pagamenti .numero-carta{
+	display: flex;
+	width: 80%;
+	justify-content: center;
+}
+
+#pagamenti .immagine-carta{
+	width:100%;
+	object-fit: contain;
+	
+}
+
+#pagamenti .nominativo-carta{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	
+}
+
+#pagamenti .scadenza-carta{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	
+}
+
+#pagamenti #contenitore-bottone-aggiungi-carta{
+	margin: 2% 0;
+	width: 40%;
+}
+
+#pagamenti #bottone-aggiungi-carta{
+	width: 100%; 
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+}
+
+@media screen and (min-width : 1024px) {
+	#pagamenti h1{
+		font-size: 3.5vw;
+	}
+	
+	#pagamenti #aggiungi-carta-contenuto{
+ 		font-size: 2.5vw;
+ 		width: 40%;
+  		padding: 0 5%;
+ 		margin: 2% 0;
+	}	
+	
+	#pagamenti .input > input{
+		height: 30%;
+		font-size: 2.5vw;
+	
+	}
+
+	#pagamenti .input > div{
+		height: 35%;	
+	}
+	
+	#pagamenti .input > div.contenitore-errore{
+		font-size: 1.5vw;
+	
+	}
+	
+	#pagamenti #nuovaCarta{
+		padding:5% 0;
+		font-size: 3.5vw;
+	
+	}
+	
+	#pagamenti .titolo-carta{
+		font-size: 2vw;
+	}
+	
+	#pagamenti #titolo-le-tue-carte{
+		font-size: 2.5vw;
+	}
+	
+	#pagamenti .contenitore-carta{
+		font-size: 1.7vw;
+	
+	}
+	
+	#pagamenti #bottone-aggiungi-carta{
+		padding:5% 0;
+		font-size: 1.7vw;
+	}
+	
+	#pagamenti #errore-carta{
+		font-size: 2.5vw;
+	}
+}
+
+@media screen and (min-width : 768px) and (max-width : 1023.9px) {
+	#pagamenti h1{
+		font-size: 3.5vw;
+	}
+	
+    #pagamenti #aggiungi-carta-contenuto{
+ 		font-size: 2.5vw;
+ 		width: 40%;
+  		padding: 0 5%;
+ 		margin: 2% 0;
+	}	
+	
+	#pagamenti .input > input{
+		height: 30%;
+		font-size: 3.5vw;
+	
+	}
+
+	#pagamenti .input > div{
+		height: 35%;	
+	}
+	
+	#pagamenti .input > div.contenitore-errore{
+		font-size: 2.5vw;
+	
+	}
+	
+	#pagamenti #nuovaCarta{
+		padding:5% 0;
+		font-size: 4.5vw;
+	
+	}
+	
+	#pagamenti .titolo-carta{
+		font-size: 2.5vw;
+	}
+	
+	#pagamenti #titolo-le-tue-carte{
+		font-size: 3.5vw;
+	}
+	
+	#pagamenti .contenitore-carta{
+		font-size: 2.5vw;
+	
+	}
+	
+	#pagamenti #bottone-aggiungi-carta{
+		padding:5% 0;
+		font-size: 2.5vw;
+	}
+	
+	#pagamenti #errore-carta{
+		font-size: 2.5vw;
+	}
+}
+
+@media screen and  (max-width : 767.9px) {
+	#pagamenti h1{
+		font-size: 3.5vw;
+	}
+	
+	#pagamenti #aggiungi-carta-contenuto{
+ 		font-size: 5vw;
+ 		width: 40%;
+ 		height: 60%;
+  		padding: 0 5%;
+ 		margin: 5% 0;
+	}	
+	
+	#pagamenti .input > input{
+		height: 20%;
+		font-size: 2.5vw;
+	
+	}
+
+	#pagamenti .input > div{
+		height: 35%;	
+	}
+	
+	#pagamenti .input > div.contenitore-errore{
+		font-size: 4vw;
+	
+	}
+	
+	#pagamenti #nuovaCarta{
+		padding:5% 0;
+		font-size: 6vw;
+	
+	}
+	
+	#pagamenti .titolo-carta{
+		font-size: 2.5vw;
+	}
+	
+	#pagamenti #titolo-le-tue-carte{
+		font-size: 3.5vw;
+	}
+	
+	#pagamenti .contenitore-carta{
+		font-size: 2.5vw;
+	
+	}
+	
+	#pagamenti #bottone-aggiungi-carta{
+		padding:5% 0;
+		font-size: 2.5vw;
+	}
+	
+	#pagamenti #errore-carta{
+		font-size: 2.5vw;
+	}
+}

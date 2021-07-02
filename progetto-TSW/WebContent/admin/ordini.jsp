@@ -9,13 +9,9 @@
     pageEncoding="UTF-8"%>
     
 <%
-	Collection<OrdineBean> ordini = (Collection<OrdineBean>) request.getAttribute("ordini");
 	Collection<UtenteBean> utenti = (Collection<UtenteBean>) request.getAttribute("utenti");
-	DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-	Date inizio = (Date) request.getAttribute("data-inizio");
-	Date fine = (Date) request.getAttribute("data-fine");
 	UtenteBean utente = (UtenteBean) request.getAttribute("utente");
-	if(ordini == null)
+	if(utenti == null)
 	{
 		response.sendRedirect("ordini");
 		return;
@@ -25,74 +21,143 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<title>ordini</title>
 		<link href="/progetto-TSW/css/stileGenerale.css" rel="stylesheet" type="text/css" >
+		<link href="/progetto-TSW/css/admin/ordini.css" rel="stylesheet" type="text/css" >
 	</head>
 	
 	<body>
 		<%@ include file = "../fragments/admin/BarraNavigazionaleAdmin.jsp" %>
-		<div>
-		<%if(utente != null){ %>
-			<div>
-				<h3>Utente ${utente.nome}</h3>
+	<div id = "ordini">
+		<div id = "informazioni-ricerca">
+			<div id = "utente-selezionato">
+				<span>Utente: tutti</span>
 			</div>
-		<%} %>
-		<%if(inizio != null){ %>
-			<div>
-				<h3>Dal <%=format.format(inizio) %></h3>
+			<div id = "data-partenza">
+				<span>Dal ---</span>
 			</div>
-		<%} %>
-		<%if(fine != null){ %>
-			<div>
-				<h3>Fino al <%=format.format(fine) %></h3>
+			<div id = "data-fine">
+				<span>Fino al ---</span>
 			</div>
-		<%} %>
 		</div>
-		<div>
-			<table>
-			<tr>
-				<th>Data di acquisto</th>
-				<th>Iva</th>
-				<th>Costo Totale</th>
-				<th>Utente</th>
-				<th>Dettagli</th>
-			</tr>
-			<%for(OrdineBean ordine : ordini) 
+		<div id = "ordini-selezionati">
+			<div id = "titoli-informazioni">
+				<span>Data di acquisto</span>
+				<span>Iva</span>
+				<span>Costo Totale</span>
+				<span>Utente</span>
+				<span>Dettagli</span>
+			</div>
+			<!--div class = "ordine">
+				<span>${ordine.data}</span>
+				<span>${ordine.iva}</span>
+				<span>${ordine.costo * (1 + ordine.iva)}</span>
+				<span>${ordine.email}</span>
+				<span><a href = "/progetto-TSW/ordine?codice=${ordine.codiceOrdine}">dettagli ordine</a></span>
+			</div>-->
+			<span id = "inserisci-ordine"></span>
+		</div>
+			<div id = "parametri-ricerca">
+				<div id = "titolo-parametri">Cerca ordini:</div>
+				<div id = "parametri">
+				<div id = "scelta-utente">
+					<span>Utente:</span> 
+					<select name = "utente" class = "ricerca" id = "utente">
+						<option value = "">Tutti</option>
+						<%for(UtenteBean u : utenti) {
+							request.setAttribute("user", u);
+						%>
+						<option value = "${user.email}">${user.email}</option>
+						<%} %>
+					</select>
+				</div>
+				<div id = "scelta-data-inizio"><span>Da:</span><input id = "inizio" class = "ricerca" type = "date" name = "inizio"></div>
+				<div id = "scelta-data-fine"><span>A:</span><input id = "fine" class = "ricerca" type = "date" name = "fine"></div>
+				
+				</div>
+			</div>
+		</div>
+		<script src = "/progetto-TSW/javascript/jquery-3.6.0.js"></script>
+		<script>
+			function cercaOrdini(utente,inizio,fine,success)
 			{
-				request.setAttribute("ordine", ordine);
-			%>
+				request = {"utente" : utente, "inizio" : inizio, "fine" : fine};
+				$.get("/progetto-TSW/admin/estraiOrdini",request,success);
+			}
 			
-			<tr>
-				<td>${ordine.data}</td>
-				<td>${ordine.iva}</td>
-				<td>${ordine.costo * (1 + ordine.iva)}</td>
-				<td>${ordine.email}</td>
-				<td><a href = "/progetto-TSW/ordine?codice=${ordine.codiceOrdine}">dettagli ordine</a></td>
-			</tr>
+			function successoRicerca(response)
+			{
+				response = JSON.parse(response);
+				rimuoviOrdini();
+				if(response.numeroOrdini == 0)
+				{
+					$("#inserisci-ordine").before("<div id = 'nessun-ordine' >Nessun ordine trovato</div>")
+				}
+				else
+				{
+					for(i = 0 ; i < response.numeroOrdini ; i++)
+					{
+						aggiungiOrdine(response.ordini[i]);
+					}
+				}
+			}
 			
-			<%} %>
-			</table>
-			<div>
-				<form method="get" action = "ordini">
-					<div>Cerca ordini:</div>
-					<div>
-						Utente: 
-						<select name = "utente">
-							<option value = ""></option>
-							<%for(UtenteBean u : utenti) {
-								request.setAttribute("user", u);
-							%>
-							<option value = "${user.email}">${user.email}</option>
-							<%} %>
-						</select>
-					</div>
-					<div>
-						Da:<input type = "date" name = "inizio"> A:<input type = "date" name = "fine">
-					</div>
-					<button type = "submit">Cerca</button>
+			function rimuoviOrdini()
+			{
+				$("#nessun-ordine").remove();
+				$(".ordine").remove();
+			}
+			
+			function aggiungiOrdine(ordine)
+			{
+				var s = 
+					'<div class = "ordine">\n' +
+						'<span>'+ ordine.data +'</span>\n' +
+						'<span>'+ ordine.iva +'%</span>\n' +
+						'<span>'+ (ordine.costo * (1 + ordine.iva)).toFixed(2) +'€</span>\n' +
+						'<span>'+ ordine.email + '</span>\n' +
+						'<span><a href = "/progetto-TSW/ordine?codice=' + ordine.codiceOrdine + '">dettagli ordine</a></span>\n' +
+					'</div>\n'
+				$("#inserisci-ordine").before(s);
+			}
+			
+			function aggiornaTitoli(utente,inizio,fine)
+			{
+				if(utente != "")
+					$("#utente-selezionato span").html("Utente: " + utente);
+				else
+					$("#utente-selezionato span").html("Utente: Tutti" );
+				if(inizio != "")
+					$("#data-partenza span").html("Dal " + inizio);
+				else
+					$("#data-partenza span").html("Dal ---");
+				if(fine != "")
+					$("#data-fine span").html("Fino al " + fine);
+				else
+					$("#data-fine span").html("Fino al ---");
 					
-				</form>
-			</div>
-		</div>
+			}
+		</script>
+		<script type="text/javascript">
+			$(document).ready
+			(
+				function()
+				{
+					cercaOrdini(null,null,null,successoRicerca);
+					$(".ricerca").change
+					(
+						function()
+						{
+							var utente = $("#utente").val();
+							var inizio = $("#inizio").val();
+							var fine = $("#fine").val();
+							aggiornaTitoli(utente,inizio,fine);
+							cercaOrdini(utente,inizio,fine,successoRicerca);
+						}
+					)
+				}
+			)
+		</script>
 	</body>
 </html>
