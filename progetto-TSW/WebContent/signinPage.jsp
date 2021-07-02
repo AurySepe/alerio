@@ -18,27 +18,27 @@
      <form id = "sigin-form" action="/progetto-TSW/SigninServlet" method="post">
         <h1> Sign-in </h1>  
         <div class = "input" id = "email">
-         Email:<br>
-          <input type="text" name="email"><br>
+         <span>Email:</span>
+          <input type="text" name="email">
           <span class = "errore"></span> 
         </div>
         <div class = "input" id = "nome">
-            Nome: <br>
-            <input type="text" name="nome"><br>
+            <span>Nome:</span> 
+            <input type="text" name="nome">
             <span class = "errore"></span> 
         </div>
         <div class = "input" id = "cognome">
-            Cognome:<br>
-             <input type="text" name="cognome"><br>
+            <span>Cognome:</span>
+             <input type="text" name="cognome">
              <span class = "errore"></span> 
         </div>
         <div class = "input" id = "password">
-         Password:<br>
-          <input type="password" name="password" placeholder="almeno 5 caratteri"><br>
+         <span>Password:</span>
+          <input type="password" name="password" placeholder="almeno 5 caratteri">
           <span class = "errore"></span>  
         </div>
         <div class="genere">
-            Genere:<br>
+           <span>Genere:</span>
              <input type="radio" name="genere" value="f" required> f
              <input type="radio" name="genere" value="m" required> m
         </div>
