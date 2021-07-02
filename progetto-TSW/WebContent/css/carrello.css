@@ -259,7 +259,7 @@
 	
 	#carrello #prodotti{
 	width: 58.5%;
-	
+	margin-bottom: 10%;
 	}
 	
 	#carrello .informazioni-prodotto{
@@ -293,7 +293,7 @@
 	position: fixed;
 	width: 35.8%;
 	margin-left: 60%;
-	margin-top: 1.1%
+	margin-top: 1.1%;
 	}
 	
 	#carrello .titolo-riepilogo{
