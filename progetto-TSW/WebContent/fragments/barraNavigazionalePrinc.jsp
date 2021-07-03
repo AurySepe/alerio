@@ -18,7 +18,7 @@
 		<a href="/progetto-TSW/catalogo?categoria=anello"> anelli </a>
 		<a href="/progetto-TSW/catalogo?categoria=bracciale"> bracciali </a>
 		<a href="/progetto-TSW/catalogo?categoria=collana"> collane </a>
-		<a href="/progetto-TSW/catalogo?categoria=fede"> fedi nunziali </a>
+		<a href="/progetto-TSW/catalogo?categoria=fedi nunziali"> fedi nunziali </a>
 		<a href="/progetto-TSW/catalogo?categoria=coordinato"> coordinati </a>
 		<a href="/progetto-TSW/catalogo?categoria=orecchini"> orecchini </a>
 		<a href="/progetto-TSW/catalogo?categoria=ciondolo"> ciondoli </a>
