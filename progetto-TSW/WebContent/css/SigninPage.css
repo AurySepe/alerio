@@ -2,7 +2,7 @@
 
 body {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
     background-color: thistle;
@@ -38,11 +38,19 @@ body {
 
 #signinPage .contenitoreBottone{
 	display: flex;
-	width: 60%;
+	width: 90%;
 	padding: 0% 5%;
 	align-items: center;
 	justify-content: space-between;
 	font-size: 1.5vw;
+}
+
+#signinPage .contenitoreBottone > *{
+	width: 50%;
+	font-size: 1.5vw;
+	display: flex;
+	justify-content: center;
+	text-align: center;
 }
 
 #signinPage h1{
@@ -57,10 +65,15 @@ body {
 	align-items: center;
 	width: 100%;
 	font-size: 2vw;
+	margin: 5% 0;
 }
 
 #signinPage .genere{
 	font-size: 2vw;
+}
+
+#signinPage .errore{
+	font-size: 1.5vw;
 }
 
 @media screen and (max-width: 600px){
@@ -84,4 +97,8 @@ body {
 	#signinPage .genere{
 		font-size: 4vw;
 	}
+	
+	#signinPage .errore{
+	font-size: 3vw;
+}
 }

@@ -51,6 +51,7 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	font-size: 1.5vw;
+	text-align: center;
 }
 
 #loginPage .input{
@@ -60,10 +61,19 @@ body {
 	align-items: center;
 	width: 100%;
 	font-size: 2vw;
+	margin: 5% 0;
 }
 
 #loginPage h1{
 	font-size: 4vw;
+}
+
+#loginPage #login-button{
+	font-size: 1.5vw;
+}
+
+#loginPage .errore{
+	font-size: 1.5vw;
 }
 
 
@@ -82,6 +92,14 @@ body {
 	
 	#loginPage .input{
 		font-size: 4vw;
+	}
+	
+	#loginPage #login-button{
+	font-size: 3vw;
+	}
+	
+	#loginPage .errore{
+	font-size: 3vw;
 	}
 	
 }
