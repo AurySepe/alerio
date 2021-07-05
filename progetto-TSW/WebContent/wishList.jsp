@@ -18,35 +18,54 @@
 
 	<head>
 		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<link href="css/stileGenerale.css" rel="stylesheet" type="text/css" >
 		<link href="css/barraNavigazionalePrinc.css" rel="stylesheet" type="text/css">
 		<link href ="css/footer.css" rel="stylesheet" type="text/css"> 
+		<link href ="css/wishList.css" rel="stylesheet" type="text/css">
 		<title>Wish List</title>
 	</head>
 	
 	<body>
 		<%@ include file = "fragments/barraNavigazionalePrinc.jsp" %>
-		<table>
-			<tr>
-				<th>NOME</th>
-				<th>PREZZO</th>
-				<th>COLORE</th>
-			</tr>
+		<div class="wishlist">
+			<div id="titolo"> <h1> LA TUA WISHLIST </h1> </div>
+			
 		<%for(TemplateColorVariantBean variante : varianti) {
 			request.setAttribute("variante", variante);
 		%>
-			<tr id = "variante-${variante.codice}" class = "variante">
-				<td><a href = "mostraProdotto?codiceModello=${variante.codiceModello}
-				&codice=${variante.codice}">
-				${variante.modelloProdotto.nome}</a></td>
-				<td>${variante.prezzoAttuale * (iva + 1)}</td>
-				<td>${variante.colore}</td>
-				<td><button type = "button" value="${variante.codice}"><img alt = "" src ="" width = 50 height = 50></button></td>
-			</tr>
+			<div id = "variante-${variante.codice}" class = "variante">
+			
+				<div class="col1">
+					<span class="nome">NOME</span>
+					<span><a href = "mostraProdotto?codiceModello=${variante.codiceModello}
+						&codice=${variante.codice}">
+						${variante.modelloProdotto.nome}</a></span>
+				</div>
+				
+				<div class="col2">
+					<span class="prezzo">PREZZO</span>
+					<span><%=String.format("%.2f", variante.getPrezzoAttuale() * (iva + 1) )%></span>
+				</div>
+				
+				<div class="col3">
+					<span class="colore">COLORE</span>
+					<span>${variante.colore}</span>
+				</div>
+					
+				<div class="immagineProdotto">
+					<img alt="immagine-prodotto" src="immagine?codice=${variante.immaginiVariante[0].codice}"> 
+				</div>
+				
+				<div class="cuore">
+					<button type = "button" value="${variante.codice}"><img alt = "immagine non visualizzabile" src ="" width = 50 height = 50></button>
+				</div>
+				
+			</div>
 		
 		<%} %>
 			
-		</table>
+		</div>
 		
 		<%@ include file = "fragments/footer.html" %>
 		<script src = "javascript/jquery-3.6.0.js"></script>

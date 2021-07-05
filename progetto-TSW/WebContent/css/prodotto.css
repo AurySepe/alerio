@@ -118,13 +118,14 @@
 
 #prodotto #contenitore-varianti{
 	display: flex;
+	justify-content: space-between;
 	flex-direction: row;
 	flex-wrap: wrap;
 	text-align: center;
 }
 
 #prodotto .variante{
-	width: 100%;
+	width: 30%;
 }
 
 #prodotto a {

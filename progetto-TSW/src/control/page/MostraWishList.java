@@ -56,6 +56,7 @@ public class MostraWishList extends UtenteServlet
 			for(TemplateColorVariantBean variante: varianti)
 			{
 				variante.setModelloProdotto(DAOS.getProductTemplateModel().doRetrieveVariantTemplate(variante));
+				variante.setImmaginiVariante(DAOS.getImageModel().doRetrieveAllFromTemplateVariant(variante));
 			}
 			request.setAttribute("varianti", varianti);
 			RequestDispatcher dispacher = getServletContext().getRequestDispatcher(response.encodeURL("/wishList.jsp"));

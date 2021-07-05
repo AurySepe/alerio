@@ -17,14 +17,32 @@
 	
 	<div id="presentazione"> 
 		<h1> Alerio gioielli </h1>
-		<div class="present">
-			<div> <a href="/progetto-TSW/catalogo"> <img src="/progetto-TSW/img/collezioni.jpg" alt="immagine non visualizzabile"> </a></div> 
+		<div class="present1">
+			<p> 
 			Il nostro marchio 100% made in Italy nasce da una passione storica per i gioielli e
 			dalla voglia di regalare emozioni. Quando abbiamo creato il nostro se-commerce ci siamo prefissati
 			come obiettivo di raggiungere quante più persone possibili accontentandole
 			tutte. La professionalità e la serietà sono alla base del nostro lavoro e siamo felici di 
 			poter mostrare recensioni positive sul nostro  operato: segno che stiamo riuscendo 
 			nell'obiettivo che ci eravamo prefissati. 
+			</p>
+			<div>
+				<span> <img src="/progetto-TSW/img/anelli_.jpg" alt="immagine non visualizzabile"> </span>
+			</div>
+		</div>
+		
+		<div class="present2">
+			<div>
+				<span> <img class="collezione" src="/progetto-TSW/img/collezione.jpg" alt="immagine non visualizzabile"></span>
+			</div>
+			<p> 
+			Il nostro marchio 100% made in Italy nasce da una passione storica per i gioielli e
+			dalla voglia di regalare emozioni. Quando abbiamo creato il nostro se-commerce ci siamo prefissati
+			come obiettivo di raggiungere quante più persone possibili accontentandole
+			tutte. La professionalità e la serietà sono alla base del nostro lavoro e siamo felici di 
+			poter mostrare recensioni positive sul nostro  operato: segno che stiamo riuscendo 
+			nell'obiettivo che ci eravamo prefissati. 
+			</p>
 		</div>
 	</div>
 	
