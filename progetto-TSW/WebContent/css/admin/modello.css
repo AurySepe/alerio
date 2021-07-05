@@ -1,0 +1,359 @@
+@charset "ISO-8859-1";
+
+#modello{
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#modello #modello-e-varianti{
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#modello #attributi-modello{
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	margin: 2% 0;
+	
+	
+}
+
+#modello #attributi-modello > * {
+	margin : 2% 0;
+} 
+
+#modello #nome-modello{
+	text-align: center;
+	font-size: 5vw;
+	width: 100%;
+}
+
+#modello #informazioni-modello{
+	text-align: center;
+	font-size: 3vw;
+	width: 80%;
+}
+
+#modello #categoria-collezione{
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	font-size: 3vw;
+}
+
+#modello #varianti-e-titolo{
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	margin: 2% 0;
+}
+
+#modello #titolo-varianti{
+	width: 100%;
+	text-align: center;
+	font-size: 5vw;
+	margin: 2% 0;
+}
+
+#modello #varianti{
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 2% 0;
+	
+}
+
+#modello .variante{
+	display: flex;
+	width: 30%;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	margin: 2% 2%;
+}
+
+#modello .link-variante{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	text-align: center;
+	font-size: 4vw;
+}
+
+#modello .immagine-variante{
+	width: 50%;
+	object-fit: contain;
+}
+
+#modello .in-vendita{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	font-size: 3vw;
+}
+
+#modello .attivaV{
+	 transform: scale(2.5);
+	 width: 20%;
+}
+
+#modello #form{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	align-items: center;
+	justify-content: center;
+	margin: 2% 0;
+}
+
+#modello #titolo-form{
+	text-align: center;
+	font-size: 5vw;
+	margin: 2% 0;
+}
+
+#modello #form-variante{
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	padding: 0% 5%;
+}
+
+#modello #attributi-taglie{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#modello legend{
+	font-size: 4vw;
+}
+
+#modello .input{
+	display: flex;
+	width : 100%;
+	flex-direction: column;
+	font-size: 3vw;
+	margin: 5% 0;
+}
+
+#modello .errore{
+	text-align: center;
+	font-size: 1.5vw;
+}
+
+#modello .input > *{
+	margin: 2% 0;
+	text-align: center;
+}
+
+#modello .input > input{
+	font-size: 3vw;
+	width: 100%;
+}
+
+#modello #attributi-variante{
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+#modello #genere{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 3vw;
+}
+
+#modello #contenitore-generi{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 2.5vw;
+}
+
+#modello #inVendita{
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#modello #inVendita input{
+	transform: scale(3);
+	width: 20%;
+}
+
+#modello #taglie-variante{
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+#modello .taglie{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#modello .contenitore-taglia{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#modello .taglia{
+	width: 30%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+#modello .taglia input{
+	transform: scale(2);
+}
+
+#modello .quantità{
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+#modello #foto-input{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	margin: 2% 0;
+}
+
+#modello .foto{
+	width: 30%;
+}
+
+#modello #aggiungiFoto{
+	width: 30%;
+	text-align: center;
+	font-size: 3vw;
+	border: none;
+	border-radius: 5px;
+	background-color: #ffbfcc;
+}
+
+#modello #variante-button{
+	width: 50%;
+	text-align: center;
+	font-size: 4vw;
+	border: none;
+	border-radius: 5px;
+	background-color: #ffbfcc;
+	align-self: center;
+	margin: 2% 0;
+}
+
+@media screen and (max-width : 600px)
+{
+	#modello #attributi-taglie{
+		flex-direction: column;
+	}
+	
+	#modello #attributi-variante{
+		width: 100%;
+	}
+	
+	#modello #taglie-variante{
+		width: 100%;
+	}
+	
+	#modello #inVendita input{
+		transform: scale(2);
+		width: 20%;
+	}
+	
+	#modello .attivaV{
+		 transform: scale(1.5);
+		 width: 20%;
+	}
+	
+	#modello .input{
+		font-size: 5vw;
+	}
+	
+	#modello .input > input{
+		font-size: 5vw;
+	}
+	
+	#modello .errore{
+		font-size: 3vw;
+	}
+	
+	#modello legend{
+		font-size: 6vw;
+	}
+	
+	#modello #genere{
+		font-size: 5vw;
+	}
+	
+	#modello #contenitore-generi{
+		font-size: 4vw;
+	}
+}

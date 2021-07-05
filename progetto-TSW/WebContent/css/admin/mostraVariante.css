@@ -1,0 +1,124 @@
+@charset "ISO-8859-1";
+
+#mostraVariante{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#mostraVariante #variante{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	align-items: center;
+	justify-content: center;
+	margin: 2% 0;
+}
+
+#mostraVariante #titolo{
+	width : 100%;
+	text-align: center;
+	font-size: 6vw;
+	margin: 2% 0;
+}
+
+#mostraVariante #link-titolo{
+	width : 100%;
+	text-decoration: none;
+}
+
+#mostraVariante #colore{
+	width: 100%;
+	text-align: center;
+	font-size: 5vw;
+	margin: 2% 0;
+}
+
+#mostraVariante #immagini{
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#mostraVariante .contenitore-immagini{
+	width: 30%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 2% 0;
+}
+
+#mostraVariante .immagine{
+	width: 100%;
+	object-fit: contain;
+}
+
+#mostraVariante #modifica-variante
+{
+	margin: 2% 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#mostraVariante #modificaVariante
+{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#mostraVariante fieldset{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+}
+
+#mostraVariante legend{
+	text-align: center;
+	font-size: 6vw;
+}
+
+#mostraVariante .input{
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	font-size: 5vw;
+	margin: 2% 0;
+	
+}
+
+#mostraVariante input{
+	
+	width: 100%;
+	font-size: 5vw;
+}
+
+#mostraVariante .errore{
+	font-size: 3vw;
+}
+
+#mostraVariante #submit{
+	width: 50%;
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	font-size: 5vw;
+	margin: 2% 0;
+}

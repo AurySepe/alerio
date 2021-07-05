@@ -78,8 +78,8 @@ public class TemplateColorVariantDAODS implements TemplateColorVariantDAO {
 			preparedStatement.setString(2, productDetails.getColore());
 			preparedStatement.setBoolean(3, productDetails.isInVendita());
 			preparedStatement.setDouble(4, productDetails.getPrezzoAttuale());
-			preparedStatement.setInt(5, productDetails.getCodice());
-			preparedStatement.setString(6, productDetails.getGenere());
+			preparedStatement.setString(5, productDetails.getGenere());
+			preparedStatement.setInt(6, productDetails.getCodice());
 			result = preparedStatement.executeUpdate();
 
 		} finally 

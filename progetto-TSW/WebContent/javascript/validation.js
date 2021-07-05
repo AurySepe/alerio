@@ -91,7 +91,7 @@ function regCap(s)
 
 function regTelefono(s)
 {
-	var quantitaExp = /^(\+\d{2})?\d{10}$/ 
+	var quantitaExp = /^(\+\d{2,})?\d{10}$/ 
 	return quantitaExp.test(s);
 }
 

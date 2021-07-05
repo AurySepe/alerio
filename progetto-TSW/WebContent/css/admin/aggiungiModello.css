@@ -1,0 +1,55 @@
+@charset "ISO-8859-1";
+
+#aggiungiModello{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#aggiungiModello #form-nuovoModello{
+	width: 80%;
+	padding: 0% 10%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#aggiungiModello fieldset{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	align-items: center;
+	justify-content: center;
+	margin: 2% 0;
+}
+
+#aggiungiModello legend{
+	text-align: center;
+	font-size: 5vw;
+}
+
+#aggiungiModello .input, #aggiungiModello #informazioni{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	margin: 2% 0;
+	text-align: center;
+	font-size: 3vw;
+}
+
+#aggiungiModello .errore{
+	font-size: 1.5vw;
+}
+
+#aggiungiModello #nuovoModello-button{
+	width: 50%;
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	font-size: 3vw;
+}

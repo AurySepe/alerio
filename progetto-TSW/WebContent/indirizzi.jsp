@@ -31,32 +31,32 @@
 			<div id = "aggiungi-indirizzo-contenuto">
 				<div class = "input" id = "citta">
 					<div><span>Città:</span></div>
-					<input type = "text" name = "citta">
+					<input  placeholder = "ex: Roma" type = "text" name = "citta">
 					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
 				<div class = "input" id = "cap">
 					<div><span>Cap:</span></div>
-					<input type = "text" name = "cap">
+					<input placeholder = "ex: 80056" type = "text" name = "cap">
 					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
 				<div class = "input" id = "via">
 					<div><span>Via:</span></div>
-					<input type = "text" name = "via">
+					<input placeholder="ex: via delle mimose" type = "text" name = "via">
 					<div class = "contenitore-errore"><span class = "errore"></span></div>	
 				</div>
 				<div class = "input" id = "numeroCivico">
 					<div><span>numero civico:</span></div>
-					<input type = "number" name = "numeroCivico">
+					<input placeholder="ex: 7" type = "number" name = "numeroCivico">
 					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
 				<div class = "input" id = "nominativoIndirizzo">
 					<div><span>Nominativo:</span></div>
-					<input type = "text" name = "nominativo">
+					<input placeholder="ex: Aurelio Sepe" type = "text" name = "nominativo">
 					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
 				<div class = "input" id = "telefono">
 					<div><span>Telefono:</span></div>
-					<input type = "text" name = "telefono">
+					<input placeholder = "+39xxxxxxxxxx" type = "text" name = "telefono">
 					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
 				<input type = "hidden" name = "emailCliente" value = "${utente.email}">
