@@ -34,7 +34,7 @@
 			<div id = "aggiungi-carta-contenuto">
 				<div class = "input" id = "numeroCarta">
 					<div><span>Numero Carta:</span></div>
-					<input type = "text" maxlength="20" name = "numeroCarta">
+					<input placeholder="XXXXXXXXXXXXXXXX" type = "text" maxlength="20" name = "numeroCarta">
 					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
 				<div class = "input" id = "dataScadenza">					
@@ -44,7 +44,7 @@
 				</div>
 				<div class = "input" id = "nominativoCarta">
 					<div><span>Nominativo: </span></div>
-					<input type = "text"  name = "nominativo">
+					<input placeholder="ex: Aurelio Sepe" type = "text"  name = "nominativo">
 					<div class = "contenitore-errore"><span class = "errore"></span></div>
 				</div>
 				<input type = "hidden" value = "${utente.email}" name = "emailCliente">

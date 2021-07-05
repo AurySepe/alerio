@@ -48,7 +48,7 @@
 						<legend>Attributi</legend>
 						<input type = "hidden" value = "${variante.codice}" name = "codice">
 						<div class = "input" id = "prezzo">
-								<span>prezzo</span><input value = "<%= String.format(Locale.US,"%.2f", variante.getPrezzoAttuale() * (1 + iva)) %>" type = "number" name = "prezzo">								<span class = "errore"></span>
+								<span>prezzo</span><input placeholder = "0.00" value = "<%= String.format(Locale.US,"%.2f", variante.getPrezzoAttuale() * (1 + iva)) %>" type = "number" name = "prezzo">								<span class = "errore"></span>
 						</div>
 						<%for(ProductBean prodotto : variante.getProdotti())
 						   {
@@ -57,7 +57,7 @@
 						%>
 							<div class = "input taglia" id = "${prodotto.taglia}">
 								<span>quantità ${prodotto.taglia}</span>
-								<input  value = "${prodotto.quantita}" type = "number" name = "quantita-${prodotto.taglia}" >
+								<input placeholder = "solo numeri interi"  value = "${prodotto.quantita}" type = "number" name = "quantita-${prodotto.taglia}" >
 								<span class = "errore"></span>
 							</div>
 						<% } %>

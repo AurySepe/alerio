@@ -61,7 +61,7 @@
 					 		<legend>attributi</legend>
 					 		<div class = "input" id = "colore">		 		
 					 			<span>Colore:</span>
-					 			<input name = "colore" type = "text" required>
+					 			<input placeholder = "ex : Rosso" name = "colore" type = "text" required>
 					 			<span class = "errore"></span>
 					 		</div>
 					 		<div class = "input" id = "inVendita">
@@ -70,7 +70,7 @@
 					 		</div>
 					 		<div class = "input" id = "prezzo">
 						 		<span>Prezzo:</span>
-						 		<input name = "prezzo" type = "number" required>
+						 		<input placeholder = "0.00" name = "prezzo" type = "number" required>
 						 		<span class = "errore"></span>
 					 		</div>
 					 		<div id = "genere">
@@ -93,7 +93,7 @@
 					 			</div>
 					 			<div class = "input quantità" id = "S-quantità">	 		
 						 			<span>quantità:</span>
-						 			<input name = "S-quantita" type = "number">
+						 			<input placeholder = "solo numeri interi" name = "S-quantita" type = "number">
 							 		<span class = "errore"></span>
 					 			</div>
 					 		</div>
@@ -104,7 +104,7 @@
 					 			</div>
 					 			<div class = "input quantità" id = "M-quantità">	 		
 						 			<span>quantità:</span>
-						 			<input name = "M-quantita" type = "number">
+						 			<input placeholder = "solo numeri interi" name = "M-quantita" type = "number">
 						 			<span class = "errore"></span>
 					 			</div>
 					 		</div>
@@ -115,7 +115,7 @@
 					 			</div>
 					 			<div class = "input quantità" id = "L-quantità">	 		
 						 			<span>quantità:</span>
-						 			<input name = "L-quantita" type = "number">
+						 			<input placeholder = "solo numeri interi" name = "L-quantita" type = "number">
 						 			<span class = "errore"></span>
 					 			</div>
 					 		</div>

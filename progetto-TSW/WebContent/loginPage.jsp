@@ -17,13 +17,13 @@
                <h1> Log-in </h1>
                <div class = "input" id = "email">  
                 Email:
-                <input type="text" name="email" placeholder="Enter email">
+                <input placeholder = "ex: aurelio@gmail.com" type="text" name="email" placeholder="Enter email">
                 <span class = "errore"></span>
                </div>
                
                <div class = "input" id = "password">
                 Password:
-                <input type="password" name="password" placeholder="Enter password">
+                <input placeholder = "lunghezza: min 5 max 15" type="password" name="password" placeholder="Enter password">
                 <span class = "errore"></span> 
                </div>
                <br>

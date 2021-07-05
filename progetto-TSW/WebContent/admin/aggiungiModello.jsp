@@ -29,7 +29,7 @@
 					<legend>Nuovo Modello</legend>
 					<div class = "input" id = "nome">
 						<span>NOME:</span>
-						<input name = "nome"  type = "text">
+						<input placeholder = "solo lettere" name = "nome"  type = "text">
 						<span class = "errore"></span>
 					</div>
 					<div id = "informazioni">
@@ -39,12 +39,12 @@
 					</div>
 					<div class = "input" id = "collezione">
 						<span>COLLEZIONE:</span>
-						<input name = "collezione"  type = "text">
+						<input placeholder = "ex: estate" name = "collezione"  type = "text">
 						<span class = "errore"></span>
 					</div>
 					<div class = "input" id = "categoria">
 						<span>CATEGORIA:</span>
-						<input name = "categoria"  type = "text">
+						<input placeholder = "ex: collana" name = "categoria"  type = "text">
 						<span class = "errore"></span>
 					</div>
 					<button type = "button" id = "nuovoModello-button">aggiungi</button>

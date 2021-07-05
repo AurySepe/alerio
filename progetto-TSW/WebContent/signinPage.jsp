@@ -19,22 +19,22 @@
         <h1> Sign-in </h1>  
         <div class = "input" id = "email">
          <span>Email:</span>
-          <input type="text" name="email">
+          <input placeholder = "ex: aurelio@gmail.com" type="text" name="email">
           <span class = "errore"></span> 
         </div>
         <div class = "input" id = "nome">
             <span>Nome:</span> 
-            <input type="text" name="nome">
+            <input placeholder = "ex: Aurelio" type="text" name="nome">
             <span class = "errore"></span> 
         </div>
         <div class = "input" id = "cognome">
             <span>Cognome:</span>
-             <input type="text" name="cognome">
+             <input placeholder = "ex: Sepe" type="text" name="cognome">
              <span class = "errore"></span> 
         </div>
         <div class = "input" id = "password">
          <span>Password:</span>
-          <input type="password" name="password" placeholder="almeno 5 caratteri">
+          <input placeholder = "lunghezza: min 5 max 15" type="password" name="password" placeholder="almeno 5 caratteri">
           <span class = "errore"></span>  
         </div>
         <div class="genere">
