@@ -173,7 +173,7 @@
 					<span>${item.prodotto.taglia}</span>
 					<span>${item.prodotto.varianteProdotto.colore}</span>
 					<span>${item.quantitaProdotto}</span>
-					<span class = "prezzo-elementi">${(item.prodotto.varianteProdotto.prezzoAttuale * (1 + iva)) * item.quantitaProdotto}€</span>
+					<span class = "prezzo-elementi"><%=String.format("%.2f", (item.getProdotto().getVarianteProdotto().getPrezzoAttuale() * (1 + iva)) * item.getQuantitaProdotto()) %>€</span>
 				</div>
 			</div>
 		
@@ -185,7 +185,7 @@
 				<div id = "contenitore-acquista">
 					<span class = "titolo-riepilogo">Acquista Ora</span>
 					<div class = "riepilogo">
-						<span>Prezzo Totale:</span><span class = "prezzo-totale">${carrello.costoTotale * (iva + 1) }</span>			
+						<span>Prezzo Totale:</span><span class = "prezzo-totale"><%= String.format("%.2f",cart.getCostoTotale() * (iva + 1) ) %>€</span>			
 					</div>
 					<div class = "contenitore-bottone-acquista"><button class = "bottone-acquista">Acquista</button></div>
 				</div>

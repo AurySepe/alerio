@@ -1,0 +1,128 @@
+@charset "ISO-8859-1";
+
+#adminCatalogo{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#adminCatalogo #contenitore-titolo{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: 6vw;
+	margin: 2% 0;
+}
+
+#adminCatalogo #contenitore-bottone-aggiungi-modello{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: 2% 0;
+}
+
+#adminCatalogo #link-bottone-aggiungi-modello{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-decoration: none;
+}
+
+#adminCatalogo #bottone-aggiungi-modello{
+	width: 50%;
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	font-size: 4vw;
+}
+
+#adminCatalogo #catalogo{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin: 2% 0;
+}
+
+#adminCatalogo .modello{
+	width: 20%;
+	margin: 2% 2%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+}
+
+#adminCatalogo .link-modello{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	color: black;
+}
+
+#adminCatalogo .titolo-modello{
+	width: 100%;
+	text-align: center;
+	margin-bottom: auto;
+	font-size: 2vw;
+	height: 20%;
+}
+
+#adminCatalogo .immagine-modello{
+	width: 100%;
+	object-fit: contain;
+	margin-top: auto;
+	height: 76%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023.9px)
+{
+	#adminCatalogo .modello{
+		width: 44%;
+		margin: 2% 2%;
+	
+	}
+	
+	#adminCatalogo .titolo-modello{
+		font-size: 4vw;
+	}
+}
+
+@media screen and (max-width: 767.9px) 
+{
+	
+	#adminCatalogo #contenitore-titolo{
+		font-size: 8vw;
+	}
+	
+	#adminCatalogo #bottone-aggiungi-modello{
+		font-size: 6vw;
+		width: 60%;
+	}
+	
+	#adminCatalogo .modello{
+		width: 90%;
+		margin: 2% 5%;
+		align-self: center;
+	
+	}
+	
+	#adminCatalogo .titolo-modello{
+		font-size: 6vw;
+	}
+}

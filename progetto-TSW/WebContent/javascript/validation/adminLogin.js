@@ -29,7 +29,7 @@ function adminLoginSuccess(response)
 	}
 	else
 	{
-		$("#adminLogin-form > span.errore").html("username o password errati");
+		$("#adminLogin-form span.errore-login").html("username o password errati");
 	}
 }
 

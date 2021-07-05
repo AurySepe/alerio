@@ -1,0 +1,165 @@
+@charset "ISO-8859-1";
+
+#adminPage{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+
+#adminPage #contenitore-titolo{
+	width: 100%;
+	margin: 2% 0;
+	
+}
+
+#adminPage #titolo{
+	font-size: 6vw;
+}
+
+#adminPage #catalogo-ordini{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#adminPage #catalogo{
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	
+}
+
+#adminPage #titolo-catalogo{
+	width: 100%;
+	margin: 2% 0;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 4vw;
+}
+
+#adminPage  #immagine-catalogo{
+	width: 80%;
+	object-fit:contain;
+	margin: 2% 0;
+	align-self: center;
+}
+
+#adminPage #link-catalogo{
+	width: 100%;
+	margin: 2% 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+
+#adminPage #bottone-catalogo{
+	width: 50%;
+	text-align: center;
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	padding: 2% 5%;
+	font-size: 2vw;
+}
+
+#adminPage #ordini{
+	width: 40%;
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+	border-style: solid;
+	border-width: medium;
+	border-color: black;
+	
+}
+
+#adminPage #titolo-ordini{
+	width: 100%;
+	margin: 2% 0;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 4vw;
+}
+
+#adminPage  #immagine-ordini{
+	width: 80%;
+	object-fit:contain;
+	margin: 2% 0;
+	align-self: center;
+}
+
+#adminPage #link-ordini{
+	width: 100%;
+	margin: 2% 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+
+#adminPage #bottone-ordini{
+	width: 50%;
+	text-align: center;
+	background-color:#ffbfcc;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	padding: 2% 5%;
+	font-size: 2vw;
+}
+
+@media screen and (max-width: 600px)
+{
+	#adminPage #catalogo-ordini{
+		flex-direction: column;
+	}
+	
+	#adminPage #catalogo{
+		width: 90%;
+		padding: 0% 5%;
+		margin: 2% 0;
+		
+	}
+	
+	#adminPage #ordini{
+		width: 90%;
+		padding: 0% 5%;
+		margin: 2% 0;
+		
+	}
+	
+	#adminPage #titolo{
+		font-size: 8vw;
+	}
+	
+	
+	#adminPage #bottone-ordini{
+		font-size: 4vw;
+	}
+	
+	#adminPage #bottone-catalogo{
+		font-size: 4vw;
+	}
+	
+	#adminPage #titolo-catalogo{
+		font-size: 6vw;
+	}
+	
+	#adminPage #titolo-ordini{
+		font-size: 6vw;
+	}
+}

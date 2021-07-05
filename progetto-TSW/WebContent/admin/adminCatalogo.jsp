@@ -15,22 +15,35 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<title>catalogo admin</title>
 		<link href="/progetto-TSW/css/stileGenerale.css" rel="stylesheet" type="text/css" >
+		<link href="/progetto-TSW/css/admin/adminCatalogo.css" rel="stylesheet" type="text/css" >
 	</head>
 	
 	<body>
-		<%@ include file = "../fragments/admin/BarraNavigazionaleAdmin.jsp" %>
-		<h1>Catalogo</h1>
-		<h2><a href = "aggiungiModello.jsp">Aggiungi un Modello</a></h2>
-		<%
-		for(ProductTemplateBean template : catalogo){
-			request.setAttribute("template", template);
-		%>
-			<div>
-				<a href = "modello?codice=${template.codice}"><span>${template.nome}</span></a></br>
-				<img class = "evidenziate" src = "../immagine?codice=${template.variantiModello[0].immaginiVariante[0].codice}" alt = "immagine modello" width = 50 height = 50/>
+		<div id = "adminCatalogo">
+			<div id = "contenitore-titolo">
+				<span id = "titolo">Catalogo</span>
 			</div>
-		<%} %>
+			<div id = "contenitore-bottone-aggiungi-modello">
+				<a id = "link-bottone-aggiungi-modello" href = "aggiungiModello.jsp">
+					<button id = "bottone-aggiungi-modello">Aggiungi un modello</button>
+				</a>
+			</div>
+			<div id = "catalogo">
+				<%
+				for(ProductTemplateBean template : catalogo){
+					request.setAttribute("template", template);
+				%>
+				<div class = "modello">
+					<a class = "link-modello" href = "modello?codice=${template.codice}">
+						<span class = "titolo-modello">${template.nome}</span>
+						<img class = "immagine-modello evidenziate" src = "../immagine?codice=${template.variantiModello[0].immaginiVariante[0].codice}" alt = "immagine modello" width = 50 height = 50/>
+					</a>
+				</div>
+				<%} %>
+			</div>
+		</div>
 	</body>
 </html>

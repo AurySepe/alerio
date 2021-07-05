@@ -4,29 +4,32 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<title>Login Admin</title>
 	<link href="/progetto-TSW/css/stileGenerale.css" rel="stylesheet" type="text/css" >
+	<link href="/progetto-TSW/css/admin/adminLogin.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
-		<div>
+		<div id = "adminLogin">
 			<form  action="/progetto-TSW/admin/login" method="post" id = "adminLogin-form">
-               <h1> Log-in </h1>  
-               <div class = "input" id = "username">
-               
-              	  Username: <br/>
-              	  <input type="text" name="username" placeholder="Enter username"><br>
-              	  <span class = "errore"></span>
-               </div>
-               <div class = "input" id = "password">
-				               
-                	Password:<br/>
-               		<input type="password" name="password" placeholder="Enter password"> <br> 
-               		<span class = "errore"></span>
-               </div>
-         		<div>
-                    <button type="button" id = "adminLogin-button"> Log in </button>
-                </div>
-                  	<span class = "errore"></span>
+	        	<fieldset id = "login" >
+	          		<legend>Login</legend> 
+	               <div class = "input" id = "username">
+	               
+	              	  <span>Username:</span>
+	              	  <input type="text" name="username" placeholder="Enter username">
+	              	  <span class = "errore"></span>
+	               </div>
+	               <div class = "input" id = "password">               
+	                	<span>Password:</span>
+	               		<input type="password" name="password" placeholder="Enter password">
+	               		<span class = "errore"></span>
+	               </div>
+	         		<div id = "contenitore-bottone">
+	                    <button type="button" id = "adminLogin-button"> Log in </button>
+	                </div>
+	                  	<span class = "errore-login"></span>
+	            </fieldset>
              </form>
                 
         </div>

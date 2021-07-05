@@ -17,34 +17,38 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Modello</title>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<link href="/progetto-TSW/css/stileGenerale.css" rel="stylesheet" type="text/css" >
+		<link href="/progetto-TSW/css/admin/aggiungiModello.css" rel="stylesheet" type="text/css" >
 	</head>
 
 	<body>
-		<%@ include file = "../fragments/admin/BarraNavigazionaleAdmin.jsp" %>
-		<div>
+		<div id = "aggiungiModello">
 			<form action = "aggiungiModello" method = "post" id = "form-nuovoModello">
-				<div class = "input" id = "nome">
-					NOME:<br/>
-					<input name = "nome"  type = "text"><br/>
-					<span class = "errore"></span>
-				</div>
-				<div id = "informazioni">
-					INFORMAZIONI:<br/>
-					<textarea name = "informazioni" rows="4" cols="50"></textarea><br/>
-					<span class = "errore"></span>
-				</div>
-				<div class = "input" id = "collezione">
-					COLLEZIONE:<br/>
-					<input name = "collezione"  type = "text"><br/>
-					<span class = "errore"></span>
-				</div>
-				<div class = "input" id = "categoria">
-					CATEGORIA:<br/>
-					<input name = "categoria"  type = "text"><br/>
-					<span class = "errore"></span>
-				</div>
-				<button type = "button" id = "nuovoModello-button">aggiorna</button>
+				<fieldset id = "attributi-modello">
+					<legend>Nuovo Modello</legend>
+					<div class = "input" id = "nome">
+						<span>NOME:</span>
+						<input name = "nome"  type = "text">
+						<span class = "errore"></span>
+					</div>
+					<div id = "informazioni">
+						<span>INFORMAZIONI:</span>
+						<textarea name = "informazioni" rows="4" cols="50"></textarea>
+						<span class = "errore"></span>
+					</div>
+					<div class = "input" id = "collezione">
+						<span>COLLEZIONE:</span>
+						<input name = "collezione"  type = "text">
+						<span class = "errore"></span>
+					</div>
+					<div class = "input" id = "categoria">
+						<span>CATEGORIA:</span>
+						<input name = "categoria"  type = "text">
+						<span class = "errore"></span>
+					</div>
+					<button type = "button" id = "nuovoModello-button">aggiungi</button>
+				</fieldset>
 			</form>
 		</div>
 		<script src = "/progetto-TSW/javascript/jquery-3.6.0.js"></script>

@@ -61,7 +61,7 @@
 				</div>
 				
 				 <div class = "prezzo">
-					<span>${(item.prodotto.varianteProdotto.prezzoAttuale * (1 + iva)) * item.quantitaProdotto}€</span>
+					<span><%=String.format("%.2f", (item.getProdotto().getVarianteProdotto().getPrezzoAttuale() * (1 + iva)) * item.getQuantitaProdotto()) %>€</span>
 				</div>
 			</div>
 		
@@ -71,7 +71,7 @@
 			<div id = "contenitore-acquista">
 				<span class = "titolo-riepilogo">Riepilogo dell'ordine</span>
 				<div class = "riepilogo">
-					<span>Prezzo Totale:</span><span class = "prezzo-totale">${carrello.costoTotale * (1 + iva) }</span>			
+					<span>Prezzo Totale:</span><span class = "prezzo-totale"><%= String.format("%.2f",cart.getCostoTotale() * (iva + 1) ) %>€</span>			
 				</div>
 				<div class = "contenitore-bottone-acquista"><a href = "mostraCheckout"><button class = "bottone-acquista">Procedi all'acquisto</button></a></div>
 			</div>
@@ -93,7 +93,7 @@
 				}
 				else
 				{
-					$("#" + response.codice + " .prezzo > span").html( "" + (response.quantita * (response.prezzo * (${iva} + 1))) + "€") ;
+					$("#" + response.codice + " .prezzo > span").html( "" + (response.quantita * (response.prezzo * (${iva} + 1))).toFixed(2) + "€") ;
 				}
 				mostraCheckout();
 			}

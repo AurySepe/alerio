@@ -28,7 +28,6 @@
 	</head>
 	
 	<body>
-		<%@ include file = "../fragments/admin/BarraNavigazionaleAdmin.jsp" %>
 	<div id = "ordini">
 		<div id = "informazioni-ricerca">
 			<div id = "utente-selezionato">
