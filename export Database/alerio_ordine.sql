@@ -39,7 +39,7 @@ CREATE TABLE `ordine` (
   CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`email_cliente`) REFERENCES `cliente` (`email`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `ordine_ibfk_2` FOREIGN KEY (`codice_carta`) REFERENCES `carta_di_credito` (`codice`) ON UPDATE CASCADE,
   CONSTRAINT `ordine_ibfk_3` FOREIGN KEY (`codice_consegna`) REFERENCES `informazioni_di_consegna` (`codice`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `ordine` (
 
 LOCK TABLES `ordine` WRITE;
 /*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
-INSERT INTO `ordine` VALUES (1,'violarosati@tiscali.it','2021-06-25',0.22,819.672131147541,1,1);
+INSERT INTO `ordine` VALUES (1,'violarosati@tiscali.it','2021-06-25',0.22,819.672131147541,1,1),(2,'violarosati@tiscali.it','2021-07-04',0.22,81.9672131147541,1,1);
 /*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-25 23:58:05
+-- Dump completed on 2021-07-05 22:43:24

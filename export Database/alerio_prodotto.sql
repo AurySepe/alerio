@@ -34,7 +34,7 @@ CREATE TABLE `prodotto` (
   KEY `varianti_modello_per_colore` (`varianti_modello_per_colore`),
   CONSTRAINT `prodotto_ibfk_1` FOREIGN KEY (`varianti_modello_per_colore`) REFERENCES `varianti_modello_per_colore` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `prodotto_chk_1` CHECK ((`taglia` in (_utf8mb4'S',_utf8mb4'M',_utf8mb4'L')))
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `prodotto` (
 
 LOCK TABLES `prodotto` WRITE;
 /*!40000 ALTER TABLE `prodotto` DISABLE KEYS */;
-INSERT INTO `prodotto` VALUES (1,1,'S',10),(2,1,'M',10),(3,2,'M',30),(4,2,'L',20),(8,3,'S',40),(9,3,'M',30),(10,4,'S',10),(11,4,'M',30),(12,4,'L',20),(13,5,'S',50),(14,6,'S',50),(15,6,'M',30),(16,7,'S',3),(17,7,'M',20),(18,7,'L',3),(19,8,'S',15),(20,9,'S',23);
+INSERT INTO `prodotto` VALUES (1,1,'S',10),(2,1,'M',10),(3,2,'M',30),(4,2,'L',20),(8,3,'S',40),(9,3,'M',30),(10,4,'S',10),(11,4,'M',30),(12,4,'L',20),(13,5,'S',50),(14,6,'S',50),(15,6,'M',30),(16,7,'S',3),(17,7,'M',20),(18,7,'L',3),(19,8,'S',15),(20,9,'S',23),(21,10,'S',15),(22,10,'M',15),(23,11,'M',20),(24,12,'S',10),(25,12,'M',15),(26,13,'S',20),(27,13,'M',10);
 /*!40000 ALTER TABLE `prodotto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-25 23:58:05
+-- Dump completed on 2021-07-05 22:43:23

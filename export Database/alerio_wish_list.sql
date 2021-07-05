@@ -40,6 +40,7 @@ CREATE TABLE `wish_list` (
 
 LOCK TABLES `wish_list` WRITE;
 /*!40000 ALTER TABLE `wish_list` DISABLE KEYS */;
+INSERT INTO `wish_list` VALUES ('violarosati@tiscali.it',8);
 /*!40000 ALTER TABLE `wish_list` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-25 23:58:05
+-- Dump completed on 2021-07-05 22:43:23

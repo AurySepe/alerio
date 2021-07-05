@@ -35,7 +35,7 @@ CREATE TABLE `varianti_modello_per_colore` (
   UNIQUE KEY `colore` (`colore`,`modello_prodotto`),
   KEY `modello_prodotto` (`modello_prodotto`),
   CONSTRAINT `varianti_modello_per_colore_ibfk_1` FOREIGN KEY (`modello_prodotto`) REFERENCES `modello_prodotto` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `varianti_modello_per_colore` (
 
 LOCK TABLES `varianti_modello_per_colore` WRITE;
 /*!40000 ALTER TABLE `varianti_modello_per_colore` DISABLE KEYS */;
-INSERT INTO `varianti_modello_per_colore` VALUES (1,1,'oro rosa',1,'Donna',819.672131147541),(2,3,'nero',1,'Uomo',32.78688524590164),(3,4,'rosa',1,'Donna',36.885245901639344),(4,5,'argento e oro',1,'Uomo',327.8688524590164),(5,6,'oro',1,'Donna',31.9672131147541),(6,7,'oro',1,'Donna',81.9672131147541),(7,8,'nero',1,'Uomo',36.885245901639344),(8,9,'bianco',1,'Donna',245.9016393442623),(9,10,'oro giallo',1,'Donna',90.16393442622952);
+INSERT INTO `varianti_modello_per_colore` VALUES (1,1,'oro rosa',1,'Donna',819.672131147541),(2,3,'nero',1,'Uomo',32.78688524590164),(3,4,'rosa',1,'Donna',36.885245901639344),(4,5,'argento e oro',1,'Uomo',327.8688524590164),(5,6,'oro',1,'Donna',31.9672131147541),(6,7,'oro',1,'Donna',81.9672131147541),(7,8,'nero',1,'Uomo',36.885245901639344),(8,9,'bianco',1,'Donna',245.9016393442623),(9,10,'oro giallo',1,'Donna',90.16393442622952),(10,4,'nero',1,'Donna',40.98360655737705),(11,11,'oro',1,'Unisex',409.8360655737705),(12,12,'oro',1,'Unisex',24.59016393442623),(13,1,'blu',1,'Donna',819.672131147541);
 /*!40000 ALTER TABLE `varianti_modello_per_colore` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-25 23:58:04
+-- Dump completed on 2021-07-05 22:43:22
