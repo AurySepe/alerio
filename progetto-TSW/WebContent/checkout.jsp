@@ -245,7 +245,7 @@
 			'</div>\n'
 			$(s).insertBefore( $( "#contenitore-bottone-aggiungi-carta" ) );
 			$("#" + id).attr('checked', true);
-			$("#aggiungi-indirizzo").css("display","none");
+			$("#aggiungi-carta").css("display","none");
 			
 		};
 		</script>
